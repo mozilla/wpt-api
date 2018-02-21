@@ -28,8 +28,6 @@ RUN sudo apt-get install -y docker-ce
 # RUN sudo docker run -v /var/run/docker.sock:/var/run/docker.sock -d --name firefoxtesteng/webpagetest-api test
 RUN sudo docker run --privileged=true -w /mnt/foo -v $PWD/foo:/mnt/foo -t --rm firefoxtesteng/webpagetest-api test
 
-RUN sudo docker hello-world
-
 RUN sudo docker run --privileged=true --rm -t \
   WEBPAGETEST_SERVER=https://${WEB_PAGE_TEST}@wpt-api.stage.mozaws.net/ \
   firefoxtesteng/webpagetest-api test 'https://latest.dev.lcip.org/?service=sync&entrypoint=firstrun&context=fx_desktop_v3' \
