@@ -4,11 +4,13 @@ pipeline {
   agent none
   stages {
     stage('cleanup') {
-      deleteDir()
+      steps {
+        deleteDir()
+      }
     }
     stage('clone') {
-       agent any
-       steps {
+      agent any
+      steps {
           git 'https://github.com/marcelduran/webpagetest-api'
         }
     }
