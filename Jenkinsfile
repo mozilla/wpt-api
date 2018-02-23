@@ -23,7 +23,7 @@ stages {
     stage('docker build') {
        agent any
        steps {
-          sh 'docker build -t webpagetest-api .'          
+          sh 'docker build -t webpagetest-api https://github.com/marcelduran/webpagetest-api.git'          
        }
     }
   }
