@@ -3,6 +3,9 @@
 pipeline {
   agent none
   stages {
+    stage('cleanup') {
+      deleteDir()
+    }
     stage('clone') {
        agent any
        steps {
