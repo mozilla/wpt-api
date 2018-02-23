@@ -20,6 +20,11 @@ pipeline {
       steps {
           sh '/usr/src/app/bin/webpagetest test "https://latest.dev.lcip.org/?service=sync&entrypoint=firstrun&context=fx_desktop_v3" -l "us-east-1:Firefox" -r 9 --first --poll --reporter json > fxa-homepage.json'
       }
+      post {
+          always {
+            archiveArtifacts 'fxa-homepage.json'
+          }
+      }
     }
   }
 }
