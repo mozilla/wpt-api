@@ -4,14 +4,18 @@ pipeline {
   agent none
   stages {
     stage('clone') {
-      agent any
-      steps {
-          git 'https://github.com/marcelduran/webpagetest-api'
-      }
+       agent any
+       steps {
+         checkout([
+           $class: 'GitSCM',
+           branches: [[name: 'master']],
+           extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'webpagetest-api']],
+           userRemoteConfigs: [[url: 'https://github.com/marcelduran/webpagetest-api']]])
+        }
     }
     stage('test') {
       agent {
-        dockerfile true
+        dockerfile { dir 'webpagetest-api' }
       }
       environment {
         WEB_PAGE_TEST = credentials('WEB_PAGE_TEST')
@@ -21,9 +25,9 @@ pipeline {
           sh '/usr/src/app/bin/webpagetest test "https://latest.dev.lcip.org/?service=sync&entrypoint=firstrun&context=fx_desktop_v3" -l "us-east-1:Firefox" -r 9 --first --poll --reporter json > fxa-homepage.json'
       }
       post {
-          always {
-            archiveArtifacts 'fxa-homepage.json'
-          }
+        always {
+          archiveArtifacts 'fxa-homepage.json'
+        }
       }
     }
   }
