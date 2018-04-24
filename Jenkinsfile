@@ -20,9 +20,10 @@ pipeline {
       environment {
         WEB_PAGE_TEST = credentials('WEB_PAGE_TEST')
         WEBPAGETEST_SERVER = "https://${WEB_PAGE_TEST}@wpt-api.stage.mozaws.net/"
+        PAGE_URL = "https://latest.dev.lcip.org/?service=sync&entrypoint=firstrun&context=fx_desktop_v3"
       }
       steps {
-          sh '/usr/src/app/bin/webpagetest test "https://latest.dev.lcip.org/?service=sync&entrypoint=firstrun&context=fx_desktop_v3" -l "us-east-1:Firefox" -r 9 --first --poll --reporter json > fxa-homepage.json'
+          sh '/usr/src/app/bin/webpagetest test "${PAGE_URL}" -l "us-east-1:Firefox" -r 9 --first --poll --reporter json > fxa-homepage.json'
       }
       post {
         always {
