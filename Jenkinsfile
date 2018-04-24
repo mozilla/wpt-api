@@ -2,6 +2,11 @@
 
 pipeline {
   agent none
+  environment {
+    WEB_PAGE_TEST = credentials('WEB_PAGE_TEST')
+    WEBPAGETEST_SERVER = "https://${WEB_PAGE_TEST}@wpt-api.stage.mozaws.net/"
+    PAGE_URL = "https://latest.dev.lcip.org/?service=sync&entrypoint=firstrun&context=fx_desktop_v3"
+  }
   stages {
     stage('clone') {
        agent any
@@ -17,11 +22,6 @@ pipeline {
       agent {
         dockerfile { dir 'webpagetest-api' }
       }
-      environment {
-        WEB_PAGE_TEST = credentials('WEB_PAGE_TEST')
-        WEBPAGETEST_SERVER = "https://${WEB_PAGE_TEST}@wpt-api.stage.mozaws.net/"
-        PAGE_URL = "https://latest.dev.lcip.org/?service=sync&entrypoint=firstrun&context=fx_desktop_v3"
-      }
       steps {
         sh '/usr/src/app/bin/webpagetest test "${PAGE_URL}" -l "us-east-1:Firefox" -r 9 --first --poll --reporter json > fxa-homepage.json'
       }
@@ -33,10 +33,10 @@ pipeline {
     }
     stage('filter') {
       agent {
-        docker { image 'realguess/jq' }
+        docker { image 'colstrom/jq' }
       }
       steps {
-        sh 'docker run realguess/jq jq '.data.runs."1".firstView.TTFB' data/fxa-homepage.json'
+        sh 'jq ".data.runs."1".firstView.TTFB" data/fxa-homepage.json'
       }
     }
   }
