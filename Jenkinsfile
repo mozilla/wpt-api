@@ -39,7 +39,7 @@ pipeline {
         docker { image 'colstrom/jq' }
       }
       steps {
-        sh 'jq -f jq-filter.txt data/fxa-homepage.json'
+        sh 'jq -f jq-filter.txt fxa-homepage.json'
       }
     }
   }
