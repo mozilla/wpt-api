@@ -4,4 +4,4 @@
 .data.runs."1".firstView.TTIMeasurementEnd
 .data.runs."1".firstView.bytesInDoc
 .data.runs."1".firstView.fullyLoaded
-.data.runs."1".firstView.requests.requestsFull
+.data.runs."1".firstView.requests[].requestsFull
