@@ -20,10 +20,12 @@ pipeline {
     }
     stage('test') {
       agent {
-        dockerfile { dir 'webpagetest-api' }
+        dockerfile {
+         dir 'webpagetest-api'
+        }
       }
       steps {
-        sh '/usr/src/app/bin/webpagetest test "${PAGE_URL}" -l "us-east-1:Firefox" -r 9 --first --poll --reporter json > fxa-homepage.json'
+        sh '/usr/src/app/bin/webpagetest test "${PAGE_URL}" -l "us-east-1:Firefox" -r 5 --first --poll --reporter json > fxa-homepage.json'
       }
       post {
         always {
@@ -36,7 +38,7 @@ pipeline {
         docker { image 'colstrom/jq' }
       }
       steps {
-        sh "jq '.data.runs.\"1".firstView.TTFB' data/fxa-homepage.json"
+        sh 'jq -f jq-filter.txt fxa-homepage.json'
       }
     }
   }

@@ -1,0 +1,7 @@
+DS_Store
+*.sw[op]
+*.pyc
+__pycache__
+.cache
+.tox
+*.json
