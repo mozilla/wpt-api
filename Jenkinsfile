@@ -39,7 +39,7 @@ pipeline {
         docker { image 'colstrom/jq' }
       }
       steps {
-        sh "jq '.data.runs.\"1\".firstView.TTFB' data/fxa-homepage.json"
+        sh 'jq -f jq-filter.txt data/fxa-homepage.json'
       }
     }
   }
