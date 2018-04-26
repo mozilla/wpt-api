@@ -21,6 +21,7 @@ pipeline {
     stage('test') {
       agent {
         dockerfile { dir 'webpagetest-api' }
+        additionalBuildArgs '--no-cache'
       }
       steps {
         sh '/usr/src/app/bin/webpagetest test "${PAGE_URL}" -l "us-east-1:Firefox" -r 9 --first --poll --reporter json > fxa-homepage.json'
