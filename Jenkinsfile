@@ -26,7 +26,7 @@ pipeline {
         }
       }
       steps {
-        sh '/usr/src/app/bin/webpagetest test "${PAGE_URL}" -l "us-east-1:Firefox" -r 9 --first --poll --reporter json > fxa-homepage.json'
+        sh '/usr/src/app/bin/webpagetest test "${PAGE_URL}" -l "us-east-1:Firefox" -r 5 --first --poll --reporter json > fxa-homepage.json'
       }
       post {
         always {
