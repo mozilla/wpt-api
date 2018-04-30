@@ -3,5 +3,5 @@
 .data.median.firstView.SpeedIndex,
 .data.median.firstView.TTIMeasurementEnd,
 .data.median.firstView.bytesInDoc,
-.data.median.firstView.fullyLoaded,
+.data.median.firstView.visualComplete,
 .data.median.firstView.requestsFull
