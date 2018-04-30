@@ -1,7 +1,6 @@
 .data.median.firstView.TTFB,
-.data.median.firstView.firstPaint,
+.data.median.firstView.render,
 .data.median.firstView.SpeedIndex,
-.data.median.firstView.TTIMeasurementEnd,
 .data.median.firstView.bytesInDoc,
 .data.median.firstView.visualComplete,
 .data.median.firstView.requestsFull
