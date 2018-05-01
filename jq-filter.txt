@@ -1,6 +1,6 @@
-.data.runs."1".firstView.TTFB,
-.data.runs."1".firstView.firstPaint,
-.data.runs."1".firstView.SpeedIndex,
-.data.runs."1".firstView.bytesInDoc,
-.data.runs."1".firstView.fullyLoaded,
-.data.runs."1".firstView.requestsFull
+.data.median.firstView.TTFB,
+.data.median.firstView.render,
+.data.median.firstView.SpeedIndex,
+.data.median.firstView.bytesInDoc,
+.data.median.firstView.visualComplete,
+.data.median.firstView.requestsFull
