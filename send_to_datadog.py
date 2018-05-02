@@ -7,4 +7,4 @@ options = {'statsd_host': 'localhost',
 
 initialize(**options)
 
-statsd.set('.data.median.firstView.TTFB', '429')
+statsd.set('data.median.firstView.TTFB', '429')
