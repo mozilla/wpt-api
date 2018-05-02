@@ -1,4 +1,6 @@
-FROM python:2-alpine3.7
+FROM ubuntu:xenial
+
+ENV DEBIAN_FRONTEND=noninteractive
 
 RUN pip install datadog
 
