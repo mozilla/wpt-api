@@ -7,4 +7,4 @@ options = {'statsd_host': 'localhost',
 
 initialize(**options)
 
-statsd.set('wpt.median.firstView.TTFB', '429')
+statsd.gauge('wpt.median.firstView.TTFB', '429')
