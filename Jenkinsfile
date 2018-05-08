@@ -38,7 +38,7 @@ pipeline {
         docker { image 'colstrom/jq' }
       }
       steps {
-        sh 'jq -f jq-filter.txt < fxa-homepage.json > stats.json'
+        sh 'jq -f jq-filter.txt '[.[]|rtrimstr(".")]' < fxa-homepage.json > stats.json'
       }
       post {
         always {
