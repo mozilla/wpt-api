@@ -27,6 +27,12 @@ pipeline {
          dir 'webpagetest-api'
          additionalBuildArgs '--no-cache'
         }
+     }
+     steps {
+      sh '''
+      '/usr/src/app/bin/webpagetest test addons.mozilla.org -l "us-east-1:Firefox" -r 5 --first --poll --reporter json > "fxa-homepage.json"'
+      python send_to_datadog.py
+      '''
       }
       post {
         always {
