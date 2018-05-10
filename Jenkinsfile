@@ -7,6 +7,9 @@ pipeline {
     WEBPAGETEST_SERVER = "https://${WEB_PAGE_TEST}@wpt-api.stage.mozaws.net/"
     PAGE_URL = "https://latest.dev.lcip.org/?service=sync&entrypoint=firstrun&context=fx_desktop_v3"
   }
+  triggers {
+    cron('H/5 * * * *')
+  }
   stages {
     stage('clone') {
        agent any
