@@ -22,6 +22,7 @@ pipeline {
       agent {
         dockerfile {
          dir 'webpagetest-api'
+         additionalBuildArgs '--no-cache'
         }
       }
       steps {
