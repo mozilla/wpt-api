@@ -26,8 +26,9 @@ initialize(**options)
 # statsd.gauge('wpt.median.firstView.TTFB.fakeValue', '42', sample_rate=1)
 # statsd.gauge('wpt.median.firstView.TTFB', loaded_json["data"]["median"]["firstView"]["TTFB"], sample_rate=1)
 
-statsd.gauge('wpt.median.firstView.TTFB.statsd.gauge', '43', sample_rate=1, host=localhost, port=8125)
-stats.gauge('wpt.median.firstView.TTFB.stats.gauge', '43', sample_rate=1, host=localhost, port=8125)
+statsd.gauge('wpt.median.firstView.TTFB.statsd.gauge', '43')
+
+# stats.gauge('wpt.median.firstView.TTFB.stats.gauge', '43', sample_rate=1, host=localhost, port=8125)
 
 # statsd.gauge('wpt.median.firstView.TTFB.fakeValue', '42', sample_rate=1)
 
