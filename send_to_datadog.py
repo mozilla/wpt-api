@@ -28,6 +28,8 @@ initialize(**options)
 
 statsd.gauge('wpt.median.firstView.TTFB.statsd.gauge', '43')
 
+print("eof")
+
 # stats.gauge('wpt.median.firstView.TTFB.stats.gauge', '43', sample_rate=1, host=localhost, port=8125)
 
 # statsd.gauge('wpt.median.firstView.TTFB.fakeValue', '42', sample_rate=1)
