@@ -47,21 +47,14 @@ pipeline {
     }
     stage('Submit stats to datadog') {
       agent {
-        dockerfile true
+        dockerfile {
+          args '--net host'
+        }
       }
       steps {
         unstash 'fxa-homepage.json'
         sh '''
-          python --version
-          # echo $(pwd)
-          #ls .
-          # ls $(pwd)
-          # echo ${WORKSPACE}
-          # see https://support.cloudbees.com/hc/en-us/articles/230922508-Pipeline-Files-manipulation
-          # ls -la send_to_datadog.py
-          # chmod +x send_to_datadog.py
           python ./send_to_datadog.py
-          # ls -la send_to_datadog.py
         '''
       }
     }
