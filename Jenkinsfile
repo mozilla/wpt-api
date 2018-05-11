@@ -12,6 +12,9 @@ pipeline {
     timestamps()
     timeout(time: 30, unit: 'MINUTES')
   }
+  triggers {
+    cron('H/10 * * * *')
+  }
   stages {
     stage('clone') {
        agent any
