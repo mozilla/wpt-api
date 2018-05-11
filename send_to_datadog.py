@@ -26,7 +26,7 @@ initialize(**options)
 # statsd.gauge('wpt.median.firstView.TTFB.fakeValue', '42', sample_rate=1)
 # statsd.gauge('wpt.median.firstView.TTFB', loaded_json["data"]["median"]["firstView"]["TTFB"], sample_rate=1)
 
-statsd.gauge('wpt.median.firstView.TTFB.statsd.gauge', '43')
+statsd.set('wpt.median.firstView.TTFB.statsd.set', '43')
 
 print("eof")
 
