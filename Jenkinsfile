@@ -10,6 +10,11 @@ pipeline {
   triggers {
     cron('H/5 * * * *')
   }
+  options {
+    ansiColor('xterm')
+    timestamps()
+    timeout(time: 30, unit: 'MINUTES')
+  }
   stages {
     stage('clone') {
        agent any
@@ -32,6 +37,12 @@ pipeline {
         always {
           archiveArtifacts 'fxa-homepage.json'
         }
+        success {
+          stash includes: 'fxa-homepage.json', name: 'fxa-homepage.json'
+        }
+        failure {
+          archiveArtifacts 'fxa-homepage.json'
+        }
       }
     }
     stage('Submit stats to datadog') {
@@ -39,11 +50,18 @@ pipeline {
         dockerfile { dir 'webpagetest-api' }
       }
       steps {
+        unstash 'fxa-homepage.json'
         sh '''
           python --version
-          echo ${WORKSPACE}
-          ls -la
-          sh 'python ./send_to_datadog.py'
+          echo $(pwd)
+          ls .
+          ls $(pwd)
+          # echo ${WORKSPACE}
+          # see https://support.cloudbees.com/hc/en-us/articles/230922508-Pipeline-Files-manipulation
+          ls -la send_to_datadog.py
+          chmod +x send_to_datadog.py
+          python ./send_to_datadog.py
+          ls -la send_to_datadog.py
         '''
       }
     }
