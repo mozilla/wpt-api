@@ -1,9 +1,9 @@
-FROM python:3
+FROM python:3.6-alpine
 
-ADD send_to_datadog.py /
+WORKDIR /envcat
 
-RUN pip3 install datadog
+ENTRYPOINT ["envcat"]
 
-# RUN /usr/src/app/bin/webpagetest test "${PAGE_URL}" -l "us-east-1:Firefox" -r 5 --first --poll --reporter json > fxa-homepage.json
+COPY . /app
 
-CMD [ "python", "./send_to_datadog.py" ]
+RUN cd /app && pip3 install datadog
