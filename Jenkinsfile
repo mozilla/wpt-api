@@ -27,6 +27,7 @@ pipeline {
       }
       steps {
         sh '/usr/src/app/bin/webpagetest test addons.mozilla.org -l "us-east-1:Firefox" -r 5 --first --poll --reporter json > "fxa-homepage.json"'
+        sh 'python ./send_to_data_dog.py'
       }
       post {
         always {
