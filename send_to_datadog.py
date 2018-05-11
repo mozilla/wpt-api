@@ -29,6 +29,8 @@ initialize(**options)
 
 print("Call statsd.set")
 statsd.set('wpt.median.firstView.TTFB.statsd.set', '43')
+statsd.set('wpt.median.firstView.TTFB', loaded_json["data"]["median"]["firstView"]["TTFB"])
+
 
 print("And we're done - end of file")
 
@@ -37,4 +39,4 @@ print("And we're done - end of file")
 # statsd.gauge('wpt.median.firstView.TTFB.fakeValue', '42', sample_rate=1)
 
 # statsd.set('wpt.median.firstView.TTFB.fakeValue', '42')
-# statsd.set('wpt.median.firstView.TTFB', loaded_json["data"]["median"]["firstView"]["TTFB"])
+statsd.set('wpt.median.firstView.TTFB', loaded_json["data"]["median"]["firstView"]["TTFB"])
