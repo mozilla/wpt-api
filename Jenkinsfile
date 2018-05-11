@@ -47,7 +47,7 @@ pipeline {
     }
     stage('Submit stats to datadog') {
       agent {
-        dockerfile { dir 'webpagetest-api' }
+        dockerfile true
       }
       steps {
         unstash 'fxa-homepage.json'

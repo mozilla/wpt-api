@@ -1,9 +1,11 @@
 FROM python:3.6-alpine
 
-WORKDIR /envcat
+WORKDIR /src
 
-ENTRYPOINT ["envcat"]
+COPY send_to_datadog.py /src
 
-COPY . /app
+RUN pip3 install datadog
 
-RUN cd /app && pip3 install datadog
+COPY . /src
+
+CMD python send_to_datadog.py
