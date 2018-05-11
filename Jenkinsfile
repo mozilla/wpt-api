@@ -23,16 +23,10 @@ pipeline {
     }
     stage('test') {
       agent {
-        dockerfile {
-         dir 'webpagetest-api'
-         additionalBuildArgs '--no-cache'
-        }
+        dockerfile {dir 'webpagetest-api'}
       }
       steps {
-        sh '''
-        /usr/src/app/bin/webpagetest test addons.mozilla.org -l "us-east-1:Firefox" -r 5 --first --poll --reporter json > "fxa-homepage.json"
-        python send_to_datadog.py
-        '''
+        sh '/usr/src/app/bin/webpagetest test addons.mozilla.org -l "us-east-1:Firefox" -r 5 --first --poll --reporter json > "fxa-homepage.json"'
       }
       post {
         always {
