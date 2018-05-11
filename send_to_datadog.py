@@ -18,17 +18,9 @@ with open ('fxa-homepage.json') as json_data:
     # print("data.median.firstView.visualComplete {}".format(loaded_json["data"]["median"]["firstView"]["visualComplete"]))
     # print("data.median.firstView.requestsFull {}".format(loaded_json["data"]["median"]["firstView"]["requestsFull"]))
 
-# print('wpt.median.firstView.TTFB', '{}'.format(loaded_json["data"]["median"]["firstView"]["TTFB"]))
-
 
 initialize(**options)
 
-# statsd.gauge('wpt.median.firstView.TTFB.fakeValue', '42', sample_rate=1)
-# statsd.gauge('wpt.median.firstView.TTFB', loaded_json["data"]["median"]["firstView"]["TTFB"], sample_rate=1)
+TTFB = loaded_json["data"]["median"]["firstView"]["TTFB"]
 
-
-print("Call statsd.set")
-statsd.set('wpt.median.firstView.TTFB.statsd.set', '43')
-statsd.set('wpt.median.firstView.TTFB', loaded_json["data"]["median"]["firstView"]["TTFB"])
-
-print("And we're done - end of file")
+statsd.gauge('wpt.median.firstView.TTFB', (TTFB))
