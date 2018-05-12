@@ -11,7 +11,7 @@ with open ('fxa-homepage.json') as json_data:
     loaded_json = json.load(json_data)
 
     '''
-    Just leaving the example below in, for my own, local reference
+    Just leaving the example below, in, for my own reference
     print("data.median.firstView.TTFB {}".format(loaded_json["data"]["median"]["firstView"]["TTFB"]))
     '''
 
