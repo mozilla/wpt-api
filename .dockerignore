@@ -1,2 +1,5 @@
 .git
 .gitignore
+*.pyc
+__pycache__
+.cache

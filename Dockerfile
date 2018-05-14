@@ -1,7 +1,11 @@
-FROM python:3
+FROM python:3.6-alpine
 
-ADD send_to_datadog.py /
+WORKDIR /src
+
+COPY send_to_datadog.py /src
 
 RUN pip3 install datadog
 
-CMD [ "python", "./send_to_datadog.py" ]
+COPY . /src
+
+CMD python send_to_datadog.py

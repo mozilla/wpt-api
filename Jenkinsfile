@@ -7,6 +7,14 @@ pipeline {
     WEBPAGETEST_SERVER = "https://${WEB_PAGE_TEST}@wpt-api.stage.mozaws.net/"
     PAGE_URL = "https://latest.dev.lcip.org/?service=sync&entrypoint=firstrun&context=fx_desktop_v3"
   }
+  options {
+    ansiColor('xterm')
+    timestamps()
+    timeout(time: 30, unit: 'MINUTES')
+  }
+  triggers {
+    cron('H/10 * * * *')
+  }
   stages {
     stage('clone') {
        agent any
@@ -18,32 +26,33 @@ pipeline {
            userRemoteConfigs: [[url: 'https://github.com/marcelduran/webpagetest-api']]])
         }
     }
-    stage('test') {
+    stage('Run webpagetest') {
       agent {
-        dockerfile {
-         dir 'webpagetest-api'
-        }
+        dockerfile { dir 'webpagetest-api' }
       }
       steps {
-        sh '/usr/src/app/bin/webpagetest test "${PAGE_URL}" -l "us-east-1:Firefox" -r 5 --first --poll --reporter json > fxa-homepage.json'
-      }
+        sh '/usr/src/app/bin/webpagetest test "${PAGE_URL}" -l "us-east-1:Firefox" -r 5 --first --poll --reporter json > "fxa-homepage.json"'
+        }
       post {
         always {
           archiveArtifacts 'fxa-homepage.json'
         }
+        success {
+          stash includes: 'fxa-homepage.json', name: 'fxa-homepage.json'
+        }
       }
     }
-    stage('filter') {
+    stage('Submit stats to datadog') {
       agent {
-        docker { image 'colstrom/jq' }
+        dockerfile {
+          args '--net host'
+        }
       }
       steps {
-        sh 'jq -f jq-filter.txt < fxa-homepage.json > stats.json'
-      }
-      post {
-        always {
-          archiveArtifacts 'stats.json'
-        }
+        unstash 'fxa-homepage.json'
+        sh '''
+          python ./send_to_datadog.py
+        '''
       }
     }
   }
