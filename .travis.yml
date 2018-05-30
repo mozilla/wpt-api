@@ -1,4 +1,12 @@
 sudo: required
-
+language: python
+python: 3.6
+install:
+  - pip install -r pipenv.txt
+script:
+  - pip install -r flake8.txt
+  - pipenv run flake8
 services:
   - docker
+notifications:
+  email: fte-ci@mozilla.com
