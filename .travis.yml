@@ -6,7 +6,5 @@ install:
 script:
   - pip install -r flake8.txt
   - pipenv run flake8
-services:
-  - docker
 notifications:
   email: fte-ci@mozilla.com
