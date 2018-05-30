@@ -7,12 +7,12 @@ name = "pypi"
 
 [packages]
 
-datadog = "==0.20.0"
+datadog = "*"
 
 
 [dev-packages]
 
-flake8 = "==3.5.0"
+flake8 = "*"
 
 
 [requires]
