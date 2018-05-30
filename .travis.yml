@@ -1,4 +1,11 @@
-sudo: required
-
-services:
-  - docker
+language: python
+python: 3.6
+env:
+  - PIPENV_IGNORE_VIRTUALENVS=1
+install:
+  - pip install -r pipenv.txt
+script:
+  - pipenv install --dev
+  - pipenv run flake8
+notifications:
+  email: fte-ci@mozilla.com

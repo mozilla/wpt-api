@@ -1,10 +1,11 @@
-FROM python:3.6-alpine
+FROM python:3.6
 
 WORKDIR /src
 
-COPY send_to_datadog.py /src
+COPY Pipfile Pipfile.lock pipenv.txt send_to_datadog.py /src/
 
-RUN pip3 install datadog
+RUN pip install -r pipenv.txt && \
+  pipenv install --dev --system
 
 COPY . /src
 
