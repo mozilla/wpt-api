@@ -4,7 +4,7 @@ python: 3.6
 install:
   - pip install -r pipenv.txt
 script:
-  - pip install -r flake8.txt
+  - pipenv install --dev
   - pipenv run flake8
 notifications:
   email: fte-ci@mozilla.com
