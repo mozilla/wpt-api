@@ -1,13 +1,13 @@
 import json
 
-from datadog import initialize, api
+from datadog import initialize
 from datadog import statsd
 
 
 options = {'statsd_host': 'localhost',
            'statsd_port': '8125'}
 
-with open ('fxa-homepage.json') as json_data:
+with open('fxa-homepage.json') as json_data:
     loaded_json = json.load(json_data)
 
     '''
