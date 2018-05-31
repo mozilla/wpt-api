@@ -1,5 +1,7 @@
 [![license](https://img.shields.io/badge/license-MPL%202.0-blue.svg)](https://github.com/mozilla/wpt-api/blob/master/LICENSE.txt)
 [![Build Status](https://travis-ci.org/mozilla/wpt-api.svg?branch=master)](https://travis-ci.org/mozilla/wpt-api)
+[![Updates](https://pyup.io/repos/github/mozilla/wpt-api/shield.svg)](https://pyup.io/repos/github/mozilla/wpt-api/)
+[![Python 3](https://pyup.io/repos/github/mozilla/wpt-api/python-3-shield.svg)](https://pyup.io/repos/github/mozilla/wpt-api/)
 
 This repo aims to build a useful, versatile WebPagetest setup, which is both runnable out-of-the-box ready, and yet also configurable enough for multiple teams and use-cases.  Another explicit goal is to build off of and leverage existing solutions, where possible.
 
