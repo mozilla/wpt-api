@@ -3,29 +3,36 @@
 [![Updates](https://pyup.io/repos/github/mozilla/wpt-api/shield.svg)](https://pyup.io/repos/github/mozilla/wpt-api/)
 [![Python 3](https://pyup.io/repos/github/mozilla/wpt-api/python-3-shield.svg)](https://pyup.io/repos/github/mozilla/wpt-api/)
 
-This repo aims to build a useful, versatile WebPagetest setup, which is both runnable out-of-the-box ready, and yet also configurable enough for multiple teams and use-cases.  Another explicit goal is to build off of and leverage existing solutions, where possible.
+This repo aims to build a useful, versatile WebPageTest setup, which is both out-of-the-box ready, and yet also configurable enough for multiple teams and use-cases.
 
-Currently implemented:
+Specifically, its primary aim is capturing, submitting, and visualizing web-performance metrics from a Firefox release build, run against the Firefox Accounts firstrun webpage.
 
-* Passing in a custom ```PAGE_URL``` to override the default
+The currently implemented workflow, on the ```master``` branch, supports:
+
+* Passing in a custom ```PAGE_URL``` to override the hardcoded default[0]:
 * Running tests against the URL with the following hardcoded parameters:
   - in the ```us-east-1``` EC2 region
   - 5 times
   - recent Firefox release
   - using ```--first``` (no caching)
-* Post-run, we export and archive (via Jenkins) ```fxa-homepage.json```
-* Next, using a Docker-run jq, we filter for and extract:
-  - Time To First Byte
-  - Start render
-  - Speed Index
-  - Total Bytes Transferred
-  - Visually Complete time
-  - Total # of Requests
-* Next, we write out (and archive via Jenkins) a ```stats.json``` file
+* Post-WebPageTest run, we export and archive its output (via Jenkins) as ```fxa-homepage.json```[1]
+* Next, we filter for and extract[2]:
+  - Time To First Byte (TTFB)
+  - Start render (render)
+  - Speed Index (SpeedIndex)
+  - Total Bytes Transferred (bytesInDoc)
+  - Visually Complete time (visualComplete)
+  - Total # of Requests (requestsFull)
+* Finally, the perf metrics are sent via a DataDog agent to its API[3], and are plotted, here:
+
+https://app.datadoghq.com/dash/827265/firefox-accounts-dev-first-run-page-perf-metrics?live=true
 
 Eventually, and roughly in order of complexity and dependencies, we aim for:
 
-* metrics/data submission/collection
-  - via DogStatsD or a StatsD equivalent - [Issue 16](https://github.com/mozilla/wpt-api/issues/16)
-* metrics/data plotting - [Issue 17](https://github.com/mozilla/wpt-api/issues/17)
-* integration of perf metrics with code review (GitHub)/CI builds (TeamCity, Jenkins, Travis?), and post-deployment testing.
+* batch-URL/command processing
+* integration of perf metrics with code review (GitHub)/CI builds (TeamCity, Jenkins, Travis?), and post-deployment testing
+
+[0] https://github.com/mozilla/wpt-api/blob/13148b749268e1a1212042d8edb8731366bc2c4a/Jenkinsfile#L8<br/>
+[1] https://github.com/mozilla/wpt-api/blob/13148b749268e1a1212042d8edb8731366bc2c4a/Jenkinsfile#L36-L43<br/>
+[2] https://github.com/mozilla/wpt-api/blob/13148b749268e1a1212042d8edb8731366bc2c4a/send_to_datadog.py#L21-L26<br/>
+[3] https://github.com/mozilla/wpt-api/blob/13148b749268e1a1212042d8edb8731366bc2c4a/send_to_datadog.py#L28-L33<br/>
