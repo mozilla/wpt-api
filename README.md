@@ -3,9 +3,9 @@
 [![Updates](https://pyup.io/repos/github/mozilla/wpt-api/shield.svg)](https://pyup.io/repos/github/mozilla/wpt-api/)
 [![Python 3](https://pyup.io/repos/github/mozilla/wpt-api/python-3-shield.svg)](https://pyup.io/repos/github/mozilla/wpt-api/)
 
-This repo aims to build a useful, versatile WebPageTest setup, which is both runnable out-of-the-box ready, and yet also configurable enough for multiple teams and use-cases.
+This repo aims to build a useful, versatile WebPageTest setup, which is both out-of-the-box ready, and yet also configurable enough for multiple teams and use-cases.
 
-Specifically, its primary aim is capturing, submitting, and visualizing web-performance metrics from a Firefox release build, run against the Firefox Accounts firstrun webpage, using WebPageTest. 
+Specifically, its primary aim is capturing, submitting, and visualizing web-performance metrics from a Firefox release build, run against the Firefox Accounts firstrun webpage.
 
 The currently implemented workflow, on the ```master``` branch, supports:
 
