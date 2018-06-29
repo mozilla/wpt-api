@@ -32,10 +32,10 @@
         },
         "datadog": {
             "hashes": [
-                "sha256:67a4b7802127520f4fa84bd2bfa27d7d80b8630e03808a51f3f970069347138a"
+                "sha256:86cef95acd73543d18c417f1b0313c0a7274ed8f5ae9cceb46314f4e588085b1"
             ],
             "index": "pypi",
-            "version": "==0.21.0"
+            "version": "==0.22.0"
         },
         "decorator": {
             "hashes": [
