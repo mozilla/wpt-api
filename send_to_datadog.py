@@ -7,7 +7,7 @@ from datadog import statsd
 options = {'statsd_host': 'localhost',
            'statsd_port': '8125'}
 
-with open('batch-URL.json') as json_data:
+with open('batch-URL-results.json') as json_data:
     loaded_json = json.load(json_data)
 
     '''
