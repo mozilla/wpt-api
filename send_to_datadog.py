@@ -19,12 +19,12 @@ with open('batch-URL-results.json') as json_data:
 initialize(**options)
 
 
-TTFB_firefox = loaded_json[0]["data"]["median"]["firstView"]["TTFB"]
-render_firefox = loaded_json[0]["data"]["median"]["firstView"]["render"]
-SpeedIndex_firefox = loaded_json[0]["data"]["median"]["firstView"]["SpeedIndex"]
-bytesInDoc_firefox = loaded_json[0]["data"]["median"]["firstView"]["bytesInDoc"]
-visualComplete_firefox = loaded_json[0]["data"]["median"]["firstView"]["visualComplete"]
-requestsFull_firefox = loaded_json[0]["data"]["median"]["firstView"]["requestsFull"]
+TTFB_firefox = loaded_json["data"]["median"]["firstView"]["TTFB"]
+render_firefox = loaded_json["data"]["median"]["firstView"]["render"]
+SpeedIndex_firefox = loaded_json["data"]["median"]["firstView"]["SpeedIndex"]
+bytesInDoc_firefox = loaded_json["data"]["median"]["firstView"]["bytesInDoc"]
+visualComplete_firefox = loaded_json["data"]["median"]["firstView"]["visualComplete"]
+requestsFull_firefox = loaded_json["data"]["median"]["firstView"]["requestsFull"]
 
 statsd.gauge('wpt.batch.firefox.median.firstView.TTFB', (TTFB_firefox))
 statsd.gauge('wpt.batch.firefox.median.firstView.render', (render_firefox))
