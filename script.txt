@@ -1,2 +1,1 @@
-firefoxPref  dom.performance.time_to_dom_content_flushed.enabled  true
-navigate  nationalgeographic.com
+firefoxPref  browser.startup.homepage  nationalgeographic.com
