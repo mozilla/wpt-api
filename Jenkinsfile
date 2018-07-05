@@ -37,7 +37,7 @@ pipeline {
           archiveArtifacts 'batch-URL-results.json'
         }
         success {
-          stash includes: 'batch-URL-results', name: 'batch-URL-results.json'
+          stash includes: 'batch-URL-results.json', name: 'batch-URL-results.json'
         }
       }
     }
