@@ -18,16 +18,30 @@ with open('batch-URL.json') as json_data:
 
 initialize(**options)
 
-TTFB = loaded_json["data"]["median"]["firstView"]["TTFB"]
-render = loaded_json["data"]["median"]["firstView"]["render"]
-SpeedIndex = loaded_json["data"]["median"]["firstView"]["SpeedIndex"]
-bytesInDoc = loaded_json["data"]["median"]["firstView"]["bytesInDoc"]
-visualComplete = loaded_json["data"]["median"]["firstView"]["visualComplete"]
-requestsFull = loaded_json["data"]["median"]["firstView"]["requestsFull"]
+TTFB_chrome = loaded_json[0]["data"]["median"]["firstView"]["TTFB"]
+render_chrome = loaded_json[0]["data"]["median"]["firstView"]["render"]
+SpeedIndex_chrome = loaded_json[0]["data"]["median"]["firstView"]["SpeedIndex"]
+bytesInDoc_chrome = loaded_json[0]["data"]["median"]["firstView"]["bytesInDoc"]
+visualComplete_chrome = loaded_json[0]["data"]["median"]["firstView"]["visualComplete"]
+requestsFull_chrome = loaded_json[0]["data"]["median"]["firstView"]["requestsFull"]
 
-statsd.gauge('wpt.median.firstView.TTFB', (TTFB))
-statsd.gauge('wpt.median.firstView.render', (render))
-statsd.gauge('wpt.median.firstView.SpeedIndex', (SpeedIndex))
-statsd.gauge('wpt.median.firstView.bytesInDoc', (bytesInDoc))
-statsd.gauge('wpt.median.firstView.visualComplete', (visualComplete))
-statsd.gauge('wpt.median.firstView.requestsFull', (requestsFull))
+statsd.gauge('wpt.batch.chrome.median.firstView.TTFB', (TTFB_chrome))
+statsd.gauge('wpt.batch.chrome.median.firstView.render', (render_chrome))
+statsd.gauge('wpt.batch.chrome.median.firstView.SpeedIndex', (SpeedIndex_chrome))
+statsd.gauge('wpt.batch.chrome.median.firstView.bytesInDoc', (bytesInDoc_chrome))
+statsd.gauge('wpt.batch.chrome.median.firstView.visualComplete', (visualComplete_chrome))
+statsd.gauge('wpt.batch.chrome.median.firstView.requestsFull', (requestsFull_chrome))
+
+TTFB_firefox = loaded_json[1]["data"]["median"]["firstView"]["TTFB"]
+render_firefox = loaded_json[1]["data"]["median"]["firstView"]["render"]
+SpeedIndex_firefox = loaded_json[1]["data"]["median"]["firstView"]["SpeedIndex"]
+bytesInDoc_firefox = loaded_json[1]["data"]["median"]["firstView"]["bytesInDoc"]
+visualComplete_firefox = loaded_json[1]["data"]["median"]["firstView"]["visualComplete"]
+requestsFull_firefox = loaded_json[1]["data"]["median"]["firstView"]["requestsFull"]
+
+statsd.gauge('wpt.batch.firefox.median.firstView.TTFB', (TTFB_firefox))
+statsd.gauge('wpt.batch.firefox.median.firstView.render', (render_firefox))
+statsd.gauge('wpt.batch.firefox.median.firstView.SpeedIndex', (SpeedIndex_firefox))
+statsd.gauge('wpt.batch.firefox.median.firstView.bytesInDoc', (bytesInDoc_firefox))
+statsd.gauge('wpt.batch.firefox.median.firstView.visualComplete', (visualComplete_firefox))
+statsd.gauge('wpt.batch.firefox.median.firstView.requestsFull', (requestsFull_firefox))

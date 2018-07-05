@@ -5,7 +5,6 @@ pipeline {
   environment {
     WEB_PAGE_TEST = credentials('WEB_PAGE_TEST')
     WEBPAGETEST_SERVER = "https://${WEB_PAGE_TEST}@wpt-api.stage.mozaws.net/"
-    PAGE_URL = "nationalgeographic.com"
   }
   options {
     ansiColor('xterm')
