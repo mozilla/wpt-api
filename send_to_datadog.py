@@ -18,19 +18,6 @@ with open('batch-URL-results.json') as json_data:
 
 initialize(**options)
 
-TTFB_chrome = loaded_json[0]["data"]["median"]["firstView"]["TTFB"]
-render_chrome = loaded_json[0]["data"]["median"]["firstView"]["render"]
-SpeedIndex_chrome = loaded_json[0]["data"]["median"]["firstView"]["SpeedIndex"]
-bytesInDoc_chrome = loaded_json[0]["data"]["median"]["firstView"]["bytesInDoc"]
-visualComplete_chrome = loaded_json[0]["data"]["median"]["firstView"]["visualComplete"]
-requestsFull_chrome = loaded_json[0]["data"]["median"]["firstView"]["requestsFull"]
-
-statsd.gauge('wpt.batch.chrome.median.firstView.TTFB', (TTFB_chrome))
-statsd.gauge('wpt.batch.chrome.median.firstView.render', (render_chrome))
-statsd.gauge('wpt.batch.chrome.median.firstView.SpeedIndex', (SpeedIndex_chrome))
-statsd.gauge('wpt.batch.chrome.median.firstView.bytesInDoc', (bytesInDoc_chrome))
-statsd.gauge('wpt.batch.chrome.median.firstView.visualComplete', (visualComplete_chrome))
-statsd.gauge('wpt.batch.chrome.median.firstView.requestsFull', (requestsFull_chrome))
 
 TTFB_firefox = loaded_json[1]["data"]["median"]["firstView"]["TTFB"]
 render_firefox = loaded_json[1]["data"]["median"]["firstView"]["render"]
