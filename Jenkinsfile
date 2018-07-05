@@ -30,7 +30,7 @@ pipeline {
         dockerfile { dir 'webpagetest-api' }
       }
       steps {
-        sh '/usr/src/app/bin/webpagetest test script.txt -l "us-east-1:Firefox" -r 5 --first --poll --reporter json > "batch-URL-results.json"
+        sh '/usr/src/app/bin/webpagetest test script.txt -l "us-east-1:Firefox" -r 5 --first --poll --reporter json > "batch-URL-results.json"'
         }
       post {
         always {
