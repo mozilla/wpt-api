@@ -1,2 +1,2 @@
-firefoxPref dom.performance.time_to_dom_content_flushed.enabled true test https://www.reddit.com/ --location us-east-1:Chrome -r 3 --first --poll --reporter json
-firefoxPref dom.performance.time_to_dom_content_flushed.enabled true test https://www.reddit.com/ --location us-east-1:Firefox -r 3 --first --poll --reporter json
+test nationalgeographic.com --location us-east-1:Chrome -r 3 --first --poll --reporter json
+test nationalgeographic.com --location us-east-1:Firefox -r 3 --first --poll --reporter json
