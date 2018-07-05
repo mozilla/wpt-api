@@ -1,2 +1,0 @@
-test nationalgeographic.com --location us-east-1:Chrome -r 3 --first --poll --reporter json
-test nationalgeographic.com --location us-east-1:Firefox -r 3 --first --poll --reporter json
