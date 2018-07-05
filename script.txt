@@ -1,1 +1,2 @@
 firefoxPref  browser.startup.homepage  nationalgeographic.com
+navigate  www.nationalgeographic.com
