@@ -5,12 +5,15 @@ pipeline {
   environment {
     WEB_PAGE_TEST = credentials('WEB_PAGE_TEST')
     WEBPAGETEST_SERVER = "https://${WEB_PAGE_TEST}@wpt-api.stage.mozaws.net/"
-    PAGE_URL = "https://latest.dev.lcip.org/?service=sync&entrypoint=firstrun&context=fx_desktop_v3"
+    PAGE_URL = "nationalgeographic.com"
   }
   options {
     ansiColor('xterm')
     timestamps()
     timeout(time: 30, unit: 'MINUTES')
+  }
+  triggers {
+    cron('H/10 * * * *')
   }
   stages {
     stage('clone') {
@@ -28,14 +31,14 @@ pipeline {
         dockerfile { dir 'webpagetest-api' }
       }
       steps {
-        sh '/usr/src/app/bin/webpagetest test "${PAGE_URL}" -l "us-east-1:Firefox" -r 5 --first --poll --reporter json > "fxa-homepage.json"'
+        sh '/usr/src/app/bin/webpagetest batch commands.txt > "batch-URL-results.json"'
         }
       post {
         always {
-          archiveArtifacts 'fxa-homepage.json'
+          archiveArtifacts 'batch-URL-results.json'
         }
         success {
-          stash includes: 'fxa-homepage.json', name: 'fxa-homepage.json'
+          stash includes: 'batch-URL-results', name: 'batch-URL-results.json'
         }
       }
     }
@@ -46,7 +49,7 @@ pipeline {
         }
       }
       steps {
-        unstash 'fxa-homepage.json'
+        unstash 'batch-URL-results.json'
         sh '''
           python ./send_to_datadog.py
         '''
