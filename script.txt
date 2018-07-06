@@ -1,2 +1,2 @@
-firefoxPref  dom.performance.time_to_dom_content_flushed.enabled  true
+firefoxPref  dom.performance.time_to_non_blank_paint.enabled  true
 navigate  www.nationalgeographic.com
