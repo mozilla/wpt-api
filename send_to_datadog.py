@@ -20,6 +20,7 @@ initialize(**options)
 
 
 TTFB_firefox = loaded_json["data"]["median"]["firstView"]["TTFB"]
+timeToNonBlankPaint = loaded_json["data"]["median"]["firstview"]["firstPaint"]
 render_firefox = loaded_json["data"]["median"]["firstView"]["render"]
 SpeedIndex_firefox = loaded_json["data"]["median"]["firstView"]["SpeedIndex"]
 bytesInDoc_firefox = loaded_json["data"]["median"]["firstView"]["bytesInDoc"]
@@ -27,6 +28,7 @@ visualComplete_firefox = loaded_json["data"]["median"]["firstView"]["visualCompl
 requestsFull_firefox = loaded_json["data"]["median"]["firstView"]["requestsFull"]
 
 statsd.gauge('wpt.batch.firefox.median.firstView.TTFB', (TTFB_firefox))
+statsd.gauge('wpt.batch.firefox.median.firstView.timeToNonBlankPaint', (timeToNonBlankPaint))
 statsd.gauge('wpt.batch.firefox.median.firstView.render', (render_firefox))
 statsd.gauge('wpt.batch.firefox.median.firstView.SpeedIndex', (SpeedIndex_firefox))
 statsd.gauge('wpt.batch.firefox.median.firstView.bytesInDoc', (bytesInDoc_firefox))
