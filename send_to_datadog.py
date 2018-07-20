@@ -20,7 +20,7 @@ initialize(**options)
 
 
 TTFB_firefox = loaded_json["data"]["median"]["firstView"]["TTFB"]
-timeToNonBlankPaint = loaded_json["data"]["median"]["firstview"]["firstPaint"]
+timeToNonBlankPaint = loaded_json["data"]["median"]["firstView"]["firstPaint"]
 render_firefox = loaded_json["data"]["median"]["firstView"]["render"]
 SpeedIndex_firefox = loaded_json["data"]["median"]["firstView"]["SpeedIndex"]
 bytesInDoc_firefox = loaded_json["data"]["median"]["firstView"]["bytesInDoc"]
