@@ -19,6 +19,7 @@ with open('fxa-homepage.json') as json_data:
 initialize(**options)
 
 TTFB = loaded_json["data"]["median"]["firstView"]["TTFB"]
+timeToNonBlankPaint = loaded_json["data"]["median"]["firstView"]["firstPaint"]
 render = loaded_json["data"]["median"]["firstView"]["render"]
 SpeedIndex = loaded_json["data"]["median"]["firstView"]["SpeedIndex"]
 bytesInDoc = loaded_json["data"]["median"]["firstView"]["bytesInDoc"]
@@ -26,6 +27,7 @@ visualComplete = loaded_json["data"]["median"]["firstView"]["visualComplete"]
 requestsFull = loaded_json["data"]["median"]["firstView"]["requestsFull"]
 
 statsd.gauge('wpt.median.firstView.TTFB', (TTFB))
+statsd.gauge('wpt.median.firstView.timeToNonBlankPaint', (timeToNonBlankPaint))
 statsd.gauge('wpt.median.firstView.render', (render))
 statsd.gauge('wpt.median.firstView.SpeedIndex', (SpeedIndex))
 statsd.gauge('wpt.median.firstView.bytesInDoc', (bytesInDoc))
