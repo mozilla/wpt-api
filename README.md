@@ -11,13 +11,14 @@ The currently implemented workflow, on the ```master``` branch, supports:
 
 * Passing in a custom ```PAGE_URL``` to override the hardcoded default[0]:
 * Running tests against the URL with the following hardcoded parameters:
-  - in the ```us-east-1``` EC2 region
+  - in the ```us-east-1-linux``` EC2 region
   - 5 times
-  - recent Firefox release
+  - recent Firefox release build, on Linux
   - using ```--first``` (no caching)
 * Post-WebPageTest run, we export and archive its output (via Jenkins) as ```fxa-homepage.json```[1]
 * Next, we filter for and extract[2]:
   - Time To First Byte (TTFB)
+  - Time To Non-Blank Paint, aka ```firstPaint``` (firstPaint)
   - Start render (render)
   - Speed Index (SpeedIndex)
   - Total Bytes Transferred (bytesInDoc)
