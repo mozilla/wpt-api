@@ -1,7 +1,2 @@
-firefoxPref  dom.performance.time_to_non_blank_paint.enabled  true
-
-logData  0
-navigate www.google.com
-
-logData 1
+firefoxPref  dom.performance.time_to_dom_content_flushed.enabled  true
 navigate  www.nationalgeographic.com
