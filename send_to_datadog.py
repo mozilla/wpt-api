@@ -47,7 +47,7 @@ statsd.gauge('wpt.batch.google.fx.nightly.median.firstView.visualComplete', (vis
 statsd.gauge('wpt.batch.google.fx.nightly.median.firstView.requestsFull', (requestsFull_google_fx_nightly))
 
 TTFB_youtube_fx_release = loaded_json[2]["data"]["median"]["firstView"]["TTFB"]
-render_youtube_fx_release = loaded_json[2]]["data"]["median"]["firstView"]["render"]
+render_youtube_fx_release = loaded_json[2]["data"]["median"]["firstView"]["render"]
 SpeedIndex_youtube_fx_release = loaded_json[2]["data"]["median"]["firstView"]["SpeedIndex"]
 bytesInDoc_youtube_fx_release = loaded_json[2]["data"]["median"]["firstView"]["bytesInDoc"]
 visualComplete_youtube_fx_release = loaded_json[2]["data"]["median"]["firstView"]["visualComplete"]
