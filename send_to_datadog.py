@@ -7,7 +7,7 @@ from datadog import statsd
 options = {'statsd_host': 'localhost',
            'statsd_port': '8125'}
 
-with open('fxa-homepage.json') as json_data:
+with open('alexa-topsites.json') as json_data:
     loaded_json = json.load(json_data)
 
     '''
@@ -18,18 +18,58 @@ with open('fxa-homepage.json') as json_data:
 
 initialize(**options)
 
-TTFB = loaded_json["data"]["median"]["firstView"]["TTFB"]
-timeToNonBlankPaint = loaded_json["data"]["median"]["firstView"]["firstPaint"]
-render = loaded_json["data"]["median"]["firstView"]["render"]
-SpeedIndex = loaded_json["data"]["median"]["firstView"]["SpeedIndex"]
-bytesInDoc = loaded_json["data"]["median"]["firstView"]["bytesInDoc"]
-visualComplete = loaded_json["data"]["median"]["firstView"]["visualComplete"]
-requestsFull = loaded_json["data"]["median"]["firstView"]["requestsFull"]
+TTFB_google_fx_release = loaded_json[0]["data"]["median"]["firstView"]["TTFB"]
+render_google_fx_release = loaded_json[0]["data"]["median"]["firstView"]["render"]
+SpeedIndex_google_fx_release = loaded_json[0]["data"]["median"]["firstView"]["SpeedIndex"]
+bytesInDoc_google_fx_release = loaded_json[0]["data"]["median"]["firstView"]["bytesInDoc"]
+visualComplete_google_fx_release = loaded_json[0]["data"]["median"]["firstView"]["visualComplete"]
+requestsFull_google_fx_release = loaded_json[0]["data"]["median"]["firstView"]["requestsFull"]
 
-statsd.gauge('wpt.median.firstView.TTFB', (TTFB))
-statsd.gauge('wpt.median.firstView.timeToNonBlankPaint', (timeToNonBlankPaint))
-statsd.gauge('wpt.median.firstView.render', (render))
-statsd.gauge('wpt.median.firstView.SpeedIndex', (SpeedIndex))
-statsd.gauge('wpt.median.firstView.bytesInDoc', (bytesInDoc))
-statsd.gauge('wpt.median.firstView.visualComplete', (visualComplete))
-statsd.gauge('wpt.median.firstView.requestsFull', (requestsFull))
+statsd.gauge('wpt.batch.google.fx.release.median.firstView.TTFB', (TTFB_google_fx_release))
+statsd.gauge('wpt.batch.google.fx.release.median.firstView.render', (render_google_fx_release))
+statsd.gauge('wpt.batch.google.fx.release.median.firstView.SpeedIndex', (SpeedIndex_google_fx_release))
+statsd.gauge('wpt.batch.google.fx.release.median.firstView.bytesInDoc', (bytesInDoc_google_fx_release))
+statsd.gauge('wpt.batch.google.fx.release.median.firstView.visualComplete', (visualComplete_google_fx_release))
+statsd.gauge('wpt.batch.google.fx.release.median.firstView.requestsFull', (requestsFull_google_fx_release))
+
+TTFB_google_fx_nightly = loaded_json[1]["data"]["median"]["firstView"]["TTFB"]
+render_google_fx_nightly = loaded_json[1]["data"]["median"]["firstView"]["render"]
+SpeedIndex_google_fx_nightly = loaded_json[1]["data"]["median"]["firstView"]["SpeedIndex"]
+bytesInDoc_google_fx_nightly = loaded_json[1]["data"]["median"]["firstView"]["bytesInDoc"]
+visualComplete_google_fx_nightly = loaded_json[1]["data"]["median"]["firstView"]["visualComplete"]
+requestsFull_google_fx_nightly = loaded_json[1]["data"]["median"]["firstView"]["requestsFull"]
+
+statsd.gauge('wpt.batch.google.fx.nightly.median.firstView.TTFB', (TTFB_google_fx_nightly))
+statsd.gauge('wpt.batch.google.fx.nightly.median.firstView.render', (render_google_fx_nightly))
+statsd.gauge('wpt.batch.google.fx.nightly.median.firstView.SpeedIndex', (SpeedIndex_google_fx_nightly))
+statsd.gauge('wpt.batch.google.fx.nightly.median.firstView.bytesInDoc', (bytesInDoc_google_fx_nightly))
+statsd.gauge('wpt.batch.google.fx.nightly.median.firstView.visualComplete', (visualComplete_google_fx_nightly))
+statsd.gauge('wpt.batch.google.fx.nightly.median.firstView.requestsFull', (requestsFull_google_fx_nightly))
+
+TTFB_youtube_fx_release = loaded_json[2]["data"]["median"]["firstView"]["TTFB"]
+render_youtube_fx_release = loaded_json[2]]["data"]["median"]["firstView"]["render"]
+SpeedIndex_youtube_fx_release = loaded_json[2]["data"]["median"]["firstView"]["SpeedIndex"]
+bytesInDoc_youtube_fx_release = loaded_json[2]["data"]["median"]["firstView"]["bytesInDoc"]
+visualComplete_youtube_fx_release = loaded_json[2]["data"]["median"]["firstView"]["visualComplete"]
+requestsFull_youtube_fx_release = loaded_json[2]["data"]["median"]["firstView"]["requestsFull"]
+
+statsd.gauge('wpt.batch.youtube.fx.release.median.firstView.TTFB', (TTFB_youtube_fx_release))
+statsd.gauge('wpt.batch.youtube.fx.release.median.firstView.render', (render_youtube_fx_release))
+statsd.gauge('wpt.batch.youtube.fx.release.median.firstView.SpeedIndex', (SpeedIndex_youtube_fx_release))
+statsd.gauge('wpt.batch.youtube.fx.release.median.firstView.bytesInDoc', (bytesInDoc_youtube_fx_release))
+statsd.gauge('wpt.batch.youtube.fx.release.median.firstView.visualComplete', (visualComplete_youtube_fx_release))
+statsd.gauge('wpt.batch.youtube.fx.release.median.firstView.requestsFull', (requestsFull_youtube_fx_release))
+
+TTFB_youtube_fx_nightly = loaded_json[3]["data"]["median"]["firstView"]["TTFB"]
+render_youtube_fx_nightly = loaded_json[3]["data"]["median"]["firstView"]["render"]
+SpeedIndex_youtube_fx_nightly = loaded_json[3]["data"]["median"]["firstView"]["SpeedIndex"]
+bytesInDoc_youtube_fx_nightly = loaded_json[3]["data"]["median"]["firstView"]["bytesInDoc"]
+visualComplete_youtube_fx_nightly = loaded_json[3]["data"]["median"]["firstView"]["visualComplete"]
+requestsFull_youtube_fx_nightly = loaded_json[3]["data"]["median"]["firstView"]["requestsFull"]
+
+statsd.gauge('wpt.batch.youtube.fx.nightly.median.firstView.TTFB', (TTFB_youtube_fx_nightly))
+statsd.gauge('wpt.batch.youtube.fx.nightly.median.firstView.render', (render_youtube_fx_nightly))
+statsd.gauge('wpt.batch.youtube.fx.nightly.median.firstView.SpeedIndex', (SpeedIndex_youtube_fx_nightly))
+statsd.gauge('wpt.batch.youtube.fx.nightly.median.firstView.bytesInDoc', (bytesInDoc_youtube_fx_nightly))
+statsd.gauge('wpt.batch.youtube.fx.nightly.median.firstView.visualComplete', (visualComplete_youtube_fx_nightly))
+statsd.gauge('wpt.batch.youtube.fx.nightly.median.firstView.requestsFull', (requestsFull_youtube_fx_nightly))
