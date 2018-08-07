@@ -20,7 +20,7 @@ initialize(**options)
 
 TTFB_google_fx_release = loaded_json[0]["data"]["median"]["firstView"]["TTFB"]
 render_google_fx_release = loaded_json[0]["data"]["median"]["firstView"]["render"]
-timeToNonBlankPaint_google_fx_release = loaded_json["data"]["median"]["firstview"]["firstPaint"]
+timeToNonBlankPaint_google_fx_release = loaded_json["data"]["median"]["firstView"]["firstPaint"]
 SpeedIndex_google_fx_release = loaded_json[0]["data"]["median"]["firstView"]["SpeedIndex"]
 bytesInDoc_google_fx_release = loaded_json[0]["data"]["median"]["firstView"]["bytesInDoc"]
 visualComplete_google_fx_release = loaded_json[0]["data"]["median"]["firstView"]["visualComplete"]
@@ -34,8 +34,10 @@ statsd.gauge('wpt.batch.google.fx.release.median.firstView.bytesInDoc', (bytesIn
 statsd.gauge('wpt.batch.google.fx.release.median.firstView.visualComplete', (visualComplete_google_fx_release))
 statsd.gauge('wpt.batch.google.fx.release.median.firstView.requestsFull', (requestsFull_google_fx_release))
 
+
 TTFB_google_fx_nightly = loaded_json[1]["data"]["median"]["firstView"]["TTFB"]
 render_google_fx_nightly = loaded_json[1]["data"]["median"]["firstView"]["render"]
+timeToNonBlankPaint_google_fx_nightly = loaded_json["data"]["median"]["firstView"]["firstPaint"]
 SpeedIndex_google_fx_nightly = loaded_json[1]["data"]["median"]["firstView"]["SpeedIndex"]
 bytesInDoc_google_fx_nightly = loaded_json[1]["data"]["median"]["firstView"]["bytesInDoc"]
 visualComplete_google_fx_nightly = loaded_json[1]["data"]["median"]["firstView"]["visualComplete"]
@@ -51,7 +53,7 @@ statsd.gauge('wpt.batch.google.fx.nightly.median.firstView.requestsFull', (reque
 
 TTFB_google_chrome_release = loaded_json[2]["data"]["median"]["firstView"]["TTFB"]
 render_google_chrome_release = loaded_json[2]["data"]["median"]["firstView"]["render"]
-timeToNonBlankPaint_google_chrome_release = loaded_json["data"]["median"]["firstview"]["firstPaint"]
+timeToNonBlankPaint_google_chrome_release = loaded_json["data"]["median"]["firstView"]["firstPaint"]
 SpeedIndex_google_chrome_release = loaded_json[2]["data"]["median"]["firstView"]["SpeedIndex"]
 bytesInDoc_google_chrome_release = loaded_json[2]["data"]["median"]["firstView"]["bytesInDoc"]
 visualComplete_google_chrome_release = loaded_json[2]["data"]["median"]["firstView"]["visualComplete"]
@@ -67,7 +69,7 @@ statsd.gauge('wpt.batch.google.chrome.release.median.firstView.requestsFull', (r
 
 TTFB_youtube_fx_release = loaded_json[3]["data"]["median"]["firstView"]["TTFB"]
 render_youtube_fx_release = loaded_json[3]["data"]["median"]["firstView"]["render"]
-timeToNonBlankPaint_youtube_fx_release = loaded_json["data"]["median"]["firstview"]["firstPaint"]
+timeToNonBlankPaint_youtube_fx_release = loaded_json["data"]["median"]["firstView"]["firstPaint"]
 SpeedIndex_youtube_fx_release = loaded_json[3]["data"]["median"]["firstView"]["SpeedIndex"]
 bytesInDoc_youtube_fx_release = loaded_json[3]["data"]["median"]["firstView"]["bytesInDoc"]
 visualComplete_youtube_fx_release = loaded_json[3]["data"]["median"]["firstView"]["visualComplete"]
@@ -83,7 +85,7 @@ statsd.gauge('wpt.batch.youtube.fx.release.median.firstView.requestsFull', (requ
 
 TTFB_youtube_fx_nightly = loaded_json[4]["data"]["median"]["firstView"]["TTFB"]
 render_youtube_fx_nightly = loaded_json[4]["data"]["median"]["firstView"]["render"]
-timeToNonBlankPaint_youtube_fx_nightly = loaded_json["data"]["median"]["firstview"]["firstPaint"]
+timeToNonBlankPaint_youtube_fx_nightly = loaded_json["data"]["median"]["firstView"]["firstPaint"]
 SpeedIndex_youtube_fx_nightly = loaded_json[4]["data"]["median"]["firstView"]["SpeedIndex"]
 bytesInDoc_youtube_fx_nightly = loaded_json[4]["data"]["median"]["firstView"]["bytesInDoc"]
 visualComplete_youtube_fx_nightly = loaded_json[4]["data"]["median"]["firstView"]["visualComplete"]
