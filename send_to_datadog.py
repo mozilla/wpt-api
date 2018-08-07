@@ -28,7 +28,7 @@ requestsFull_google_fx_release = loaded_json[0]["data"]["median"]["firstView"]["
 
 statsd.gauge('wpt.batch.google.fx.release.median.firstView.TTFB', (TTFB_google_fx_release))
 statsd.gauge('wpt.batch.google.fx.release.median.firstView.render', (render_google_fx_release))
-statsd.gauge('wpt.batch.google.fx.release.median.firstView.firstPaint'. (timeToNonBlankPaint_google_fx_release))
+statsd.gauge('wpt.batch.google.fx.release.median.firstView.firstPaint', (timeToNonBlankPaint_google_fx_release))
 statsd.gauge('wpt.batch.google.fx.release.median.firstView.SpeedIndex', (SpeedIndex_google_fx_release))
 statsd.gauge('wpt.batch.google.fx.release.median.firstView.bytesInDoc', (bytesInDoc_google_fx_release))
 statsd.gauge('wpt.batch.google.fx.release.median.firstView.visualComplete', (visualComplete_google_fx_release))
@@ -43,7 +43,7 @@ requestsFull_google_fx_nightly = loaded_json[1]["data"]["median"]["firstView"]["
 
 statsd.gauge('wpt.batch.google.fx.nightly.median.firstView.TTFB', (TTFB_google_fx_nightly))
 statsd.gauge('wpt.batch.google.fx.nightly.median.firstView.render', (render_google_fx_nightly))
-statsd.gauge('wpt.batch.google.fx.nightly.median.firstView.firstPaint'. (timeToNonBlankPaint_google_fx_nightly))
+statsd.gauge('wpt.batch.google.fx.nightly.median.firstView.firstPaint', (timeToNonBlankPaint_google_fx_nightly))
 statsd.gauge('wpt.batch.google.fx.nightly.median.firstView.SpeedIndex', (SpeedIndex_google_fx_nightly))
 statsd.gauge('wpt.batch.google.fx.nightly.median.firstView.bytesInDoc', (bytesInDoc_google_fx_nightly))
 statsd.gauge('wpt.batch.google.fx.nightly.median.firstView.visualComplete', (visualComplete_google_fx_nightly))
@@ -59,7 +59,7 @@ requestsFull_google_chrome_release = loaded_json[2]["data"]["median"]["firstView
 
 statsd.gauge('wpt.batch.google.chrome.release.median.firstView.TTFB', (TTFB_google_chrome_release))
 statsd.gauge('wpt.batch.google.chrome.release.median.firstView.render', (render_google_chrome_release))
-statsd.gauge('wpt.batch.google.chrome.release.median.firstView.firstPaint'. (timeToNonBlankPaint_google_chrome_release))
+statsd.gauge('wpt.batch.google.chrome.release.median.firstView.firstPaint', (timeToNonBlankPaint_google_chrome_release))
 statsd.gauge('wpt.batch.google.chrome.release.median.firstView.SpeedIndex', (SpeedIndex_google_chrome_release))
 statsd.gauge('wpt.batch.google.chrome.release.median.firstView.bytesInDoc', (bytesInDoc_google_chrome_release))
 statsd.gauge('wpt.batch.google.chrome.release.median.firstView.visualComplete', (visualComplete_google_chrome_release))
@@ -75,7 +75,7 @@ requestsFull_youtube_fx_release = loaded_json[3]["data"]["median"]["firstView"][
 
 statsd.gauge('wpt.batch.youtube.fx.release.median.firstView.TTFB', (TTFB_youtube_fx_release))
 statsd.gauge('wpt.batch.youtube.fx.release.median.firstView.render', (render_youtube_fx_release))
-statsd.gauge('wpt.batch.youtube.fx.release.median.firstView.firstPaint'. (timeToNonBlankPaint_youtube_fx_release))
+statsd.gauge('wpt.batch.youtube.fx.release.median.firstView.firstPaint', (timeToNonBlankPaint_youtube_fx_release))
 statsd.gauge('wpt.batch.youtube.fx.release.median.firstView.SpeedIndex', (SpeedIndex_youtube_fx_release))
 statsd.gauge('wpt.batch.youtube.fx.release.median.firstView.bytesInDoc', (bytesInDoc_youtube_fx_release))
 statsd.gauge('wpt.batch.youtube.fx.release.median.firstView.visualComplete', (visualComplete_youtube_fx_release))
@@ -91,7 +91,7 @@ requestsFull_youtube_fx_nightly = loaded_json[4]["data"]["median"]["firstView"][
 
 statsd.gauge('wpt.batch.youtube.fx.nightly.median.firstView.TTFB', (TTFB_youtube_fx_nightly))
 statsd.gauge('wpt.batch.youtube.fx.nightly.median.firstView.render', (render_youtube_fx_nightly))
-statsd.gauge('wpt.batch.youtube.fx.nightly.median.firstView.firstPaint'. (timeToNonBlankPaint_youtube_fx_nightly))
+statsd.gauge('wpt.batch.youtube.fx.nightly.median.firstView.firstPaint', (timeToNonBlankPaint_youtube_fx_nightly))
 statsd.gauge('wpt.batch.youtube.fx.nightly.median.firstView.SpeedIndex', (SpeedIndex_youtube_fx_nightly))
 statsd.gauge('wpt.batch.youtube.fx.nightly.median.firstView.bytesInDoc', (bytesInDoc_youtube_fx_nightly))
 statsd.gauge('wpt.batch.youtube.fx.nightly.median.firstView.visualComplete', (visualComplete_youtube_fx_nightly))
@@ -107,7 +107,7 @@ requestsFull_youtube_chrome_release = loaded_json[5]["data"]["median"]["firstVie
 
 statsd.gauge('wpt.batch.youtube.chrome.release.median.firstView.TTFB', (TTFB_youtube_chrome_release))
 statsd.gauge('wpt.batch.youtube.chrome.release.median.firstView.render', (render_youtube_chrome_release))
-statsd.gauge('wpt.batch.youtube.chrome.release.median.firstView.firstPaint'. (timeToNonBlankPaint_youtube_chrome_release))
+statsd.gauge('wpt.batch.youtube.chrome.release.median.firstView.firstPaint', (timeToNonBlankPaint_youtube_chrome_release))
 statsd.gauge('wpt.batch.youtube.chrome.release.median.firstView.SpeedIndex', (SpeedIndex_youtube_chrome_release))
 statsd.gauge('wpt.batch.youtube.chrome.release.median.firstView.bytesInDoc', (bytesInDoc_youtube_chrome_release))
 statsd.gauge('wpt.batch.youtube.chrome.release.median.firstView.visualComplete', (visualComplete_youtube_chrome_release))
