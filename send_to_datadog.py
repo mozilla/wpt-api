@@ -115,7 +115,6 @@ statsd.gauge('wpt.batch.youtube.chrome.release.median.firstView.bytesInDoc', (by
 statsd.gauge('wpt.batch.youtube.chrome.release.median.firstView.visualComplete', (visualComplete_youtube_chrome_release))
 statsd.gauge('wpt.batch.youtube.chrome.release.median.firstView.requestsFull', (requestsFull_youtube_chrome_release))
 
-
 TTFB_facebook_fx_release = loaded_json[6]["data"]["median"]["firstView"]["TTFB"]
 render_facebook_fx_release = loaded_json[6]["data"]["median"]["firstView"]["render"]
 timeToNonBlankPaint_facebook_fx_release = loaded_json[6]["data"]["median"]["firstView"]["firstPaint"]
@@ -131,7 +130,6 @@ statsd.gauge('wpt.batch.facebook.fx.release.median.firstView.SpeedIndex', (Speed
 statsd.gauge('wpt.batch.facebook.fx.release.median.firstView.bytesInDoc', (bytesInDoc_facebook_fx_release))
 statsd.gauge('wpt.batch.facebook.fx.release.median.firstView.visualComplete', (visualComplete_facebook_fx_release))
 statsd.gauge('wpt.batch.facebook.fx.release.median.firstView.requestsFull', (requestsFull_facebook_fx_release))
-
 
 TTFB_facebook_fx_nightly = loaded_json[7]["data"]["median"]["firstView"]["TTFB"]
 render_facebook_fx_nightly = loaded_json[7]["data"]["median"]["firstView"]["render"]
