@@ -5,7 +5,6 @@ pipeline {
   environment {
     WEB_PAGE_TEST = credentials('WEB_PAGE_TEST')
     WEBPAGETEST_SERVER = "https://${WEB_PAGE_TEST}@wpt-api.stage.mozaws.net/"
-    PAGE_URL = "https://latest.dev.lcip.org/?service=sync&entrypoint=firstrun&context=fx_desktop_v3"
   }
   options {
     ansiColor('xterm')
@@ -28,14 +27,14 @@ pipeline {
         dockerfile { dir 'webpagetest-api' }
       }
       steps {
-        sh '/usr/src/app/bin/webpagetest test "${PAGE_URL}" -l "us-east-1-linux:Firefox" -r 5 --first --poll --reporter json > "fxa-homepage.json"'
+        sh '/usr/src/app/bin/webpagetest batch commands.txt > "alexa-topsites.json"'
         }
       post {
         always {
-          archiveArtifacts 'fxa-homepage.json'
+          archiveArtifacts 'alexa-topsites.json'
         }
         success {
-          stash includes: 'fxa-homepage.json', name: 'fxa-homepage.json'
+          stash includes: 'alexa-topsites.json', name: 'alexa-topsites.json'
         }
       }
     }
@@ -46,7 +45,7 @@ pipeline {
         }
       }
       steps {
-        unstash 'fxa-homepage.json'
+        unstash 'alexa-topsites.json'
         sh '''
           python ./send_to_datadog.py
         '''
