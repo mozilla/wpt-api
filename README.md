@@ -10,7 +10,7 @@ This repo's branch aims to capture, submit, and visualize web-performance metric
 The currently implemented setup, on the ```alexa-topsites``` branch, supports this workflow:
 
 1. Passing in the top three (3) Alexa topsites' URLs (without scheme)
-1. Running tests against those URLs with the following hardcoded parameters:
+2. Running tests against those URLs with the following hardcoded parameters:
   - -l (location) in the ```us-east-1-linux``` EC2 region
   - -r (# of runs) 5
   - browsers:
@@ -18,8 +18,8 @@ The currently implemented setup, on the ```alexa-topsites``` branch, supports th
   * latest Firefox Nightly build, on Linux
   * latest Google Chrome build, on Linux
   - using ```--first``` (no caching)
-1. Post-WebPageTest run, we export and archive its output (via Jenkins) as ```alexa-topsites.json```[0]
-1. Next, we filter for and extract the following performance-timing metrics[1]:
+3. Post-WebPageTest run, we export and archive its output (via Jenkins) as ```alexa-topsites.json```[0]
+4. Next, we filter for and extract the following performance-timing metrics[1]:
   - Time To First Byte (TTFB)
   - Time To First Non-Blank Paint, aka ```firstPaint``` (firstPaint)
   - Start render (render)
@@ -27,7 +27,7 @@ The currently implemented setup, on the ```alexa-topsites``` branch, supports th
   - Total # of Bytes Transferred (bytesInDoc)
   - Time to Visually Complete (visualComplete)
   - Total # of Requests (requestsFull)
-1. Finally, the perf metrics are sent via a DataDog agent to its API[2], and are plotted, here:
+5. Finally, the perf metrics are sent via a DataDog agent to its API[2], and are plotted, here:
 
 https://app.datadoghq.com/dash/879449
 
