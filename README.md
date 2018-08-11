@@ -5,9 +5,7 @@
 [![Updates](https://pyup.io/repos/github/mozilla/wpt-api/shield.svg)](https://pyup.io/repos/github/mozilla/wpt-api/)
 [![Python 3](https://pyup.io/repos/github/mozilla/wpt-api/python-3-shield.svg)](https://pyup.io/repos/github/mozilla/wpt-api/)
 
-This repo aims to build a useful, versatile WebPageTest setup, which is both out-of-the-box ready, and yet also configurable enough for multiple teams and use-cases.
-
-Specifically, its primary aim is capturing, submitting, and visualizing web-performance metrics for Firefox Quantum release and Nightly builds, and Google Chrome, all on Linux.
+This repo's branch aims to capture, submit, and visualizing web-performance metrics for the Alexa top 3 sites, using Firefox Quantum release and Nightly builds, and Google Chrome, all on Linux.
 
 The currently implemented setup, on the ```alexa-topsites``` branch, supports this workflow:
 
