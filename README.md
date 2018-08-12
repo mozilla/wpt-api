@@ -5,37 +5,34 @@
 [![Updates](https://pyup.io/repos/github/mozilla/wpt-api/shield.svg)](https://pyup.io/repos/github/mozilla/wpt-api/)
 [![Python 3](https://pyup.io/repos/github/mozilla/wpt-api/python-3-shield.svg)](https://pyup.io/repos/github/mozilla/wpt-api/)
 
-This repo aims to build a useful, versatile WebPageTest setup, which is both out-of-the-box ready, and yet also configurable enough for multiple teams and use-cases.
+This repo's branch aims to capture, submit, and visualize web-performance metrics for the Alexa top 3 sites, using Firefox Quantum release and Nightly builds, and Google Chrome, all on Linux.
 
-Specifically, its primary aim is capturing, submitting, and visualizing web-performance metrics from a Firefox release build, run against the Firefox Accounts firstrun webpage.
+The currently implemented setup, on the ```alexa-topsites``` branch, supports this workflow:
 
-The currently implemented workflow, on the ```master``` branch, supports:
-
-* Passing in a custom ```PAGE_URL``` to override the hardcoded default[0]:
-* Running tests against the URL with the following hardcoded parameters:
-  - in the ```us-east-1-linux``` EC2 region
-  - 5 times
-  - recent Firefox release build, on Linux
+1. Passing in the top three (3) Alexa topsites' URLs (without scheme)
+2. Running tests against those URLs with the following hardcoded parameters:
+  - -l (location) in the ```us-east-1-linux``` EC2 region
+  - -r (# of runs) 5
+  - browsers:
+  * latest Firefox Quantum release build, on Linux
+  * latest Firefox Nightly build, on Linux
+  * latest Google Chrome build, on Linux
   - using ```--first``` (no caching)
-* Post-WebPageTest run, we export and archive its output (via Jenkins) as ```fxa-homepage.json```[1]
-* Next, we filter for and extract[2]:
+3. Post-WebPageTest run, we export and archive its output (via Jenkins) as ```alexa-topsites.json```[0]
+4. Next, we filter for and extract the following performance-timing metrics[1]:
   - Time To First Byte (TTFB)
-  - Time To Non-Blank Paint, aka ```firstPaint``` (firstPaint)
+  - Time To First Non-Blank Paint, aka ```firstPaint``` (firstPaint)
   - Start render (render)
   - Speed Index (SpeedIndex)
-  - Total Bytes Transferred (bytesInDoc)
-  - Visually Complete time (visualComplete)
+  - Total # of Bytes Transferred (bytesInDoc)
+  - Time to Visually Complete (visualComplete)
   - Total # of Requests (requestsFull)
-* Finally, the perf metrics are sent via a DataDog agent to its API[3], and are plotted, here:
+5. Finally, the perf metrics are sent via a DataDog agent to its API[2], and are plotted, here:
 
-https://app.datadoghq.com/dash/827265/firefox-accounts-dev-first-run-page-perf-metrics?live=true
+https://app.datadoghq.com/dash/879449
 
-Eventually, and roughly in order of complexity and dependencies, we aim for:
+--
 
-* batch-URL/command processing
-* integration of perf metrics with code review (GitHub)/CI builds (TeamCity, Jenkins, Travis?), and post-deployment testing
-
-[0] https://github.com/mozilla/wpt-api/blob/13148b749268e1a1212042d8edb8731366bc2c4a/Jenkinsfile#L8<br/>
-[1] https://github.com/mozilla/wpt-api/blob/13148b749268e1a1212042d8edb8731366bc2c4a/Jenkinsfile#L36-L43<br/>
-[2] https://github.com/mozilla/wpt-api/blob/13148b749268e1a1212042d8edb8731366bc2c4a/send_to_datadog.py#L21-L26<br/>
-[3] https://github.com/mozilla/wpt-api/blob/13148b749268e1a1212042d8edb8731366bc2c4a/send_to_datadog.py#L28-L33<br/>
+[0] https://github.com/mozilla/wpt-api/blob/52c23959d7ed7196fcacf3ea5c61125e5a37bceb/Jenkinsfile#L29-L37<br/>
+[1] https://github.com/mozilla/wpt-api/blob/52c23959d7ed7196fcacf3ea5c61125e5a37bceb/send_to_datadog.py#L21-L31<br/>
+[2] https://github.com/mozilla/wpt-api/blob/52c23959d7ed7196fcacf3ea5c61125e5a37bceb/send_to_datadog.py#L30<br/>
