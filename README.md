@@ -11,25 +11,24 @@ The currently implemented setup, on the ```alexa-topsites``` branch, supports th
 
 1. Passing in the top three (3) Alexa topsites' URLs (without scheme)
 2. Running tests against those URLs with the following hardcoded parameters:
-  - -l (location) in the ```us-east-1-linux``` EC2 region
-  - -r (# of runs) 5
-  - browsers:
-    * latest Firefox Quantum release build, on Linux
-    * latest Firefox Nightly build, on Linux
-    * latest Google Chrome build, on Linux
+    - -l (location) in the ```us-east-1-linux``` EC2 region
+    - -r (# of runs) 5
+    - browsers:
+      * latest Firefox Quantum release build, on Linux
+      * latest Firefox Nightly build, on Linux
+      * latest Google Chrome build, on Linux
   - using ```--first``` (no caching)
 3. Post-WebPageTest run, we export and archive its output (via Jenkins) as ```alexa-topsites.json```[0]
 4. Next, we filter for and extract the following performance-timing metrics[1]:
-  - Time To First Byte (TTFB)
-  - Time To First Non-Blank Paint, aka ```firstPaint``` (firstPaint)
-  - Start render (render)
-  - Speed Index (SpeedIndex)
-  - Total # of Bytes Transferred (bytesInDoc)
-  - Time to Visually Complete (visualComplete)
-  - Total # of Requests (requestsFull)
-5. Finally, the perf metrics are sent via a DataDog agent to its API[2], and are plotted, here:
-
-https://app.datadoghq.com/dash/879449
+    - Time To First Byte (TTFB)
+    - Time To First Non-Blank Paint, aka ```firstPaint``` (firstPaint)
+    - Start render (render)
+    - Speed Index (SpeedIndex)
+    - Total # of Bytes Transferred (bytesInDoc)
+    - Time to Visually Complete (visualComplete)
+    - Total # of Requests (requestsFull)
+5. Finally, the perf metrics are sent via a DataDog agent to its API[2], and are visualized, here:
+     https://app.datadoghq.com/dash/879449
 
 --
 
