@@ -14,9 +14,9 @@ The currently implemented setup, on the ```alexa-topsites``` branch, supports th
   - -l (location) in the ```us-east-1-linux``` EC2 region
   - -r (# of runs) 5
   - browsers:
-  * latest Firefox Quantum release build, on Linux
-  * latest Firefox Nightly build, on Linux
-  * latest Google Chrome build, on Linux
+    * latest Firefox Quantum release build, on Linux
+    * latest Firefox Nightly build, on Linux
+    * latest Google Chrome build, on Linux
   - using ```--first``` (no caching)
 3. Post-WebPageTest run, we export and archive its output (via Jenkins) as ```alexa-topsites.json```[0]
 4. Next, we filter for and extract the following performance-timing metrics[1]:
