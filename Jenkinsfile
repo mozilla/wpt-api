@@ -53,4 +53,9 @@ pipeline {
       }
     }
   }
+  post {
+    changed {
+      ircNotification()
+    }
+  }
 }
