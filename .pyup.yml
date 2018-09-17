@@ -1,5 +1,0 @@
-schedule: "every week on monday"
-requirements:
-  - pipenv.txt
-  - Pipfile
-  - Pipfile.lock
