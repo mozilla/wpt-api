@@ -29,6 +29,8 @@ The currently implemented workflow, on the ```master``` branch, supports:
 
 https://app.datadoghq.com/dash/827265/firefox-accounts-dev-first-run-page-perf-metrics?live=true
 
+![](https://user-images.githubusercontent.com/387249/43986821-0b5adddc-9ccc-11e8-924f-9d7420abc02a.png)
+
 Eventually, and roughly in order of complexity and dependencies, we aim for:
 
 * batch-URL/command processing
