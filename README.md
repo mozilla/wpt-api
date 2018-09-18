@@ -7,6 +7,8 @@
 
 This repo's branch aims to capture, submit, and visualize web-performance metrics for the Alexa top 3 sites, using Firefox Quantum release and Nightly builds, and Google Chrome, all on Linux.
 
+![](https://user-images.githubusercontent.com/387249/43986821-0b5adddc-9ccc-11e8-924f-9d7420abc02a.png)
+
 The currently implemented setup, on the ```alexa-topsites``` branch, supports this workflow:
 
 1. Passing in the top three (3) Alexa topsites' URLs (without scheme)
