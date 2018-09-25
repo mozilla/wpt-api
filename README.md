@@ -23,8 +23,9 @@ The currently implemented setup, on the ```alexa-topsites``` branch, supports th
 3. Post-WebPageTest run, we export and archive its output (via Jenkins) as ```alexa-topsites.json```[0]
 4. Next, we filter for and extract the following performance-timing metrics[1]:
     - Time To First Byte (TTFB)
-    - Time To First Non-Blank Paint, aka ```firstPaint``` (firstPaint)
     - Start render (render)
+    - Time To First Non-Blank Paint, aka ```firstPaint``` (firstPaint)
+    - Time to DOMContentFlushed (DOMContentFlushed)
     - Speed Index (SpeedIndex)
     - Total # of Bytes Transferred (bytesInDoc)
     - Time to Visually Complete (visualComplete)
