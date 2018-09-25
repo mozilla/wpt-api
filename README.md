@@ -25,7 +25,7 @@ The currently implemented setup, on the ```alexa-topsites``` branch, supports th
     - Time To First Byte (TTFB)
     - Start render (render)
     - Time To First Non-Blank Paint, aka ```firstPaint``` (firstPaint)
-    - Time to DOMContentFlushed (DOMContentFlushed)
+    - Time to DOMContentFlushed (domContentFlushed)
     - Speed Index (SpeedIndex)
     - Total # of Bytes Transferred (bytesInDoc)
     - Time to Visually Complete (visualComplete)
