@@ -22,7 +22,7 @@ test_names = ['google.fx.release', 'google.fx.nightly', 'google.chrome.release',
               'youtube.fx.release', 'youtube.fx.nightly',
               'youtube.chrome.release', 'facebook.fx.release',
               'facebook.fx.nightly', 'facebook.chrome.release']
-metrics = ['TTFB', 'render', 'firstPaint', 'SpeedIndex', 'bytesInDoc',
+metrics = ['TTFB', 'render', 'firstPaint', 'DOMContentFlushed', 'SpeedIndex', 'bytesInDoc',
            'visualComplete', 'requestsFull']
 
 for test_name in test_names:
