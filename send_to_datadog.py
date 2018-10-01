@@ -19,9 +19,9 @@ with open('alexa-topsites.json') as json_data:
 initialize(**options)
 
 test_names = ['google.fx.release', 'google.fx.nightly', 'google.chrome.release',
-              'youtube.fx.release', 'youtube.fx.nightly',
-              'youtube.chrome.release', 'facebook.fx.release',
-              'facebook.fx.nightly', 'facebook.chrome.release']
+              'google.chrome.canary', 'youtube.fx.release', 'youtube.fx.nightly',
+              'youtube.chrome.release', 'youtube.chrome.canary', 'facebook.fx.release',
+              'facebook.fx.nightly', 'facebook.chrome.release', 'facebook.chrome.canary']
 metrics = ['TTFB', 'render', 'firstPaint', 'domContentFlushed', 'SpeedIndex', 'bytesInDoc',
            'visualComplete', 'requestsFull']
 
