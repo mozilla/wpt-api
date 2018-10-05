@@ -30,3 +30,7 @@ test taobao.com --location us-east-1-linux:Firefox -r 5 --first --poll --reporte
 test taobao.com --location us-east-1-linux:Firefox Nightly -r 5 --first --poll --reporter json
 test taobao.com --location us-east-1-linux:Chrome -r 5 --first --poll --reporter json
 test taobao.com --location us-east-1-linux:Chrome Canary -r 5 --first --poll --reporter json
+test tmall.com --location us-east-1-linux:Firefox -r 5 --first --poll --reporter json
+test tmall.com --location us-east-1-linux:Firefox Nightly -r 5 --first --poll --reporter json
+test tmall.com --location us-east-1-linux:Chrome -r 5 --first --poll --reporter json
+test tmall.com --location us-east-1-linux:Chrome Canary -r 5 --first --poll --reporter json
