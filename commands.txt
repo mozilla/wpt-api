@@ -22,3 +22,7 @@ test yahoo.com --location us-east-1-linux:Firefox -r 5 --first --poll --reporter
 test yahoo.com --location us-east-1-linux:Firefox Nightly -r 5 --first --poll --reporter json
 test yahoo.com --location us-east-1-linux:Chrome -r 5 --first --poll --reporter json
 test yahoo.com --location us-east-1-linux:Chrome Canary -r 5 --first --poll --reporter json
+test qq.com --location us-east-1-linux:Firefox -r 5 --first --poll --reporter json
+test qq.com --location us-east-1-linux:Firefox Nightly -r 5 --first --poll --reporter json
+test qq.com --location us-east-1-linux:Chrome -r 5 --first --poll --reporter json
+test qq.com --location us-east-1-linux:Chrome Canary -r 5 --first --poll --reporter json
