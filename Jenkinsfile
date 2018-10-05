@@ -54,7 +54,7 @@ pipeline {
     }
   }
   post {
-    changed {
+    failure {
       ircNotification()
     }
   }
