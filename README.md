@@ -4,7 +4,7 @@
 [![Build Status](https://travis-ci.org/mozilla/wpt-api.svg?branch=master)](https://travis-ci.org/mozilla/wpt-api)
 [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=mozilla/wpt-api)](https://dependabot.com)
 
-This repo's branch aims to capture, submit, and visualize web-performance metrics for the Alexa top 3 sites, using Firefox Quantum release and Nightly builds, and Google Chrome, all on Linux.
+This repo's branch aims to capture, submit, and visualize web-performance metrics for the Alexa top 50 sites, using Firefox Quantum release and Nightly builds, and Google Chrome, all on Linux.
 
 ![](https://user-images.githubusercontent.com/387249/43986821-0b5adddc-9ccc-11e8-924f-9d7420abc02a.png)
 
