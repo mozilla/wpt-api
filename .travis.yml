@@ -1,11 +1,14 @@
+sudo: required
 language: python
 python: 3.6
+services:
+  - docker
 env:
   - PIPENV_IGNORE_VIRTUALENVS=1
-install:
-  - pip install -r pipenv.txt
+before_install:
+  - docker build -t wpt-api .
+install: skip
 script:
-  - pipenv install --dev
-  - pipenv run flake8
+  - docker ps -a
 notifications:
   email: fte-ci@mozilla.com
