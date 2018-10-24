@@ -1,40 +1,40 @@
-test google.com --location us-east-1-linux:Firefox -r 5 --first --poll --reporter json
-test google.com --location us-east-1-linux:Firefox Nightly -r 5 --first --poll --reporter json
-test google.com --location us-east-1-linux:Chrome -r 5 --first --poll --reporter json
-test google.com --location us-east-1-linux:Chrome Canary -r 5 --first --poll --reporter json
-test youtube.com --location us-east-1-linux:Firefox -r 5 --first --poll --reporter json
-test youtube.com --location us-east-1-linux:Firefox Nightly -r 5 --first --poll --reporter json
-test youtube.com --location us-east-1-linux:Chrome -r 5 --first --poll --reporter json
-test youtube.com --location us-east-1-linux:Chrome Canary -r 5 --first --poll --reporter json
-test facebook.com --location us-east-1-linux:Firefox -r 5 --first --poll --reporter json
-test facebook.com --location us-east-1-linux:Firefox Nightly -r 5 --first --poll --reporter json
-test facebook.com --location us-east-1-linux:Chrome -r 5 --first --poll --reporter json
-test facebook.com --location us-east-1-linux:Chrome Canary -r 5 --first --poll --reporter json
-test baidu.com --location us-east-1-linux:Firefox -r 5 --first --poll --reporter json
-test baidu.com --location us-east-1-linux:Firefox Nightly -r 5 --first --poll --reporter json
-test baidu.com --location us-east-1-linux:Chrome -r 5 --first --poll --reporter json
-test baidu.com --location us-east-1-linux:Chrome Canary -r 5 --first --poll --reporter json
-test wikipedia.org --location us-east-1-linux:Firefox -r 5 --first --poll --reporter json
-test wikipedia.org --location us-east-1-linux:Firefox Nightly -r 5 --first --poll --reporter json
-test wikipedia.org --location us-east-1-linux:Chrome -r 5 --first --poll --reporter json
-test wikipedia.org --location us-east-1-linux:Chrome Canary -r 5 --first --poll --reporter json
-test yahoo.com --location us-east-1-linux:Firefox -r 5 --first --poll --reporter json
-test yahoo.com --location us-east-1-linux:Firefox Nightly -r 5 --first --poll --reporter json
-test yahoo.com --location us-east-1-linux:Chrome -r 5 --first --poll --reporter json
-test yahoo.com --location us-east-1-linux:Chrome Canary -r 5 --first --poll --reporter json
-test qq.com --location us-east-1-linux:Firefox -r 5 --first --poll --reporter json
-test qq.com --location us-east-1-linux:Firefox Nightly -r 5 --first --poll --reporter json
-test qq.com --location us-east-1-linux:Chrome -r 5 --first --poll --reporter json
-test qq.com --location us-east-1-linux:Chrome Canary -r 5 --first --poll --reporter json
-test taobao.com --location us-east-1-linux:Firefox -r 5 --first --poll --reporter json
-test taobao.com --location us-east-1-linux:Firefox Nightly -r 5 --first --poll --reporter json
-test taobao.com --location us-east-1-linux:Chrome -r 5 --first --poll --reporter json
-test taobao.com --location us-east-1-linux:Chrome Canary -r 5 --first --poll --reporter json
-test tmall.com --location us-east-1-linux:Firefox -r 5 --first --poll --reporter json
-test tmall.com --location us-east-1-linux:Firefox Nightly -r 5 --first --poll --reporter json
-test tmall.com --location us-east-1-linux:Chrome -r 5 --first --poll --reporter json
-test tmall.com --location us-east-1-linux:Chrome Canary -r 5 --first --poll --reporter json
-test twitter.com --location us-east-1-linux:Firefox -r 5 --first --poll --reporter json
-test twitter.com --location us-east-1-linux:Firefox Nightly -r 5 --first --poll --reporter json
-test twitter.com --location us-east-1-linux:Chrome -r 5 --first --poll --reporter json
-test twitter.com --location us-east-1-linux:Chrome Canary -r 5 --first --poll --reporter json
+test google.com --location us-east-1-linux:Firefox -r 3 --first --poll --reporter json
+test google.com --location us-east-1-linux:Firefox Nightly -r 3 --first --poll --reporter json
+test google.com --location us-east-1-linux:Chrome -r 3 --first --poll --reporter json
+test google.com --location us-east-1-linux:Chrome Canary -r 3 --first --poll --reporter json
+test youtube.com --location us-east-1-linux:Firefox -r 3 --first --poll --reporter json
+test youtube.com --location us-east-1-linux:Firefox Nightly -r 3 --first --poll --reporter json
+test youtube.com --location us-east-1-linux:Chrome -r 3 --first --poll --reporter json
+test youtube.com --location us-east-1-linux:Chrome Canary -r 3 --first --poll --reporter json
+test facebook.com --location us-east-1-linux:Firefox -r 3 --first --poll --reporter json
+test facebook.com --location us-east-1-linux:Firefox Nightly -r 3 --first --poll --reporter json
+test facebook.com --location us-east-1-linux:Chrome -r 3 --first --poll --reporter json
+test facebook.com --location us-east-1-linux:Chrome Canary -r 3 --first --poll --reporter json
+test baidu.com --location us-east-1-linux:Firefox -r 3 --first --poll --reporter json
+test baidu.com --location us-east-1-linux:Firefox Nightly -r 3 --first --poll --reporter json
+test baidu.com --location us-east-1-linux:Chrome -r 3 --first --poll --reporter json
+test baidu.com --location us-east-1-linux:Chrome Canary -r 3 --first --poll --reporter json
+test wikipedia.org --location us-east-1-linux:Firefox -r 3 --first --poll --reporter json
+test wikipedia.org --location us-east-1-linux:Firefox Nightly -r 3 --first --poll --reporter json
+test wikipedia.org --location us-east-1-linux:Chrome -r 3 --first --poll --reporter json
+test wikipedia.org --location us-east-1-linux:Chrome Canary -r 3 --first --poll --reporter json
+test yahoo.com --location us-east-1-linux:Firefox -r 3 --first --poll --reporter json
+test yahoo.com --location us-east-1-linux:Firefox Nightly -r 3 --first --poll --reporter json
+test yahoo.com --location us-east-1-linux:Chrome -r 3 --first --poll --reporter json
+test yahoo.com --location us-east-1-linux:Chrome Canary -r 3 --first --poll --reporter json
+test qq.com --location us-east-1-linux:Firefox -r 3 --first --poll --reporter json
+test qq.com --location us-east-1-linux:Firefox Nightly -r 3 --first --poll --reporter json
+test qq.com --location us-east-1-linux:Chrome -r 3 --first --poll --reporter json
+test qq.com --location us-east-1-linux:Chrome Canary -r 3 --first --poll --reporter json
+test taobao.com --location us-east-1-linux:Firefox -r 3 --first --poll --reporter json
+test taobao.com --location us-east-1-linux:Firefox Nightly -r 3 --first --poll --reporter json
+test taobao.com --location us-east-1-linux:Chrome -r 3 --first --poll --reporter json
+test taobao.com --location us-east-1-linux:Chrome Canary -r 3 --first --poll --reporter json
+test tmall.com --location us-east-1-linux:Firefox -r 3 --first --poll --reporter json
+test tmall.com --location us-east-1-linux:Firefox Nightly -r 3 --first --poll --reporter json
+test tmall.com --location us-east-1-linux:Chrome -r 3 --first --poll --reporter json
+test tmall.com --location us-east-1-linux:Chrome Canary -r 3 --first --poll --reporter json
+test twitter.com --location us-east-1-linux:Firefox -r 3 --first --poll --reporter json
+test twitter.com --location us-east-1-linux:Firefox Nightly -r 3 --first --poll --reporter json
+test twitter.com --location us-east-1-linux:Chrome -r 3 --first --poll --reporter json
+test twitter.com --location us-east-1-linux:Chrome Canary -r 3 --first --poll --reporter json
