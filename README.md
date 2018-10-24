@@ -22,14 +22,14 @@ The currently implemented setup, on the ```alexa-topsites``` branch, supports th
   - using ```--first``` (no caching)
 3. Post-WebPageTest run, we export and archive its output (via Jenkins) as ```alexa-topsites.json```[0]
 4. Next, we filter for and extract the following performance-timing metrics[1]:
-    - Time To First Byte (TTFB)
-    - Start render (render)
+    - Time To First Byte (```TTFB```)
+    - Start render (```render```)
     - Time To First Non-Blank Paint, aka ```firstPaint``` (firstPaint)
-    - Time to DOMContentFlushed (domContentFlushed) - Firefox-internal/only metric
+    - Time to DOMContentFlushed (```timeToDOMContentFlushed``` ```-``` ```fetchStart```) - Firefox-internal/only metric
     - Speed Index (SpeedIndex)
-    - Total # of Bytes Transferred (bytesInDoc)
-    - Time to Visually Complete (visualComplete)
-    - Total # of Requests (requestsFull)
+    - Total # of Bytes Transferred (```bytesInDoc```)
+    - Time to Visually Complete (```visualComplete```)
+    - Total # of Requests (```requestsFull```)
 5. Finally, the perf metrics are sent via a DataDog agent to its API[2], and are visualized, here:
      https://app.datadoghq.com/dash/879449
 
