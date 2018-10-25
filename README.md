@@ -13,13 +13,14 @@ This repo's branch aims to capture, submit, and visualize web-performance metric
 1. Passing in the top ten (10) Alexa topsites' URLs (without scheme) via [```commands.txt```](https://github.com/mozilla/wpt-api/blob/alexa-topsites/commands.txt)
 2. Via [```Jenkins```](https://github.com/mozilla/wpt-api/blob/alexa-topsites/Jenkinsfile#L30), running tests against those URLs with the following hardcoded parameters:
     - -l (location) in the ```us-east-1-linux``` EC2 region
-    - -r (# of runs) 5
+    - -r (# of runs) 3
     - browsers (all desktop, for now):
       * latest Firefox Quantum release build, on Linux
       * latest Firefox Nightly build, on Linux
       * latest Google Chrome build, on Linux
       * latest Chrome Canary build, on Linux
   - using ```--first``` (no caching)
+  - also using ```--keepua``` (to preserve original browser user-agents)
 3. Post-WebPageTest run, we export and archive its output via [```Jenkins```](https://github.com/mozilla/wpt-api/blob/alexa-topsites/Jenkinsfile#L34-L37)) as [```alexa-topsites.json```](https://github.com/mozilla/wpt-api/blob/alexa-topsites/Jenkinsfile#L33-L37)[0]
 4. Next, we filter for and extract the following performance-timing metrics[1]:
     - Time To First Byte (```TTFB```)
