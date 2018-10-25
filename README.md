@@ -8,10 +8,10 @@ This repo's branch aims to capture, submit, and visualize web-performance metric
 
 ![](https://user-images.githubusercontent.com/387249/43986821-0b5adddc-9ccc-11e8-924f-9d7420abc02a.png)
 
-The currently implemented setup, on the ```alexa-topsites``` branch, supports this workflow:
+## The currently implemented setup, on the ```alexa-topsites``` branch, supports this workflow:
 
-1. Passing in the top ten (10) Alexa topsites' URLs (without scheme)
-2. Running tests against those URLs with the following hardcoded parameters:
+1. Passing in the top ten (10) Alexa topsites' URLs (without scheme) via [```commands.txt```](https://github.com/mozilla/wpt-api/blob/alexa-topsites/commands.txt)
+2. Via [```Jenkins```](https://github.com/mozilla/wpt-api/blob/alexa-topsites/Jenkinsfile#L30), running tests against those URLs with the following hardcoded parameters:
     - -l (location) in the ```us-east-1-linux``` EC2 region
     - -r (# of runs) 5
     - browsers (all desktop, for now):
@@ -20,7 +20,7 @@ The currently implemented setup, on the ```alexa-topsites``` branch, supports th
       * latest Google Chrome build, on Linux
       * latest Chrome Canary build, on Linux
   - using ```--first``` (no caching)
-3. Post-WebPageTest run, we export and archive its output (via Jenkins) as ```alexa-topsites.json```[0]
+3. Post-WebPageTest run, we export and archive its output via [```Jenkins```](https://github.com/mozilla/wpt-api/blob/alexa-topsites/Jenkinsfile#L34-L37)) as [```alexa-topsites.json```](https://github.com/mozilla/wpt-api/blob/alexa-topsites/Jenkinsfile#L33-L37)[0]
 4. Next, we filter for and extract the following performance-timing metrics[1]:
     - Time To First Byte (```TTFB```)
     - Start render (```render```)
@@ -30,7 +30,7 @@ The currently implemented setup, on the ```alexa-topsites``` branch, supports th
     - Total # of Bytes Transferred (```bytesInDoc```)
     - Time to Visually Complete (```visualComplete```)
     - Total # of Requests (```requestsFull```)
-5. Finally, the perf metrics are sent via a DataDog agent to its API[2], and are visualized, here:
+5. Finally, the perf metrics are [```sent via a DataDog agent```](https://github.com/mozilla/wpt-api/blob/alexa-topsites/send_to_datadog.py#L10-L31) to its API[2], and are visualized, here:
      https://app.datadoghq.com/dash/879449
 
 --
