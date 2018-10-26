@@ -31,7 +31,7 @@ This repo's branch aims to capture, submit, and visualize web-performance metric
     - Total # of Bytes Transferred (```bytesInDoc```)
     - Time to Visually Complete (```visualComplete```)
     - Total # of Requests (```requestsFull```)
-5. Finally, the perf metrics are [```sent via a DataDog agent```](https://github.com/mozilla/wpt-api/blob/alexa-topsites/send_to_datadog.py#L10-L31) to its API[2], and are visualized, here (apologies; Mozilla-internal, for now - I'm working on opening it up:
+5. Finally, the perf metrics are [```sent via a DataDog agent```](https://github.com/mozilla/wpt-api/blob/alexa-topsites/send_to_datadog.py#L10-L31) to its API[2], and are visualized, here (apologies; Mozilla-internal, for now - I'm working on opening it up):
      https://app.datadoghq.com/dash/879449
 
 --
