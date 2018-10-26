@@ -25,7 +25,7 @@ The currently implemented workflow, on the ```master``` branch, supports:
   - Total Bytes Transferred (bytesInDoc)
   - Visually Complete time (visualComplete)
   - Total # of Requests (requestsFull)
-* Finally, the perf metrics are sent via a DataDog agent to its API[3], and are plotted, here:
+* Finally, the perf metrics are sent via a DataDog agent to its API[3], and are plotted, here (apologies; Mozilla-internal, for now - I'm working on opening it up):
 
 https://app.datadoghq.com/dash/827265/firefox-accounts-dev-first-run-page-perf-metrics?live=true
 
