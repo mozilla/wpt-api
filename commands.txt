@@ -1,40 +1,40 @@
-test google.com --location us-east-1-linux:Firefox --keepua -r 3 --first --poll --reporter json --label alexa-topsites
-test google.com --location us-east-1-linux:Firefox Nightly --keepua -r 3 --first --poll --reporter json --label alexa-topsites
-test google.com --location us-east-1-linux:Chrome --keepua -r 3 --first --poll --reporter json --label alexa-topsites
-test google.com --location us-east-1-linux:Chrome Canary --keepua -r 3 --first --poll --reporter json --label alexa-topsites
-test youtube.com --location us-east-1-linux:Firefox --keepua -r 3 --first --poll --reporter json --label alexa-topsites
-test youtube.com --location us-east-1-linux:Firefox Nightly --keepua -r 3 --first --poll --reporter json --label alexa-topsites
-test youtube.com --location us-east-1-linux:Chrome --keepua -r 3 --first --poll --reporter json --label alexa-topsites
-test youtube.com --location us-east-1-linux:Chrome Canary --keepua -r 3 --first --poll --reporter json --label alexa-topsites
-test facebook.com --location us-east-1-linux:Firefox --keepua -r 3 --first --poll --reporter json --label alexa-topsites
-test facebook.com --location us-east-1-linux:Firefox Nightly --keepua -r 3 --first --poll --reporter json --label alexa-topsites
-test facebook.com --location us-east-1-linux:Chrome --keepua -r 3 --first --poll --reporter json --label alexa-topsites
-test facebook.com --location us-east-1-linux:Chrome Canary --keepua -r 3 --first --poll --reporter json --label alexa-topsites
-test baidu.com --location us-east-1-linux:Firefox --keepua -r 3 --first --poll --reporter json --label alexa-topsites
-test baidu.com --location us-east-1-linux:Firefox Nightly --keepua -r 3 --first --poll --reporter json --label alexa-topsites
-test baidu.com --location us-east-1-linux:Chrome --keepua -r 3 --first --poll --reporter json --label alexa-topsites
-test baidu.com --location us-east-1-linux:Chrome Canary --keepua -r 3 --first --poll --reporter json --label alexa-topsites
-test wikipedia.org --location us-east-1-linux:Firefox --keepua -r 3 --first --poll --reporter json --label alexa-topsites
-test wikipedia.org --location us-east-1-linux:Firefox Nightly --keepua -r 3 --first --poll --reporter json --label alexa-topsites
-test wikipedia.org --location us-east-1-linux:Chrome --keepua -r 3 --first --poll --reporter json --label alexa-topsites
-test wikipedia.org --location us-east-1-linux:Chrome Canary --keepua -r 3 --first --poll --reporter json --label alexa-topsites
-test yahoo.com --location us-east-1-linux:Firefox --keepua -r 3 --first --poll --reporter json --label alexa-topsites
-test yahoo.com --location us-east-1-linux:Firefox Nightly --keepua -r 3 --first --poll --reporter json --label alexa-topsites
-test yahoo.com --location us-east-1-linux:Chrome --keepua -r 3 --first --poll --reporter json --label alexa-topsites
-test yahoo.com --location us-east-1-linux:Chrome Canary --keepua -r 3 --first --poll --reporter json --label alexa-topsites
-test qq.com --location us-east-1-linux:Firefox --keepua -r 3 --first --poll --reporter json --label alexa-topsites
-test qq.com --location us-east-1-linux:Firefox Nightly --keepua -r 3 --first --poll --reporter json --label alexa-topsites
-test qq.com --location us-east-1-linux:Chrome --keepua -r 3 --first --poll --reporter json --label alexa-topsites
-test qq.com --location us-east-1-linux:Chrome Canary --keepua -r 3 --first --poll --reporter json --label alexa-topsites
-test taobao.com --location us-east-1-linux:Firefox --keepua -r 3 --first --poll --reporter json --label alexa-topsites
-test taobao.com --location us-east-1-linux:Firefox Nightly --keepua -r 3 --first --poll --reporter json --label alexa-topsites
-test taobao.com --location us-east-1-linux:Chrome --keepua -r 3 --first --poll --reporter json --label alexa-topsites
-test taobao.com --location us-east-1-linux:Chrome Canary --keepua -r 3 --first --poll --reporter json --label alexa-topsites
-test tmall.com --location us-east-1-linux:Firefox --keepua -r 3 --first --poll --reporter json --label alexa-topsites
-test tmall.com --location us-east-1-linux:Firefox Nightly --keepua -r 3 --first --poll --reporter json --label alexa-topsites
-test tmall.com --location us-east-1-linux:Chrome --keepua -r 3 --first --poll --reporter json --label alexa-topsites
-test tmall.com --location us-east-1-linux:Chrome Canary --keepua -r 3 --first --poll --reporter json --label alexa-topsites
-test twitter.com --location us-east-1-linux:Firefox --keepua -r 3 --first --poll --reporter json --label alexa-topsites
-test twitter.com --location us-east-1-linux:Firefox Nightly --keepua -r 3 --first --poll --reporter json --label alexa-topsites
-test twitter.com --location us-east-1-linux:Chrome --keepua -r 3 --first --poll --reporter json --label alexa-topsites
-test twitter.com --location us-east-1-linux:Chrome Canary --keepua -r 3 --first --poll --reporter json --label alexa-topsites
+test google.com --location us-east-1-linux:Firefox --bodies --keepua -r 3 --first --poll --reporter json --label alexa-topsites
+test google.com --location us-east-1-linux:Firefox Nightly --bodies --keepua -r 3 --first --poll --reporter json --label alexa-topsites
+test google.com --location us-east-1-linux:Chrome --bodies --keepua -r 3 --first --poll --reporter json --label alexa-topsites
+test google.com --location us-east-1-linux:Chrome Canary --bodies --keepua -r 3 --first --poll --reporter json --label alexa-topsites
+test youtube.com --location us-east-1-linux:Firefox --bodies --keepua -r 3 --first --poll --reporter json --label alexa-topsites
+test youtube.com --location us-east-1-linux:Firefox Nightly --bodies --keepua -r 3 --first --poll --reporter json --label alexa-topsites
+test youtube.com --location us-east-1-linux:Chrome --bodies --keepua -r 3 --first --poll --reporter json --label alexa-topsites
+test youtube.com --location us-east-1-linux:Chrome Canary --bodies --keepua -r 3 --first --poll --reporter json --label alexa-topsites
+test facebook.com --location us-east-1-linux:Firefox --bodies --keepua -r 3 --first --poll --reporter json --label alexa-topsites
+test facebook.com --location us-east-1-linux:Firefox Nightly --bodies --keepua -r 3 --first --poll --reporter json --label alexa-topsites
+test facebook.com --location us-east-1-linux:Chrome --bodies --keepua -r 3 --first --poll --reporter json --label alexa-topsites
+test facebook.com --location us-east-1-linux:Chrome Canary --bodies --keepua -r 3 --first --poll --reporter json --label alexa-topsites
+test baidu.com --location us-east-1-linux:Firefox --bodies --keepua -r 3 --first --poll --reporter json --label alexa-topsites
+test baidu.com --location us-east-1-linux:Firefox Nightly --bodies --keepua -r 3 --first --poll --reporter json --label alexa-topsites
+test baidu.com --location us-east-1-linux:Chrome --bodies --keepua -r 3 --first --poll --reporter json --label alexa-topsites
+test baidu.com --location us-east-1-linux:Chrome Canary --bodies --keepua -r 3 --first --poll --reporter json --label alexa-topsites
+test wikipedia.org --location us-east-1-linux:Firefox --bodies --keepua -r 3 --first --poll --reporter json --label alexa-topsites
+test wikipedia.org --location us-east-1-linux:Firefox Nightly --bodies --keepua -r 3 --first --poll --reporter json --label alexa-topsites
+test wikipedia.org --location us-east-1-linux:Chrome --bodies --keepua -r 3 --first --poll --reporter json --label alexa-topsites
+test wikipedia.org --location us-east-1-linux:Chrome Canary --bodies --keepua -r 3 --first --poll --reporter json --label alexa-topsites
+test yahoo.com --location us-east-1-linux:Firefox --bodies --keepua -r 3 --first --poll --reporter json --label alexa-topsites
+test yahoo.com --location us-east-1-linux:Firefox Nightly --bodies --keepua -r 3 --first --poll --reporter json --label alexa-topsites
+test yahoo.com --location us-east-1-linux:Chrome --bodies --keepua -r 3 --first --poll --reporter json --label alexa-topsites
+test yahoo.com --location us-east-1-linux:Chrome Canary --bodies --keepua -r 3 --first --poll --reporter json --label alexa-topsites
+test qq.com --location us-east-1-linux:Firefox --bodies --keepua -r 3 --first --poll --reporter json --label alexa-topsites
+test qq.com --location us-east-1-linux:Firefox Nightly --bodies --keepua -r 3 --first --poll --reporter json --label alexa-topsites
+test qq.com --location us-east-1-linux:Chrome --bodies --keepua -r 3 --first --poll --reporter json --label alexa-topsites
+test qq.com --location us-east-1-linux:Chrome Canary --bodies --keepua -r 3 --first --poll --reporter json --label alexa-topsites
+test taobao.com --location us-east-1-linux:Firefox --bodies --keepua -r 3 --first --poll --reporter json --label alexa-topsites
+test taobao.com --location us-east-1-linux:Firefox Nightly --bodies --keepua -r 3 --first --poll --reporter json --label alexa-topsites
+test taobao.com --location us-east-1-linux:Chrome --bodies --keepua -r 3 --first --poll --reporter json --label alexa-topsites
+test taobao.com --location us-east-1-linux:Chrome Canary --bodies --keepua -r 3 --first --poll --reporter json --label alexa-topsites
+test tmall.com --location us-east-1-linux:Firefox --bodies --keepua -r 3 --first --poll --reporter json --label alexa-topsites
+test tmall.com --location us-east-1-linux:Firefox Nightly --bodies --keepua -r 3 --first --poll --reporter json --label alexa-topsites
+test tmall.com --location us-east-1-linux:Chrome --bodies --keepua -r 3 --first --poll --reporter json --label alexa-topsites
+test tmall.com --location us-east-1-linux:Chrome Canary --bodies --keepua -r 3 --first --poll --reporter json --label alexa-topsites
+test twitter.com --location us-east-1-linux:Firefox --bodies --keepua -r 3 --first --poll --reporter json --label alexa-topsites
+test twitter.com --location us-east-1-linux:Firefox Nightly --bodies --keepua -r 3 --first --poll --reporter json --label alexa-topsites
+test twitter.com --location us-east-1-linux:Chrome --bodies --keepua -r 3 --first --poll --reporter json --label alexa-topsites
+test twitter.com --location us-east-1-linux:Chrome Canary --bodies --keepua -r 3 --first --poll --reporter json --label alexa-topsites
