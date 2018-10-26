@@ -10,7 +10,7 @@ This repo's branch aims to capture, submit, and visualize web-performance metric
 
 ## The currently implemented setup, on the ```alexa-topsites``` branch, supports this workflow:
 
-1. Passing in the top ten (10) Alexa topsites' URLs (without scheme) via [```commands.txt```](https://github.com/mozilla/wpt-api/blob/alexa-topsites/commands.txt)
+1. Passing in the top ten (10) [Alexa topsites' URLs](https://www.alexa.com/topsites) (without scheme) via [```commands.txt```](https://github.com/mozilla/wpt-api/blob/alexa-topsites/commands.txt)
 2. Via [```Jenkins```](https://github.com/mozilla/wpt-api/blob/alexa-topsites/Jenkinsfile#L30), running tests against those URLs with the following hardcoded parameters:
     - -l (location) in the ```us-east-1-linux``` EC2 region
     - -r (# of runs) 3
