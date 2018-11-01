@@ -3,7 +3,7 @@
 [![license](https://img.shields.io/badge/license-MPL%202.0-blue.svg)](https://github.com/mozilla/wpt-api/blob/master/LICENSE.txt)
 [![Build Status](https://travis-ci.org/mozilla/wpt-api.svg?branch=master)](https://travis-ci.org/mozilla/wpt-api)
 [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=mozilla/wpt-api)](https://dependabot.com)
-[![Doc Status](https://readthedocs.org/projects/mozilla-wpt-api-docs/badge/?version=alexa-topsites)](https://mozilla-wpt-api-docs.readthedocs.io/en/alexa-topsites)]
+[![Doc Status](https://readthedocs.org/projects/mozilla-wpt-api-docs/badge/?version=alexa-topsites)](https://mozilla-wpt-api-docs.readthedocs.io/en/alexa-topsites)
 
 This repo's branch aims to capture, submit, and visualize web-performance metrics for the Alexa top 50 sites (and likely 500+, in short order, assuming scaling), using Firefox Quantum release and Nightly builds, and Google Chrome release and Canary (Nightly) builds, all on Linux.
 
