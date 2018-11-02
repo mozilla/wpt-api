@@ -2,6 +2,8 @@
 
 Welcome/preamble/elevator pitch
 
+Guiding principle: test what we ship
+
 ## Table of contents:
 
 * [Thing One](#ThingOne)
