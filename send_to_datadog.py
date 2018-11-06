@@ -29,7 +29,7 @@ def main(path):
     initialize(**options)
 
     for test in data:
-        label = test["data"]["label"]
+        label = test["data"]["label"].replace(".", "")
         print(f"{label}")
         for metric in metrics:
             value = test["data"]["median"]["firstView"][metric]
