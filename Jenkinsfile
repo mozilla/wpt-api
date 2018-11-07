@@ -28,9 +28,9 @@ pipeline {
       steps {
         writeFile([
           file: 'commands.txt',
+          encoding: "UTF-8",
           text: """test ${TARGET_URL} --location us-east-1-linux:Firefox --bodies --keepua -r 3 --first --poll --reporter json --label ${TARGET_NAME}.fx.release
-test ${TARGET_URL} --location us-east-1-linux:Chrome --bodies --keepua -r 3 --first --poll --reporter json --label ${TARGET_NAME}.chrome.release"""]),
-          encoding: "UTF-8"
+test ${TARGET_URL} --location us-east-1-linux:Chrome --bodies --keepua -r 3 --first --poll --reporter json --label ${TARGET_NAME}.chrome.release"""])
         sh '/usr/src/app/bin/webpagetest batch commands.txt > "wpt.json"'
       }
       post {
