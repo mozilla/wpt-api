@@ -42,6 +42,9 @@ test ${TARGET_URL} --location us-east-1-linux:Chrome%20Canary --bodies --keepua 
         success {
           stash includes: 'wpt.json', name: 'wpt.json'
         }
+        failure {
+          ircNotification()
+        }
       }
     }
     stage('Submit stats to datadog') {
