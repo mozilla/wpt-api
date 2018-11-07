@@ -18,7 +18,7 @@ jobs:
   include:
     - stage: Linting
       script:
-        - pipenv run flake8
+        - flake8
     - stage: Docker build
       script:
         - docker build -t wpt-api .
