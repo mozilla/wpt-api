@@ -6,15 +6,18 @@ services:
 env:
   global:
   - PIPENV_IGNORE_VIRTUALENVS=1
-before_install:
+
+script:
+  - pipenv install
+  - pipenv check
+install:
   - pip install -r pipenv.txt
-  - docker build -t wpt-api .
 jobs:
   include:
     - stage: Linting
-      script: flake8
+      script:
+        - pipenv run flake8
     - stage: Docker build
       script: docker build -t wpt-api .
-install: skip
 notifications:
 email: fte-ci@mozilla.com
