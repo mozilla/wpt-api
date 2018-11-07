@@ -9,13 +9,13 @@ branches:
     - job-dsl
 install:
   - pip install -r pipenv.txt
-  - pipenv install
+  - pipenv install --dev
   - pipenv check
 jobs:
   include:
     - stage: Linting
       script:
-        - flake8
+        - pipenv run flake8
     - stage: Docker build
       script:
         - docker build -t wpt-api .
