@@ -6,18 +6,21 @@ services:
 env:
   global:
   - PIPENV_IGNORE_VIRTUALENVS=1
-
-script:
-  - pipenv install
-  - pipenv check
+branches:
+  only:
+    - master
+    - job-dsl
 install:
   - pip install -r pipenv.txt
+  - pipenv install
+  - pipenv check
 jobs:
   include:
     - stage: Linting
       script:
         - pipenv run flake8
     - stage: Docker build
-      script: docker build -t wpt-api .
+      script:
+        - docker build -t wpt-api .
 notifications:
 email: fte-ci@mozilla.com
