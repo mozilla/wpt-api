@@ -15,6 +15,7 @@ jobs:
   include:
     - stage: Linting
       script:
+        - pipenv install flake8
         - pipenv run flake8
     - stage: Docker build
       script:
