@@ -6,6 +6,8 @@ services:
 env:
   global:
   - PIPENV_IGNORE_VIRTUALENVS=1
+before_install:
+  - docker build -t wpt-api .
 jobs:
   include:
     - stage: Linting
