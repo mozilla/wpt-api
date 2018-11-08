@@ -2,6 +2,9 @@
 
 pipeline {
   agent none
+  libraries {
+    lib('fxtest@1.10')
+  }
   environment {
     WEB_PAGE_TEST = credentials('WEB_PAGE_TEST')
     WEBPAGETEST_SERVER = "https://${WEB_PAGE_TEST}@wpt-api.stage.mozaws.net/"
