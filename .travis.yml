@@ -10,15 +10,15 @@ branches:
 install:
   - pip install -r pipenv.txt
   - pipenv install --dev
-  - pipenv check
 jobs:
   include:
     - stage: Linting
       script:
+        - pipenv check
         - pipenv install flake8
         - pipenv run flake8
     - stage: Docker build
       script:
         - docker build -t wpt-api .
 notifications:
-email: fte-ci@mozilla.com
+  email: fte-ci@mozilla.com
