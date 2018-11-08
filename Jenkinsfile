@@ -2,6 +2,9 @@
 
 pipeline {
   agent none
+  libraries {
+    lib('fxtest@1.10')
+  }
   environment {
     WEB_PAGE_TEST = credentials('WEB_PAGE_TEST')
     WEBPAGETEST_SERVER = "https://${WEB_PAGE_TEST}@wpt-api.stage.mozaws.net/"
@@ -41,6 +44,9 @@ test ${TARGET_URL} --location us-east-1-linux:Chrome%20Canary --bodies --keepua 
         }
         success {
           stash includes: 'wpt.json', name: 'wpt.json'
+        }
+        failure {
+          ircNotification()
         }
       }
     }
