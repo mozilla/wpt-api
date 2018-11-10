@@ -18,11 +18,8 @@ Guiding principle: test what we ship
 Lorem
 
 ## Metrics
-
-Colons can be used to align columns.
-
 | Metric        | Visualized    | Metric Unit (In) |(Rec/Draft+) Standard* | Computation/Derivation | In Raptor | Bug(s) | MDN |
-| ------------- |:-------------:| -----:| -----:|
+| ------------- |:-------------:| -----:| -----:|-------:|-------:|-------:|-------:|
 | ```bytesInDoc``` | Y |  | ? | n/a | N | n/a | n/a |
 | ```DOMContentFlushed``` | N | ms; duration/offset | N; Firefox-only; needs custom pref | ```timeToDOMContentFlushed``` ```-``` ```fetchStart``` | N | n/a; see ```timeToDOMContentFlushed``` | n/a |
 | ```fetchStart``` | N  | ms | N; API deprecated | ? | ? | . |   [ fetchStart](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceTiming/fetchStart) |
