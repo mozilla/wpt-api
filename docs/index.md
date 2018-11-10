@@ -1,14 +1,10 @@
 # Mozilla wpt-api Documentation #
 
-Welcome/preamble/elevator pitch
-
-Guiding principle: test what we ship
-
 ## Table of contents: ##
 
 * [Introduction](#intro)
 * [High-Priority Needs](#urgent)
-* [Perf Metrics](#metrics)
+* [Metrics](#metrics)
 * [Firefox-Pertinent WPT Code](#wptFxCode)
 * [Infrastructure](#infra)
 * [Dependencies](#dependencies)
