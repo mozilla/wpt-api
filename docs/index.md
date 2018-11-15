@@ -8,11 +8,11 @@
 * [Firefox-Pertinent WPT Code](#wptFxCode)
 * [Infrastructure](#infra)
 * [Dependencies](#dependencies)
-* [Contribute](#contribute)
+* [Contributions](#contributions)
 * [Credits & Thanks](#credits)
 
 ## Introduction ##
-### Project Goals ##
+## Project Goals ##
 * Accurately measure, track, and report on key Firefox-performance metrics, over time
 * Leverage, and be an integral part of, the WebPageTest ecosystem
 
@@ -43,8 +43,8 @@
 "Standard" used here to denote, for a given metric:
 * We consider said metric to be implemented consistently (throughout the entire test-run & reporting workflow) and in close adherence with a corresponding [Navigation Timing, Performance Timing, PerformanceNavigationTiming, User Timing, et al ] Timing API specification.
 
-### Firefox-Pertinent WPT Code ###
-####  wptagent ####
+## Firefox-Pertinent WPT Code ##
+###  wptagent ###
 * ```Dockerfile```
 * ```desktop_browser.py``` (base class for **_all_** browsers)
 * ```browsers.py``` (self-described "Main entry point [sic] for controlling browsers")
@@ -59,28 +59,28 @@
 * ```trace_parser.py``` (calculates metrics with recipes/formulas)
 * ```pcap_parser.py``` (wait for it...parses pcap files!)
 
-### Infrastructure ###
+## Infrastructure ##
 
-#### WebPageTest Instance (*Mozilla-internal*) ####
+### WebPageTest Instance (*Mozilla-internal*) ###
 * https://wpt.stage.mozaws.net - Auth0/OAuth
 * https://wpt-api.stage.mozaws.net - Basic Auth
 
-#### Jenkins ####
+### Jenkins ###
 * https://qa-preprod-master.fxtest.jenkins.stage.mozaws.net/job/wpt/ - [Docs](https://mana.mozilla.org/wiki/display/TestEngineering/qa-preprod-master.fxtest.jenkins.stage.mozaws.net) (in Mana)
 
-#### AWS EC2 Setup ####
+### AWS EC2 Setup ###
 * 1 ```c4.large``` __WebPageTest__ core server-instance (Linux, EC2 AMI ID: XXX)
 * 4 **x** ```c5.xlarge``` __wptagent__ server instances (Linux, EC2 AMI ID: XXX)
 
 
-### Dependencies ###
+## Dependencies ##
 #### Core: ####
 * [WebPageTest](https://github.com/WPO-Foundation/webpagetest/blob/master/README.md) (core/server)
 * [wptagent](https://github.com/WPO-Foundation/wptagent/blob/master/README.md)
 * [webpagetest-api](https://github.com/marcelduran/webpagetest-api/blob/master/README.md)
 
-#### Contribute ####
-#### Credits & Fist-bumps ####
+## Contributions ##
+## Credits & Fist-bumps ##
 * Pat Meenan
 * Rick Viscomi, Andy Davies, & Marcel Duran
 * Peter Hedenskog
