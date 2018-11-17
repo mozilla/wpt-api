@@ -3,7 +3,9 @@
 ## Table of contents: ##
 
 * [Introduction](#intro)
+* [Project Goals](#goals)
 * [High-Priority Needs](#urgent)
+* [Recommendations](#recommendations)
 * [Metrics](#metrics)
 * [Firefox-Pertinent WPT Code](#wptFxCode)
 * [Infrastructure](#infra)
@@ -28,8 +30,6 @@ which **would "enable web developers to access, instrument, and retrieve various
 * Continue soliciting workflows/use-cases from multiple teams, weighed with ongoing refinements/feature work
 * Perhaps we should include output of ```window.performance.timing``` (to compare/contrast with ```WebPageTest```-reported timing data)
 
-
-
 ## Metrics ##
 ### Current Status ###
 | Metric | To-Spec? / Issues | Unit / Type | Source / API | Calculation | WPT Config / Issues |
@@ -49,11 +49,6 @@ which **would "enable web developers to access, instrument, and retrieve various
 |[```timeToFirstMeaningfulPaint```](https://developer.mozilla.org/en-US/docs/Web/API/PerformancePaintTiming) (```TTFMP```) | N | ms | N; partial <br>**-**<br>**Impl**. [bug 1299117](https://bugzilla.mozilla.org/show_bug.cgi?id=1299117) | . | . |
 | ```visualComplete``` (```timeToVisuallyComplete```) | Y | seconds | ? | ? | ? |
 
-"To-Spec?" used here to denote, for a given metric:
-* We consider said metric to be implemented consistently (throughout the entire test-run & reporting workflow) and in close adherence with a corresponding [Navigation Timing, Performance Timing, PerformanceNavigationTiming, User Timing, et al] Timing API specification(s).
- * Or, behind an experimental/feature flag/pref, we're not directly exposing, but are vetting, said metric
-
-
 ### Manually Testing Metrics in Firefox ###
 1. Enable/modify any (missing) prefs/pref-overrides
 2. Open Tools -> Web Developer -> Web Console
@@ -64,10 +59,11 @@ which **would "enable web developers to access, instrument, and retrieve various
 
 PRO-TIP: you can and should input ```window.performance.timing``` into the Console, to dump the entire PerformanceTiming object
 
-
 ### Adding Metrics to WebPageTest with Firefox ###
-1. Add/modify the preference(s)
-2. Most metrics can be found in the following DOM WebIDL:  [```dom/webidl/PerformanceTiming.webidl```](https://hg.mozilla.org/mozilla-central/file/tip/dom/webidl/PerformanceTiming.webidl)
+1. Manually test the metric + pref; most metrics can be found in the following Firefox DOM WebIDL:  [```mozilla-central/dom/webidl/PerformanceTiming.webidl```](https://hg.mozilla.org/mozilla-central/file/tip/dom/webidl/PerformanceTiming.webidl)
+2. If needed, add/modify Firefox's `prefs.js`, via a PR to  [```wptagent/internal/support/Firefox/profile/prefs.js```](https://github.com/WPO-Foundation/wptagent/blob/3f2128a9815838f462187b870be3c666ebd13d95/internal/support/Firefox/profile/prefs.js)
+  Example: https://github.com/WPO-Foundation/wptagent/pull/181/files#diff-69b0882d86377063fd0514c0dc978308
+3. Additionally, we might need to have the metric (if not available via standard APIs) emitted in WebPageTest, in [```wptagent/internal/js/page_data.js```](https://github.com/WPO-Foundation/wptagent/blob/3f2128a9815838f462187b870be3c666ebd13d95/internal/js/page_data.js#L27).
 
 ## WebPageTest Runs at Mozilla ##
 
@@ -75,33 +71,32 @@ This should be a mid-to-high level overview of pertinent Mozilla-specific goals,
 
 ## Firefox-Pertinent *WPT* Code: ##
 ###  wptagent ###
-* ```Dockerfile```
-* ```desktop_browser.py``` (base class for **_all_** browsers)
-* ```browsers.py``` (self-described "Main entry point [sic] for controlling browsers")
-* ```webpagetest.py``` (the one, the only)
-* ```firefox.py``` (hey, that's us!) -->
-[**code**](https://github.com/WPO-Foundation/wptagent/blob/master/internal/firefox.py)
+* [```Dockerfile```](https://github.com/WPO-Foundation/wptagent/blob/3f2128a9815838f462187b870be3c666ebd13d95/Dockerfile)
+* [```desktop_browser.py```](https://github.com/WPO-Foundation/wptagent/blob/3f2128a9815838f462187b870be3c666ebd13d95/internal/desktop_browser.py) (base class for **_all_** browsers)
+* [```browsers.py```](https://github.com/WPO-Foundation/wptagent/blob/3f2128a9815838f462187b870be3c666ebd13d95/internal/browsers.py) (self-described "Main entry point [sic] for controlling browsers")
+* [```webpagetest.py```](https://github.com/WPO-Foundation/wptagent/blob/3f2128a9815838f462187b870be3c666ebd13d95/internal/webpagetest.py) (the one, the only)
+* [```firefox.py```](https://github.com/WPO-Foundation/wptagent/blob/master/internal/firefox.py) (hey, that's us!)
 * [```traffic-shaping.py```]((https://github.com/WPO-Foundation/wptagent/blob/master/internal/traffic_shaping.py) (cross-platform rate-limiting, latency, etc. support)
-* ```page_data.js``` (user timings, vendor-specific/internal metrics & configs/settings)
-* ```firefox_log_parser.py``` (where the metric-culling magic happens)
-* ```visual_metrics.py``` (the guts of the visual-comparison algorithms)
-* ```trace_parser.py``` (calculates metrics with recipes/formulas)
-* ```pcap_parser.py``` (wait for it...parses pcap files!)
+* [```page_data.js```](https://github.com/WPO-Foundation/wptagent/blob/3f2128a9815838f462187b870be3c666ebd13d95/internal/js/page_data.js) (user timings, vendor-specific/internal metrics & configs/settings)
+* [```firefox_log_parser.py```](https://github.com/WPO-Foundation/wptagent/blob/3f2128a9815838f462187b870be3c666ebd13d95/internal/support/firefox_log_parser.py) (where the metric-culling magic happens)
+* [```visual_metrics.py```](https://github.com/WPO-Foundation/wptagent/blob/3f2128a9815838f462187b870be3c666ebd13d95/internal/support/visualmetrics.py) (the guts of the visual-comparison algorithms)
+* [```trace_parser.py```](https://github.com/WPO-Foundation/wptagent/blob/3f2128a9815838f462187b870be3c666ebd13d95/internal/support/trace_parser.py) (calculates metrics with recipes/formulas)
+* [```pcap_parser.py```](https://github.com/WPO-Foundation/wptagent/blob/3f2128a9815838f462187b870be3c666ebd13d95/internal/support/pcap-parser.py) (wait for it...parses pcap files!)
 
-## Infrastructure ##
+# Infrastructure
 
 ### WebPageTest Instance (*Mozilla-internal*) ###
 * https://wpt.stage.mozaws.net - Auth0/OAuth
 * https://wpt-api.stage.mozaws.net - Basic Auth
-* You'll need to file a bug in Cloud Ops, requesting access
+ * You'll need to file a bug in Cloud Ops, requesting access
 
 ### Jenkins ###
-* https://qa-preprod-master.fxtest.jenkins.stage.mozaws.net/job/wpt/ - [Docs](https://mana.mozilla.org/wiki/display/TestEngineering/qa-preprod-master.fxtest.jenkins.stage.mozaws.net)(internal-only, in Mana)
+* [```https://qa-preprod-master.fxtest.jenkins.stage.mozaws.net/job/wpt/```](https://qa-preprod-master.fxtest.jenkins.stage.mozaws.net/job/wpt/)
+ * To obtain access, see these (internal-only) [Mana docs](https://mana.mozilla.org/wiki/display/TestEngineering/qa-preprod-master.fxtest.jenkins.stage.mozaws.net)
 
 ### AWS EC2 Setup ###
-* **1** ```c4.large``` __WebPageTest__ core server-instance (Linux, EC2 AMI ID: XXX)
-* **4** **x** ```c5.xlarge``` __wptagent__ server instances (Linux, EC2 AMI ID: XXX)
-
+* **1** ```c4.large``` __WebPageTest__ core server-instance (Linux, EC2 AMI ID: ami-024df0ababa7118ae)
+* **4** x ```c5.xlarge``` __wptagent__ server instances (Linux, EC2 AMI ID: ami-a88c20d5)
 
 ## Dependencies ##
 #### Core: ####
@@ -111,10 +106,15 @@ This should be a mid-to-high level overview of pertinent Mozilla-specific goals,
 
 ## W3C (Draft) Specs ##
 
-Start here:
-* https://w3c.github.io/perf-timing-primer/
+* [Perf-Timing Primer](https://w3c.github.io/perf-timing-primer/)
+* [Navigation Timing](https://www.w3.org/TR/navigation-timing/)
+* [(Navigation Timing Level 2)](https://www.w3.org/TR/navigation-timing-2/)
+* [High-Resolution Time Level 2](https://www.w3.org/TR/hr-time-2/()
+* [Performance Timeline Level 2](https://www.w3.org/TR/performance-timeline-2/)
+* [User Timing](https://www.w3.org/TR/user-timing/)
 
-Random Links:
+## Assorted Links: ##
+* Example Mobile-Device Lab Config: https://github.com/WPO-Foundation/webpagetest-docs/blob/2db35b31fe1c992c02650a5b401f7ed208d8fa27/user/Private%20Instances/mobile/example.md
 * https://www.w3.org/2000/09/dbwg/details?group=45211&order=org&public=1
 * Web-platform tests we run: https://github.com/web-platform-tests/wpt/tree/744325921ba52791bc8db1b45d2aed097577753a/navigation-timing
 ***
