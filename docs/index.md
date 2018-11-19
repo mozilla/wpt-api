@@ -55,7 +55,7 @@ which **would "enable web developers to access, instrument, and retrieve various
 3. Load a URL
 4. After the page has "finished" loading, type something like: ```window.performance.timing.timeToFirstInteractive```.  (**DO** take note of the other implemented/available metric options available as you autocomplete.)
 5. Hit return/enter
-6. You should see a value similar to ```1542438605479```
+6. You should see a value similar to ```1542438605479``` (tiime-stamped offset, in milliseconds)
 
 PRO-TIP: you can and should input ```window.performance.timing``` into the Console, to dump the entire PerformanceTiming object
 
@@ -108,7 +108,7 @@ This should be a mid-to-high level overview of pertinent Mozilla-specific goals,
 
 * [Perf-Timing Primer](https://w3c.github.io/perf-timing-primer/)
 * [Navigation Timing](https://www.w3.org/TR/navigation-timing/)
-* [(Navigation Timing Level 2)](https://www.w3.org/TR/navigation-timing-2/)
+* [Navigation Timing Level 2](https://www.w3.org/TR/navigation-timing-2/)
 * [High-Resolution Time Level 2](https://www.w3.org/TR/hr-time-2/()
 * [Performance Timeline Level 2](https://www.w3.org/TR/performance-timeline-2/)
 * [User Timing](https://www.w3.org/TR/user-timing/)
