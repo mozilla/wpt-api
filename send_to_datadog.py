@@ -9,6 +9,7 @@ options = {
     "statsd_port": "8125",
 }
 
+# these metrics are roughly in order of occurrence & metadata
 metrics = [
     "TTFB",
     "render",
@@ -18,6 +19,7 @@ metrics = [
     "bytesInDoc",
     "visualComplete",
     "requestsFull",
+    "browser_version"
 ]
 
 

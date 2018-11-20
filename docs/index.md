@@ -6,7 +6,7 @@
 * [Project Goals](#goals)
 * [High-Priority Needs](#urgent)
 * [Recommendations](#recommendations)
-* [Metrics](#metrics)
+* [Metrics & Metadata](#metrics)
 * [Firefox-Pertinent WPT Code](#wptFxCode)
 * [Infrastructure](#infra)
 * [Dependencies](#dependencies)
@@ -22,7 +22,7 @@
 ### Metrics & timings/results' stability, repeatability ###
 * Established/accepted baseline metrics; both which ones, as well as acceptable performance targets /benchmarks/budgets
 * Standard Deviation for key metrics
-* Easily-comparable (+ vettable) runs
+* Easily-vettable and comparable runs
 
 ## Recommendations ##
 * We should **very** closely follow: https://w3c.github.io/performance-timeline/,<br>
@@ -30,11 +30,11 @@ which **would "enable web developers to access, instrument, and retrieve various
 * Continue soliciting workflows/use-cases from multiple teams, weighed with ongoing refinements/feature work
 * Perhaps we should include output of ```window.performance.timing``` (to compare/contrast with ```WebPageTest```-reported timing data)
 
-## Metrics ##
+## Metrics & Metadata##
 ### Current Status ###
 | Metric | To-Spec? / Issues | Unit / Type | Source / API | Calculation | WPT Config / Issues |
 |:------------|:-------------|:-----|:-----|:-------|:------|
-| ```bytesInDoc``` | Y | number; count | ? | n/a |  |
+| ```bytesInDoc``` | Y | number; count | ? | ? |  |
 | ```DOMContentFlushed```| N; [Issue 97](https://github.com/mozilla/wpt-api/issues/97#issuecomment-432422829) -  needs calc. in **wpt-api** | ms; duration/offset | Firefox-only; needs custom pref | ```timeToDOMContentFlushed``` ```-``` ```fetchStart``` | see ```timeToDOMContentFlushed```|
 |[```fetchStart```](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceTiming/fetchStart) | N  | ms | N; [NavTiming API deprecated](https://w3c.github.io/navigation-timing/#obsolete) | ? | ? |
 | [```firstPaint```](https://developer.mozilla.org/en-US/docs/Web/API/PerformancePaintTiming)  | ? |  seconds   | ? | ? | ? |
@@ -48,6 +48,7 @@ which **would "enable web developers to access, instrument, and retrieve various
 | [```timeToFirstNonBlankPaint```](https://bugzilla.mozilla.org/show_bug.cgi?id=1377251) (```TTFNBP?```) | ? | ms |  Firefox-only; needs custom pref | ? | ```user_pref("dom.performance.time.to_non_blank_paint", true``` in [internal/support/Firefox/profile/prefs.js](https://github.com/WPO-Foundation/wptagent/blob/3f2128a9815838f462187b870be3c666ebd13d95/internal/support/Firefox/profile/prefs.js#L60) |
 |[```timeToFirstMeaningfulPaint```](https://developer.mozilla.org/en-US/docs/Web/API/PerformancePaintTiming) (```TTFMP```) | N | ms | N; partial <br>**-**<br>**Impl**. [bug 1299117](https://bugzilla.mozilla.org/show_bug.cgi?id=1299117) | . | . |
 | ```visualComplete``` (```timeToVisuallyComplete```) | Y | seconds | ? | ? | ? |
+| ```browser_version``` | **n/a**;  |  | . | . | . |
 
 ### Manually Testing Metrics in Firefox ###
 1. Enable/modify any (missing) prefs/pref-overrides
@@ -59,8 +60,10 @@ which **would "enable web developers to access, instrument, and retrieve various
 
 PRO-TIP: you can and should input ```window.performance.timing``` into the Console, to dump the entire PerformanceTiming object
 
+**[XXX FIX ME - Upload a tantalizing screengrab, here]**
+
 ### Adding Metrics to WebPageTest with Firefox ###
-1. Manually test the metric + pref; most metrics can be found in the following Firefox DOM WebIDL:  [```mozilla-central/dom/webidl/PerformanceTiming.webidl```](https://hg.mozilla.org/mozilla-central/file/tip/dom/webidl/PerformanceTiming.webidl)
+1. Manually test the metric + pref (ahem); most metrics can be found in the following Firefox DOM WebIDL:  [```mozilla-central/dom/webidl/PerformanceTiming.webidl```](https://hg.mozilla.org/mozilla-central/file/tip/dom/webidl/PerformanceTiming.webidl)
 2. If needed, add/modify Firefox's `prefs.js`, via a PR to  [```wptagent/internal/support/Firefox/profile/prefs.js```](https://github.com/WPO-Foundation/wptagent/blob/3f2128a9815838f462187b870be3c666ebd13d95/internal/support/Firefox/profile/prefs.js)
   Example: https://github.com/WPO-Foundation/wptagent/pull/181/files#diff-69b0882d86377063fd0514c0dc978308
 3. Additionally, we might need to have the metric (if not available via standard APIs) emitted in WebPageTest, in [```wptagent/internal/js/page_data.js```](https://github.com/WPO-Foundation/wptagent/blob/3f2128a9815838f462187b870be3c666ebd13d95/internal/js/page_data.js#L27).
