@@ -57,6 +57,10 @@ test ${TARGET_URL} --location us-east-1-linux:Chrome%20Canary --bodies --keepua 
           args '--net host'
         }
       }
+      environment {
+        DATADOG_API_KEY = credentials("DATADOG_API_KEY")
+        DATADOG_APP_KEY = credentials("DATADOG_APP_KEY")
+      }
       steps {
         unstash 'wpt.json'
         sh 'python ./send_to_datadog.py wpt.json'
