@@ -1,5 +1,5 @@
 import json
-from pprint import pprint
+# from pprint import pprint
 import os
 import sys
 
@@ -74,7 +74,6 @@ def main(path):
             statsd.gauge(f"wpt.batch.{label}.median.firstView.{name}", value)
 
     # pprint(tb)
-
     for item in tbdata.values():
         title = item["title"]
         description = item["description"]
