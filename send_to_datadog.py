@@ -1,4 +1,5 @@
 import json
+from pprint import pprint
 import os
 import sys
 
@@ -19,6 +20,7 @@ def main(path):
 
     dbl_name = "WebPageTest"
     dbls = api.DashboardList.get_all()["dashboard_lists"]
+    # pprint(dbls)
     try:
         dbl = next(dbl for dbl in dbls if dbl["name"] == dbl_name)
         print(f"Using existing {dbl_name} dashboard list")
@@ -28,6 +30,7 @@ def main(path):
 
     tbdata = {}
     tbs = api.Timeboard.get_all()["dashes"]
+    # pprint(tbs)
 
     with open(path) as f:
         data = json.load(f)
@@ -70,6 +73,8 @@ def main(path):
             print(f"- {name}: {value}")
             statsd.gauge(f"wpt.batch.{label}.median.firstView.{name}", value)
 
+    # pprint(tb)
+            
     for item in tbdata.values():
         title = item["title"]
         description = item["description"]
@@ -92,6 +97,7 @@ def main(path):
                 graphs=graphs,
             )
 
+        # pprint(tb)
         print(f"Adding {title} timeboard to {dbl_name} dashboard list")
         api.DashboardList.add_items(dbl["id"], dashboards=[{
             "type": "custom_timeboard",
