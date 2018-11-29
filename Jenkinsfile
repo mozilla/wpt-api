@@ -12,7 +12,7 @@ pipeline {
   options {
     ansiColor('xterm')
     timestamps()
-    timeout(time: 15, unit: 'MINUTES')
+    timeout(time: 30, unit: 'MINUTES')
   }
   stages {
     stage('clone') {
