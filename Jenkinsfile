@@ -47,7 +47,7 @@ test ${TARGET_URL} --location us-east-1-linux:Chrome%20Canary --bodies --keepua 
           stash includes: 'wpt.json', name: 'wpt.json'
         }
         failure {
-          ircNotification()
+          ircNotification('#perftest-alerts')
         }
       }
     }
