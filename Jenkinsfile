@@ -1,7 +1,9 @@
 #!/usr/bin/env groovy
 
 pipeline {
-  agent none
+  agent {
+      label 'webpagetest'
+  }
   libraries {
     lib('fxtest@1.10')
   }
@@ -54,7 +56,7 @@ test ${TARGET_URL} --location us-east-1-linux:Chrome%20Canary --bodies --keepua 
             replyTo: '$DEFAULT_REPLYTO',
             subject: '$DEFAULT_SUBJECT',
             to: '$DEFAULT_RECIPIENTS')
-        }        
+        }
       }
     }
     stage('Submit stats to datadog') {
