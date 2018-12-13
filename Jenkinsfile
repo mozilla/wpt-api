@@ -12,7 +12,7 @@ pipeline {
   options {
     ansiColor('xterm')
     timestamps()
-    timeout(time: 15, unit: 'MINUTES')
+    timeout(time: 20, unit: 'MINUTES')
   }
   stages {
     stage('clone') {
@@ -54,7 +54,7 @@ test ${TARGET_URL} --location us-east-1-linux:Chrome%20Canary --bodies --keepua 
             replyTo: '$DEFAULT_REPLYTO',
             subject: '$DEFAULT_SUBJECT',
             to: '$DEFAULT_RECIPIENTS')
-        }        
+        }
       }
     }
     stage('Submit stats to datadog') {
