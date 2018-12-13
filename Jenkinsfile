@@ -1,7 +1,9 @@
 #!/usr/bin/env groovy
 
 pipeline {
-  agent none
+  agent {
+      label 'webpagetest'
+  }
   libraries {
     lib('fxtest@1.10')
   }
