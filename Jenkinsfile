@@ -18,9 +18,7 @@ pipeline {
   }
   stages {
     stage('clone') {
-      agent {
-        label 'webpagetest'
-      }
+      agent any
       steps {
         checkout([
           $class: 'GitSCM',
