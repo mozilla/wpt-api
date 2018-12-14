@@ -1,5 +1,8 @@
 # Changelog
 
+## 2018-12-14
+### [infra]
+:jbuck configured our WebPageTest Docker image/build to auto-update (pull new Docker image from https://hub.docker.com/r/webpagetest/server/)
 ## 2018-12-12
 ### [infra]
 - increased # of wptagents (Linux) from 4, to **6 _c5.xlarge_** instances (https://bugzilla.mozilla.org/show_bug.cgi?id=1513690)
