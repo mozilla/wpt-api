@@ -9,3 +9,6 @@
 ## [XXX - NEED DATE]
 ### [infra]
 - upgraded EC2 instance sizes for wptagents from c4.medium to c5.xlarge
+## 2018-10-25
+### [infra]
+- added two (2) more c5.xlarge instances
