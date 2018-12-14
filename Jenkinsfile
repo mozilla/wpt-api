@@ -2,7 +2,7 @@
 
 pipeline {
   agent {
-      label 'webpagetest'
+    label 'webpagetest'
   }
   libraries {
     lib('fxtest@1.10')
@@ -18,13 +18,15 @@ pipeline {
   }
   stages {
     stage('clone') {
-       agent any
-       steps {
-         checkout([
-           $class: 'GitSCM',
-           branches: [[name: 'master']],
-           extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'webpagetest-api']],
-           userRemoteConfigs: [[url: 'https://github.com/marcelduran/webpagetest-api']]])
+      agent {
+        label 'webpagetest'
+      }
+      steps {
+        checkout([
+          $class: 'GitSCM',
+          branches: [[name: 'master']],
+          extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'webpagetest-api']],
+          userRemoteConfigs: [[url: 'https://github.com/marcelduran/webpagetest-api']]])
         }
     }
     stage('Run webpagetest') {
