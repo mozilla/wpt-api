@@ -35,10 +35,10 @@ pipeline {
         writeFile([
           file: 'commands.txt',
           encoding: 'UTF-8',
-          text: """test ${TARGET_URL} --location us-east-1-linux:Firefox --bodies --keepua -r 3 --first --video --medianvideo --priority 1 --poll --reporter json --label ${TARGET_NAME}.fx.release
-test ${TARGET_URL} --location us-east-1-linux:Firefox%20Nightly --bodies --keepua -r 3 --first --video --medianvideo --priority 1 --poll --reporter json --label ${TARGET_NAME}.fx.nightly
-test ${TARGET_URL} --location us-east-1-linux:Chrome --bodies --keepua -r 3 --first --video --medianvideo --priority 1 --poll --reporter json --label ${TARGET_NAME}.chrome.release
-test ${TARGET_URL} --location us-east-1-linux:Chrome%20Canary --bodies --keepua -r 3 --first --video --medianvideo --priority 1 --poll --reporter json --label ${TARGET_NAME}.chrome.canary"""])
+          text: """test ${TARGET_URL} --location us-east-1-linux:Firefox --bodies --keepua -r 3 --first --video --medianvideo --priority 1 --poll 5 --reporter json --label ${TARGET_NAME}.fx.release
+test ${TARGET_URL} --location us-east-1-linux:Firefox%20Nightly --bodies --keepua -r 3 --first --video --medianvideo --priority 1 --poll 5 --reporter json --label ${TARGET_NAME}.fx.nightly
+test ${TARGET_URL} --location us-east-1-linux:Chrome --bodies --keepua -r 3 --first --video --medianvideo --priority 1 --poll 5 --reporter json --label ${TARGET_NAME}.chrome.release
+test ${TARGET_URL} --location us-east-1-linux:Chrome%20Canary --bodies --keepua -r 3 --first --video --medianvideo --priority 1 --poll 5 --reporter json --label ${TARGET_NAME}.chrome.canary"""])
         sh '/usr/src/app/bin/webpagetest batch commands.txt > "wpt.json"'
       }
       post {
