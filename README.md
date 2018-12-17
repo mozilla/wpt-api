@@ -1,14 +1,14 @@
-# wpt-api, **```job-dsl```** branch
+# wpt-api ** 
 
 [![license](https://img.shields.io/badge/license-MPL%202.0-blue.svg)](https://github.com/mozilla/wpt-api/blob/master/LICENSE.txt)
 [![Build Status](https://travis-ci.org/mozilla/wpt-api.svg?branch=master)](https://travis-ci.org/mozilla/wpt-api)
 [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=mozilla/wpt-api)](https://dependabot.com)
 
-This repo's branch aims to capture, submit, and visualize web-performance metrics for the Alexa top 50 sites (and likely 500+, in short order, assuming scaling), using Firefox Quantum release and Nightly builds, and Google Chrome release and Canary (Nightly) builds, all on Linux.
+This repo's branch aims to capture, submit, and visualize web-performance metrics for a modified Alexa top 50 sites (and likely 500+, in short order, assuming scaling), using Firefox Quantum release and Nightly builds, and Google Chrome release and Canary (Nightly) builds, all on Linux.
 
 ![](https://user-images.githubusercontent.com/387249/43986821-0b5adddc-9ccc-11e8-924f-9d7420abc02a.png)
 
-## The currently implemented setup, on the ```alexa-topsites``` branch, supports this workflow:
+## The currently implemented setup, on the master branch, supports this workflow:
 
 1. Passing in the top ten (10) [Alexa topsites' URLs](https://www.alexa.com/topsites) (without scheme) via [```commands.txt```](https://github.com/mozilla/wpt-api/blob/alexa-topsites/commands.txt)
 2. Via [```Jenkins```](https://github.com/mozilla/wpt-api/blob/alexa-topsites/Jenkinsfile#L30), running tests against those URLs with the following hardcoded parameters:
