@@ -4,7 +4,7 @@
   {"name": "firstPaint", "description": "Time to First Non-Blank Paint", "unit": "seconds"},
   {"name": "timeToDOMContentFlushed", "description": "timeToDOMContentFlushed", "unit": "milliseconds"},
   {"name": "SpeedIndex", "description": "SpeedIndex", "unit": "seconds"},
-  {"name": "pageLoadTime", "description": "Custom Fx page-load metric", "unit": "seconds"}
+  {"name": "pageLoadTime", "description": "Custom Fx page-load metric", "unit": "seconds"},
   {"name": "bytesInDoc", "description": "Total Bytes in Doc", "unit": "bytes"},
   {"name": "visualComplete", "description": "Time to Visual Complete", "unit": "seconds"},
   {"name": "requestsFull", "description": "Number of HTTP(s) Requests", "unit": "count"}
