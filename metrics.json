@@ -6,7 +6,6 @@
   {"name": "timeToDOMContentFlushed", "description": "Time to DOMContentFlushed", "unit": "milliseconds"},
   {"name": "timeToFirstInteractive", "description": "Time to First Interactive", "unit": "milliseconds"},
   {"name": "SpeedIndex", "description": "SpeedIndex", "unit": "seconds"},
-  {"name": "pageLoadTime", "description": "Custom Fx page-load metric", "unit": "seconds"},
   {"name": "bytesInDoc", "description": "Total Bytes in Doc", "unit": "bytes"},
   {"name": "visualComplete", "description": "Time to Visual Complete", "unit": "seconds"},
   {"name": "requestsFull", "description": "Number of HTTP(s) Requests", "unit": "count"}
