@@ -1,26 +1,30 @@
 #!/usr/bin/env groovy
 
 pipeline {
-  agent none
+  agent {
+    label 'webpagetest'
+  }
+  libraries {
+    lib('fxtest@1.10')
+  }
   environment {
     WEB_PAGE_TEST = credentials('WEB_PAGE_TEST')
     WEBPAGETEST_SERVER = "https://${WEB_PAGE_TEST}@wpt-api.stage.mozaws.net/"
-    PAGE_URL = "https://latest.dev.lcip.org/?service=sync&entrypoint=firstrun&context=fx_desktop_v3"
   }
   options {
     ansiColor('xterm')
     timestamps()
-    timeout(time: 30, unit: 'MINUTES')
+    timeout(time: 20, unit: 'MINUTES')
   }
   stages {
     stage('clone') {
-       agent any
-       steps {
-         checkout([
-           $class: 'GitSCM',
-           branches: [[name: 'master']],
-           extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'webpagetest-api']],
-           userRemoteConfigs: [[url: 'https://github.com/marcelduran/webpagetest-api']]])
+      agent any
+      steps {
+        checkout([
+          $class: 'GitSCM',
+          branches: [[name: 'master']],
+          extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'webpagetest-api']],
+          userRemoteConfigs: [[url: 'https://github.com/marcelduran/webpagetest-api']]])
         }
     }
     stage('Run webpagetest') {
@@ -28,14 +32,30 @@ pipeline {
         dockerfile { dir 'webpagetest-api' }
       }
       steps {
-        sh '/usr/src/app/bin/webpagetest test "${PAGE_URL}" -l "us-east-1-linux:Firefox" -r 5 --first --poll --reporter json > "fxa-homepage.json"'
-        }
+        writeFile([
+          file: 'commands.txt',
+          encoding: 'UTF-8',
+          text: """test ${TARGET_URL} --location us-east-1-linux:Firefox --bodies --keepua -r 3 --first --video --medianvideo --priority 1 --poll 5 --reporter json --label ${TARGET_NAME}.fx.release
+test ${TARGET_URL} --location us-east-1-linux:Firefox%20Nightly --bodies --keepua -r 3 --first --video --medianvideo --priority 1 --poll 5 --reporter json --label ${TARGET_NAME}.fx.nightly
+test ${TARGET_URL} --location us-east-1-linux:Chrome --bodies --keepua -r 3 --first --video --medianvideo --priority 1 --poll 5 --reporter json --label ${TARGET_NAME}.chrome.release
+test ${TARGET_URL} --location us-east-1-linux:Chrome%20Canary --bodies --keepua -r 3 --first --video --medianvideo --priority 1 --poll 5 --reporter json --label ${TARGET_NAME}.chrome.canary"""])
+        sh '/usr/src/app/bin/webpagetest batch commands.txt > "wpt.json"'
+      }
       post {
         always {
-          archiveArtifacts 'fxa-homepage.json'
+          archiveArtifacts 'commands.txt,wpt.json'
         }
         success {
-          stash includes: 'fxa-homepage.json', name: 'fxa-homepage.json'
+          stash includes: 'wpt.json', name: 'wpt.json'
+        }
+        failure {
+          ircNotification('#perftest-alerts')
+          emailext(
+            attachLog: true,
+            body: '$BUILD_URL\n\n$FAILED_TESTS',
+            replyTo: '$DEFAULT_REPLYTO',
+            subject: '$DEFAULT_SUBJECT',
+            to: '$DEFAULT_RECIPIENTS')
         }
       }
     }
@@ -45,11 +65,13 @@ pipeline {
           args '--net host'
         }
       }
+      environment {
+        DATADOG_API_KEY = credentials("DATADOG_API_KEY")
+        DATADOG_APP_KEY = credentials("DATADOG_APP_KEY")
+      }
       steps {
-        unstash 'fxa-homepage.json'
-        sh '''
-          python ./send_to_datadog.py
-        '''
+        unstash 'wpt.json'
+        sh 'python ./send_to_datadog.py wpt.json'
       }
     }
   }
