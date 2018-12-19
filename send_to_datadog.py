@@ -53,11 +53,11 @@ def main(path):
         print(f"{target_url} - {browser_name} ({browser_version})")
         requests = []
         for metric in metrics:
-            metric_name = metric['name']
+            metric = metric['name']
             title = f"{metric['description']} ({metric['unit']})"
             # sample schema:
             # webpagetest.default.www.google.com.noAuth._firstView.cable.desktop.firefox.nightly.{metric_name}.median
-            query = f"avg:webpagetest.default.{target_url}.noAuth._firstView.cable.desktop.{browser_name}.{channel}.{metric_name}.median{{*}}"
+            query = f"avg:webpagetest.default.{target_url}.noAuth._firstView.cable.desktop.{browser_name}.{channel}.{metric}.median{{*}}"
             try:
                 graph = next(g for g in graphs if g["title"] == title)
                 requests = graph["definition"]["requests"]
@@ -75,7 +75,7 @@ def main(path):
             print(f"- {name}: {value}")
             # OLD - XXX REMOVE ME
             # statsd.gauge(f"wpt.batch.{label}.median.firstView.{name}", value)
-            statsd.gauge("webpagetest.default.{target_url}.noAuth._firstView.cable.desktop.{browser_name}.{channel}.{metric_name}.median", value)
+            statsd.gauge("webpagetest.default.{target_url}.noAuth._firstView.cable.desktop.{browser_name}.{channel}.{metric}.median", value)
 
     pprint(tb)
 
