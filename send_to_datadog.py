@@ -53,9 +53,9 @@ def main(path):
         print(f"{target_url} - {browser_name} ({browser_version})")
         requests = []
         for metric in metrics:
-            name = metric['name']
+            metric_name = metric['name']
             title = f"{metric['description']} ({metric['unit']})"
-            query = f"avg:wpt.batch.{label}.median.firstView.{name}{{*}}"
+            query = f"avg:webpagetest.default.{target_url}.noAuth._firstView.cable.desktop.{browser_name}.{channel}.{metric_name}.firstPaint.median{{*}}"
             try:
                 graph = next(g for g in graphs if g["title"] == title)
                 requests = graph["definition"]["requests"]
@@ -71,7 +71,9 @@ def main(path):
                 })
             value = test["data"]["median"]["firstView"][name]
             print(f"- {name}: {value}")
-            statsd.gauge(f"wpt.batch.{label}.median.firstView.{name}", value)
+            # we're going for a schema like, e.g.:
+            # webpagetest.default.www_google.com._firstView.cable.desktop.firefox.nightly.visualMetric.firstPaint.median
+            statsd.gauge(f"webpagetest.default.{testUrl}.noAuth.firstView.cable.desktop.{name}.median", value)
 
     # pprint(tb)
     for item in tbdata.values():
