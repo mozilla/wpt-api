@@ -1,5 +1,5 @@
 import json
-# from pprint import pprint
+from pprint import pprint
 import os
 import sys
 
@@ -20,7 +20,7 @@ def main(path):
 
     dbl_name = "WebPageTest"
     dbls = api.DashboardList.get_all()["dashboard_lists"]
-    # pprint(dbls)
+    pprint(dbls)
     try:
         dbl = next(dbl for dbl in dbls if dbl["name"] == dbl_name)
         print(f"Using existing {dbl_name} dashboard list")
@@ -30,7 +30,7 @@ def main(path):
 
     tbdata = {}
     tbs = api.Timeboard.get_all()["dashes"]
-    # pprint(tbs)
+    pprint(tbs)
 
     with open(path) as f:
         data = json.load(f)
@@ -55,7 +55,7 @@ def main(path):
         for metric in metrics:
             metric_name = metric['name']
             title = f"{metric['description']} ({metric['unit']})"
-            query = f"avg:webpagetest.default.{target_url}.noAuth._firstView.cable.desktop.{browser_name}.{channel}.{metric_name}.firstPaint.median{{*}}"
+            query = f"avg:webpagetest.default.{target_url}.noAuth._firstView.cable.desktop.{browser_name}.{channel}.{metric_name}.median{{*}}"
             try:
                 graph = next(g for g in graphs if g["title"] == title)
                 requests = graph["definition"]["requests"]
@@ -71,11 +71,12 @@ def main(path):
                 })
             value = test["data"]["median"]["firstView"][name]
             print(f"- {name}: {value}")
-            # we're going for a schema like, e.g.:
-            # webpagetest.default.www_google.com._firstView.cable.desktop.firefox.nightly.visualMetric.firstPaint.median
-            statsd.gauge(f"webpagetest.default.{testUrl}.noAuth.firstView.cable.desktop.{name}.median", value)
+            # OLD - XXX REMOVE ME
+            # statsd.gauge(f"wpt.batch.{label}.median.firstView.{name}", value)
+            statsd.gauge("webpagetest.default.{target_url}.noAuth._firstView.cable.desktop.{browser_name}.{channel}.{metric_name}.median", value)
 
-    # pprint(tb)
+    pprint(tb)
+
     for item in tbdata.values():
         title = item["title"]
         description = item["description"]
@@ -98,7 +99,7 @@ def main(path):
                 graphs=graphs,
             )
 
-        # pprint(tb)
+        pprint(tb)
         print(f"Adding {title} timeboard to {dbl_name} dashboard list")
         api.DashboardList.add_items(dbl["id"], dashboards=[{
             "type": "custom_timeboard",
