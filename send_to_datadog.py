@@ -49,12 +49,14 @@ def main(path):
         sample = test["data"]["median"]["firstView"]
         browser_name = sample["browser_name"]
         browser_version = sample["browser_version"]
-        label = test["data"]["label"].replace('-', '_')
+        # label = test["data"]["label"].replace('-', '_')
         print(f"{target_url} - {browser_name} ({browser_version})")
         requests = []
         for metric in metrics:
             metric_name = metric['name']
             title = f"{metric['description']} ({metric['unit']})"
+            # sample schema:
+            # webpagetest.default.www.google.com.noAuth._firstView.cable.desktop.firefox.nightly.{metric_name}.median
             query = f"avg:webpagetest.default.{target_url}.noAuth._firstView.cable.desktop.{browser_name}.{channel}.{metric_name}.median{{*}}"
             try:
                 graph = next(g for g in graphs if g["title"] == title)
