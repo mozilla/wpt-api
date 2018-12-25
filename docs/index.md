@@ -20,23 +20,28 @@ which **would "enable web developers to access, instrument, and retrieve various
 
 ## Metrics & Metadata:
 ### Current Status:
-| Metric | To-Spec? / Issues | Returns | Source / API | Calculation | WPT Config / Issues |
-|:------------|:-------------|:-----|:-----|:-------|:------|
-| ```bytesInDoc``` | Y | number; count | ? | ? |  |
-| ```DOMContentFlushed```| N; [Issue 97](https://github.com/mozilla/wpt-api/issues/97#issuecomment-432422829) -  needs calc. in **wpt-api** | ms; duration/offset | Firefox-only; needs custom pref | ```timeToDOMContentFlushed``` ```-``` ```fetchStart``` | see ```timeToDOMContentFlushed```|
-|[```fetchStart```](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceTiming/fetchStart) | N  | ms | N; [NavTiming API deprecated](https://w3c.github.io/navigation-timing/#obsolete) | ? | ? |
-| [```firstPaint```](https://developer.mozilla.org/en-US/docs/Web/API/PerformancePaintTiming)  | ? |  seconds   | ? | ? | ? |
-| ```render``` ([```startRender?```](https://sites.google.com/a/webpagetest.org/docs/using-webpagetest/quick-start-quide#TOC-Start-Render)) | ? | seconds? | ? | Y | ? |
-| ```requestsFull``` | ? | count | ? | ? | n/a |
-| [```SpeedIndex```](https://sites.google.com/a/webpagetest.org/docs/using-webpagetest/metrics/speed-index) | Y  |  seconds |  WebPageTest-only | test-run-video analysis | ? |
-| ```timeToDOMContentFlushed``` | Y | ms since...? | Firefox-only; needs custom pref <br>**-**<br>**Impl**: [bug 1457325](https://bugzilla.mozilla.org/show_bug.cgi?id=1457325)| ? | ```user_pref("dom.performance.time_to_dom_content_flushed.enabled", true)```in [wptagent/internal/support/Firefox/profile/prefs.js](https://github.com/WPO-Foundation/wptagent/blob/3f2128a9815838f462187b870be3c666ebd13d95/internal/support/Firefox/profile/prefs.js#L57)
-| [```timeToConsistentlyInteractive```](https://github.com/WPO-Foundation/webpagetest/blob/c53214c24a99f52add146eba6aec1cd137a4bcee/docs/Metrics/TimeToInteractive.md#time-to-consistently-interactive-calculation) (```TTCI```) | N; pending-network requests | N;  | . | . | . |
-| ```TTFB``` (```timeToFirstByte```) | Y | ms | ? | ? | ? |
-| ```timeToFirstContentfulPaint``` (```TTFCP```) | ? | ms | <br>**-**<br>**Impl**. [bug 1298381](https://bugzilla.mozilla.org/show_bug.cgi?id=1298381) | ? | ```user_pref("dom.performance.time_to_dom_content_flushed.enabled", true```in  [wptagent/internal/support/Firefox/profile/pref.js](https://github.com/WPO-Foundation/wptagent/blob/3f2128a9815838f462187b870be3c666ebd13d95/internal/support/Firefox/profile/prefs.js#L58) |
-| [```timeToFirstNonBlankPaint```](https://bugzilla.mozilla.org/show_bug.cgi?id=1377251) (```TTFNBP?```) | ? | ms |  Firefox-only; needs custom pref | ? | ```user_pref("dom.performance.time.to_non_blank_paint", true``` in [wptagent/internal/support/Firefox/profile/prefs.js](https://github.com/WPO-Foundation/wptagent/blob/3f2128a9815838f462187b870be3c666ebd13d95/internal/support/Firefox/profile/prefs.js#L60) |
-|[```timeToFirstMeaningfulPaint```](https://developer.mozilla.org/en-US/docs/Web/API/PerformancePaintTiming) (```TTFMP```) | N | ms | N; partial <br>**-**<br>**Impl**. [bug 1299117](https://bugzilla.mozilla.org/show_bug.cgi?id=1299117) | . | . |
-| ```visualComplete``` (```timeToVisuallyComplete```) | Y | seconds | ? | ? | ? |
-| ```browser_version``` | **n/a**; | string; e.g. "61.0a" | . | . | ```self.marionette.session.capabilities``` in [wptagent/internal/firefox.py](https://github.com/WPO-Foundation/wptagent/blob/84018f548a2dea78dfca0ca64c19386adc6e2bca/internal/firefox.py#L128-L129)|
+| Metric (units: raw + visualized) | To-Spec*? / Issues | Source / API | Calculation | WPT Config / Issues |
+|:------------|:-------------|:-----|:-------|:------|
+| ```bytesInDoc (count)``` | Y | ? | ? |  |
+| ```DOMContentFlushed (N/A, sec)```| N; [Issue 97](https://github.com/mozilla/wpt-api/issues/97#issuecomment-432422829) -  needs calc. in **wpt-api** | Firefox-only; needs custom pref | ```timeToDOMContentFlushed``` ```-``` ```fetchStart``` | see ```timeToDOMContentFlushed```|
+|[```fetchStart (ms/sec?)```](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceTiming/fetchStart) | N | N; [NavTiming API deprecated](https://w3c.github.io/navigation-timing/#obsolete) | ? | ? |
+| [```firstPaint```](https://developer.mozilla.org/en-US/docs/Web/API/PerformancePaintTiming) | ? | ? | ? | ? |
+| ```render (ms, sec)``` ([```startRender?```](https://sites.google.com/a/webpagetest.org/docs/using-webpagetest/quick-start-quide#TOC-Start-Render)) | ? | ? | Y | ? |
+| ```requestsFull (count)``` | ? | ? | ? | n/a |
+| [```SpeedIndex (integer, ?)```](https://sites.google.com/a/webpagetest.org/docs/using-webpagetest/metrics/speed-index) | Y  | WebPageTest-only | test-run-video analysis | ? |
+| ```timeToDOMContentFlushed (ms, sec?)``` | Y | Firefox-only; needs custom pref <br>**-**<br>**Impl**: [bug 1457325](https://bugzilla.mozilla.org/show_bug.cgi?id=1457325)| ? | ```user_pref("dom.performance.time_to_dom_content_flushed.enabled", true)```in [wptagent/internal/support/Firefox/profile/prefs.js](https://github.com/WPO-Foundation/wptagent/blob/3f2128a9815838f462187b870be3c666ebd13d95/internal/support/Firefox/profile/prefs.js#L57)
+| [```timeToConsistentlyInteractive (ms, sec?)```](https://github.com/WPO-Foundation/webpagetest/blob/c53214c24a99f52add146eba6aec1cd137a4bcee/docs/Metrics/TimeToInteractive.md#time-to-consistently-interactive-calculation) (```TTCI```) | N; pending-network requests | N;  | . | . | . |
+| ```TTFB``` (```timeToFirstByte (ms)```) | Y | ? | ? | ? |
+| ```timeToContentfulPaint (ms, sec?)``` / ```first contentful paint``` (```TT(F)CP``` / ```FCP```) | ? | <br>**-**<br>**Impl**. [bug 1298381](https://bugzilla.mozilla.org/show_bug.cgi?id=1298381) | ? | 
+```user_pref("dom.performance.time_to_contentful_paint.enabled", true)``` in [wptagent/internal/support/Firefox/profile/prefs.js(https://github.com/WPO-Foundation/wptagent/pull/214/files#diff-463e288bcde710e9a9ef8a46d490aac1R58] and ```addTime("timeToContentfulPaint");``` in [wptagent/internal/js/page_data.js](https://github.com/WPO-Foundation/wptagent/pull/214/files#diff-69b0882d86377063fd0514c0dc978308R22)|
+| [```timeToFirstNonBlankPaint (ms/sec?)```](https://bugzilla.mozilla.org/show_bug.cgi?id=1377251) (```TTFNBP?```) | ? |  Firefox-only; needs custom pref | ? | ```user_pref("dom.performance.time.to_non_blank_paint", true``` in [wptagent/internal/support/Firefox/profile/prefs.js](https://github.com/WPO-Foundation/wptagent/blob/3f2128a9815838f462187b870be3c666ebd13d95/internal/support/Firefox/profile/prefs.js#L60) |
+|[```timeToFirstMeaningfulPaint (ms/sec?)```](https://developer.mozilla.org/en-US/docs/Web/API/PerformancePaintTiming) (```TTFMP```) | N | N; partial <br>**-**<br>**Impl**. [bug 1299117](https://bugzilla.mozilla.org/show_bug.cgi?id=1299117) | . | . |
+| ```visualComplete (sec)``` (```timeToVisuallyComplete```) | Y | ? | ? | ? |
+| ```browser_version``` (```string```) ```"61.0a"```| **n/a**; | . | . | ```self.marionette.session.capabilities``` in [wptagent/internal/firefox.py](https://github.com/WPO-Foundation/wptagent/blob/84018f548a2dea78dfca0ca64c19386adc6e2bca/internal/firefox.py#L128-L129)|
+
+* "To-Spec?" is getting at: either/both:
+  Metric implementation largely "matching" W3C / WHATWG, etc., (draft) specification/proposal/RFC...
+  Mozilla and/or Chrome, WebPageTest, et al. general acceptance of a given metric, as-currently-is.  This might include early draft-spec feature branches, etc., 
 
 ### Manually Testing Metrics in Firefox
 1. Enable/modify any (missing) prefs/pref-overrides
@@ -44,7 +49,7 @@ which **would "enable web developers to access, instrument, and retrieve various
 3. Load a URL
 4. After the page has "finished" loading, type something like: ```window.performance.timing.timeToFirstInteractive``` (**DO** take note of the other implemented/available metric options available as you autocomplete.)
 5. Hit return/enter
-6. You should see a value similar to ```1542438605479``` (time-stamped offset, in milliseconds)
+6. You should see a value similar to ```1542438605479``` (time-stamped offset, in milliseconds) 
 
 PRO-TIP: you can and *should* input ```window.performance.timing``` into the Console, to dump the entire PerformanceTiming object
 
