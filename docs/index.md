@@ -4,7 +4,7 @@
 ## Introduction
 ## Project Goals:
 * Accurately measure, track, and report on key Firefox-performance metrics, over time
-* Leverage, and be an integral part of, the WebPageTest ecosystem
+* Leverage, and be an integral part of, the [WebPageTest](https://www.webpagetest.org/) ecosystem
 
 ## High-Priority Needs:
 ### Metrics & timings/results' stability, repeatability
@@ -23,7 +23,7 @@ which **would "enable web developers to access, instrument, and retrieve various
 | Metric (units: raw + visualized) | To-Spec*? / Issues | Source / API | Calculation | WPT Config / Issues |
 |:------------|:-------------|:-----|:-------|:------|
 | ```bytesInDoc (count)``` | Y | ? | ? |  |
-| ```DOMContentFlushed (N/A, sec)```| N; [Issue 97](https://github.com/mozilla/wpt-api/issues/97#issuecomment-432422829) -  needs calc. in **wpt-api** | Firefox-only; needs custom pref | ```timeToDOMContentFlushed``` ```-``` ```fetchStart``` | see ```timeToDOMContentFlushed```|
+| ```DOMContentFlushed (N/A, sec)```| N; [Issue 97](https://github.com/mozilla/wpt-api/issues/97#issuecomment-432422829) -  needs calc. [PR pending](https://github.com/mozilla-services/cloudops-deployment/pull/2840/files) | Firefox-only; needs custom pref | ```timeToDOMContentFlushed``` ```-``` ```fetchStart``` | see ```timeToDOMContentFlushed```|
 |[```fetchStart (ms/sec?)```](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceTiming/fetchStart) | N | N; [NavTiming API deprecated](https://w3c.github.io/navigation-timing/#obsolete) | ? | ? |
 | [```firstPaint```](https://developer.mozilla.org/en-US/docs/Web/API/PerformancePaintTiming) | ? | ? | ? | ? |
 | ```render (ms, sec)``` ([```startRender?```](https://sites.google.com/a/webpagetest.org/docs/using-webpagetest/quick-start-quide#TOC-Start-Render)) | ? | ? | Y | ? |
