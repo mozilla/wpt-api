@@ -1,6 +1,7 @@
-# wpt-api ** 
+# wpt-api
 
 [![license](https://img.shields.io/badge/license-MPL%202.0-blue.svg)](https://github.com/mozilla/wpt-api/blob/master/LICENSE.txt)
+[![Documentation Status](https://readthedocs.org/projects/mozilla-wpt-api-docs/badge/?version=master)](https://mozilla-wpt-api-docs.readthedocs.io/en/master/?badge=master)
 [![Build Status](https://travis-ci.org/mozilla/wpt-api.svg?branch=master)](https://travis-ci.org/mozilla/wpt-api)
 [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=mozilla/wpt-api)](https://dependabot.com)
 
