@@ -5,6 +5,7 @@
   {"name": "timeToContentfulPaint", "description": "Time to First Contentful Paint", "unit": "milliseconds"},
   {"name": "domContentFlushed", "description": "DOM-content flush time (duration)", "unit": "milliseconds"},
   {"name": "timeToFirstInteractive", "description": "Time to First Interactive", "unit": "milliseconds"},
+  {"name": "pageLoadTime", "description": "Page load: loadEventStart - fetchStart", "unit": "milliseconds"},
   {"name": "SpeedIndex", "description": "SpeedIndex", "unit": "seconds"},
   {"name": "bytesInDoc", "description": "Total Bytes in Doc", "unit": "bytes"},
   {"name": "visualComplete", "description": "Time to Visual Complete", "unit": "seconds"},
