@@ -17,7 +17,7 @@ pipeline {
     timeout(time: 25, unit: 'MINUTES')
   }
   stages {
-    stage('clone') {
+    stage('Clone webpagetest-api repo') {
       agent any
       steps {
         checkout([
@@ -27,7 +27,7 @@ pipeline {
           userRemoteConfigs: [[url: 'https://github.com/marcelduran/webpagetest-api']]])
         }
     }
-    stage('Run webpagetest') {
+    stage('Run WebPageTest (command-line API)') {
       agent {
         dockerfile { dir 'webpagetest-api' }
       }
@@ -59,7 +59,7 @@ test ${TARGET_URL} --location us-east-1-linux:Chrome%20Canary --bodies --keepua 
         }
       }
     }
-    stage('Submit stats to datadog') {
+    stage('Submit stats to Datadog') {
       agent {
         dockerfile {
           args '--net host'
