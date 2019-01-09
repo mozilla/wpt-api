@@ -7,7 +7,7 @@
 
 Using Pat Meenan's amazing [WebPageTest](https://www.webpagetest.org/) with Marcel Duran's super-handy NodeJS wrapper API in [webpagetest-api](https://github.com/marcelduran/webpagetest-api), this project tests, capture, submits, and visualizes key Web-performance metrics for a **_modified_** Alexa top 50 sites list using Firefox Quantum release and Nightly builds, and Google Chrome release and Canary (Nightly) builds, all on Linux.
 
-![](https://user-images.githubusercontent.com/387249/43986821-0b5adddc-9ccc-11e8-924f-9d7420abc02a.png)
+![](https://user-images.githubusercontent.com/387249/50874523-238e2700-1379-11e9-8835-058b4541aabc.png)
 
 ## Resources ##
 * [Documentation](https://mozilla-wpt-api-docs.readthedocs.io/en/master/)
