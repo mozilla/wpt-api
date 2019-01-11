@@ -35,10 +35,10 @@ pipeline {
         writeFile([
           file: 'commands.txt',
           encoding: 'UTF-8',
-          text: """test ${TARGET_URL} --location us-east-1-linux:Firefox --timeout 900 --bodies --keepua --noimages -r 3 --first --median SpeedIndex --priority 1 --poll 5 --reporter json --label ${TARGET_NAME}.fx.release
-test ${TARGET_URL} --location us-east-1-linux:Firefox%20Nightly --timeout 900 --bodies --keepua --noimages -r 3 --first --median SpeedIndex --priority 1 --poll 5 --reporter json --label ${TARGET_NAME}.fx.nightly
-test ${TARGET_URL} --location us-east-1-linux:Chrome --timeout 900 --bodies --keepua --noimages -r 3 --first --median SpeedIndex --priority 1 --poll 5 --reporter json --label ${TARGET_NAME}.chrome.release
-test ${TARGET_URL} --location us-east-1-linux:Chrome%20Canary --timeout 900 --bodies --keepua --noimages -r 3 --first --median SpeedIndex --priority 1 --poll 5 --reporter json --label ${TARGET_NAME}.chrome.canary"""])
+          text: """test ${TARGET_URL} --location us-east-1-linux:Firefox --timeout 900 --bodies --keepua --noimages -r 3 --first --priority 1 --poll 5 --reporter json --label ${TARGET_NAME}.fx.release
+test ${TARGET_URL} --location us-east-1-linux:Firefox%20Nightly --timeout 900 --bodies --keepua --noimages -r 3 --first --priority 1 --poll 5 --reporter json --label ${TARGET_NAME}.fx.nightly
+test ${TARGET_URL} --location us-east-1-linux:Chrome --timeout 900 --bodies --keepua --noimages -r 3 --first --priority 1 --poll 5 --reporter json --label ${TARGET_NAME}.chrome.release
+test ${TARGET_URL} --location us-east-1-linux:Chrome%20Canary --timeout 900 --bodies --keepua --noimages -r 3 --first --priority 1 --poll 5 --reporter json --label ${TARGET_NAME}.chrome.canary"""])
         sh '/usr/src/app/bin/webpagetest batch commands.txt > "wpt.json"'
       }
       post {
