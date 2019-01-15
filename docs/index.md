@@ -10,16 +10,16 @@
 **Currently tracked metrics:**  
 |        **metric**     | **name(s)** | **units** | **type** |  **derivation** |  
 
-| domContentFlushed | ms | . | . | . |  
-| timeToFirstByte | sec | . | . | . |  
-| timeToFirstNonBlankPaint | sec | . | . | . |  
-| timeToFirstMeaningfulPaint | sec | . | . | . |  
-| timeToConsistentlyInteractive | sec | . | . | . |  
-| visualComplete | sec | . | . | . |  
-| [SpeedIndex](https://sites.google.com/a/webpagetest.org/docs/using-webpagetest/metrics/speed-index) | algo | . | . | . |   
-| pageLoadTime | sec | . | . | . |  
-| requestsFull |  | num | count | . |  
-| bytesInDoc |  | num | . | count | 
+| ```domContentFlushed``` | ms | ... | ... | ... |  
+| ```timeToFirstByte``` | ms,sec | ... | ... | ... |  
+| ```timeToFirstNonBlankPaint``` | ms,sec | ... | ... | ... |  
+| ```timeToFirstMeaningfulPaint``` | ms,sec | ... | ... | ... |  
+| ```timeToConsistentlyInteractive``` | n/a | ... | ... | ... |  
+| ```visualComplete``` | sec | ... | ... | ... |  
+| ['''SpeedIndex'''](https://sites.google.com/a/webpagetest.org/docs/using-webpagetest/metrics/speed-index) | algo | ... | ... | ... |   
+| ```pageLoadTime``` | ```pageload``` in Raptor | ... | ... | ... |  
+| ```requestsFull``` |  ... | num | count | ... |  
+| ```bytesInDoc``` | total bytes | num | count | ... | 
 
 **Test Metadata:**  
 |         **name**          | **type** | **value(s)** |  
