@@ -7,20 +7,22 @@
 * Leverage, and be an integral part of, the [WebPageTest](https://www.webpagetest.org/) ecosystem
 
 ## Metrics & Metadata:
-Current Metrics:
-* domContentFlushed
-* timeToFirstByte
-* timeToFirstNonBlankPaint
-* timeToFirstMeaningfulPaint
-* timeToConsistentlyInteractive
-* visualComplete
-* pageLoadTime
-* requestsFull
-* bytesInDoc
+**Currently tracked metrics:**  
+** ----------------------------- **  
+domContentFlushed  
+timeToFirstByte  
+timeToFirstNonBlankPaint  
+timeToFirstMeaningfulPaint  
+timeToConsistentlyInteractive  
+visualComplete  
+pageLoadTime  
+requestsFull  
+bytesInDoc  
 
-Test Metadata:
-* browser_version
-* browser_name
+**Test Metadata:**  
+** ---------------- **  
+browser_version  
+browser_name  
 
 ### Manually Testing Metrics in Firefox
 1. Enable/modify any (missing) prefs/pref-overrides
@@ -32,8 +34,6 @@ Test Metadata:
 
 PRO-TIP: you can and *should* input ```window.performance.timing``` into the Console, to dump the entire PerformanceTiming object
 
-**[XXX FIX ME - Upload a tantalizing screengrab, here]**
-
 ### Adding Metrics to WebPageTest with Firefox
 1. Manually test the metric + pref (ahem); most metrics can be found in the following Firefox DOM WebIDL:  [```mozilla-central/dom/webidl/PerformanceTiming.webidl```](https://hg.mozilla.org/mozilla-central/file/tip/dom/webidl/PerformanceTiming.webidl)
 2. If needed, add/modify Firefox's `prefs.js`, via a PR to  [```wptagent/internal/support/Firefox/profile/prefs.js```](https://github.com/WPO-Foundation/wptagent/blob/3f2128a9815838f462187b870be3c666ebd13d95/internal/support/Firefox/profile/prefs.js)
@@ -41,29 +41,39 @@ PRO-TIP: you can and *should* input ```window.performance.timing``` into the Con
 3. Additionally, we might need to have the metric (if not available via standard APIs) emitted in WebPageTest, in [```wptagent/internal/js/page_data.js```](https://github.com/WPO-Foundation/wptagent/blob/3f2128a9815838f462187b870be3c666ebd13d95/internal/js/page_data.js#L27).
 Example: https://github.com/WPO-Foundation/wptagent/pull/230
 
-## WebPageTest Runs at Mozilla
+## Firefox-Pertinent WebPageTest (server + test-agent) Code:
 
-This should be a mid-to-high level overview of pertinent Mozilla-specific goals, design considerations (challenges) and, as a brief overview, a visualization of our WPT ecosystem.
-
-## Firefox-Pertinent *WPT* Code:
+### webpagetest ###
+* [```install/index.php```](https://github.com/WPO-Foundation/webpagetest/blob/53590782310e26654fd068bd1431667305b6443d/www/install/index.php) (Post-install-check page)
 ###  wptagent
 * [```Dockerfile```](https://github.com/WPO-Foundation/wptagent/blob/3f2128a9815838f462187b870be3c666ebd13d95/Dockerfile)
-* [```desktop_browser.py```](https://github.com/WPO-Foundation/wptagent/blob/3f2128a9815838f462187b870be3c666ebd13d95/internal/desktop_browser.py) (base class for **_all_** browsers)
-* [```browsers.py```](https://github.com/WPO-Foundation/wptagent/blob/3f2128a9815838f462187b870be3c666ebd13d95/internal/browsers.py) (self-described "Main entry point [sic] for controlling browsers")
-* [```webpagetest.py```](https://github.com/WPO-Foundation/wptagent/blob/3f2128a9815838f462187b870be3c666ebd13d95/internal/webpagetest.py) (the one, the only)
+* [```desktop_browser.py```](https://github.com/WPO-Foundation/wptagent/blob/3f2128a9815838f462187b870be3c666ebd13d95/internal/desktop_browser.py) (base class for _all_ browsers)
+* [```browsers.py```](https://github.com/WPO-Foundation/wptagent/blob/3f2128a9815838f462187b870be3c666ebd13d95/internal/browsers.py) (self-described "Main entry point for controlling browsers")
+* [```webpagetest.py```](https://github.com/WPO-Foundation/wptagent/blob/3f2128a9815838f462187b870be3c666ebd13d95/internal/webpagetest.py) (WebPageTest core)
 * [```firefox.py```](https://github.com/WPO-Foundation/wptagent/blob/master/internal/firefox.py) (hey, that's us!)
 * [```traffic-shaping.py```](https://github.com/WPO-Foundation/wptagent/blob/master/internal/traffic_shaping.py) (cross-platform rate-limiting, latency, etc. support)
 * [```page_data.js```](https://github.com/WPO-Foundation/wptagent/blob/3f2128a9815838f462187b870be3c666ebd13d95/internal/js/page_data.js) (user timings, vendor-specific/internal metrics & configs/settings)
 * [```firefox_log_parser.py```](https://github.com/WPO-Foundation/wptagent/blob/3f2128a9815838f462187b870be3c666ebd13d95/internal/support/firefox_log_parser.py) (where the metric-culling magic happens)
 * [```visual_metrics.py```](https://github.com/WPO-Foundation/wptagent/blob/3f2128a9815838f462187b870be3c666ebd13d95/internal/support/visualmetrics.py) (the guts of the visual-comparison algorithms)
-* [```trace_parser.py```](https://github.com/WPO-Foundation/wptagent/blob/3f2128a9815838f462187b870be3c666ebd13d95/internal/support/trace_parser.py) (calculates metrics with recipes/formulas)
-* [```pcap_parser.py```](https://github.com/WPO-Foundation/wptagent/blob/3f2128a9815838f462187b870be3c666ebd13d95/internal/support/pcap-parser.py) (wait for it...parses pcap files!)
+* [```trace_parser.py```](https://github.com/WPO-Foundation/wptagent/blob/3f2128a9815838f462187b870be3c666ebd13d95/internal/support/trace_parser.py) (calculates metrics with "recipes"/formulas)
+* [```pcap_parser.py```](https://github.com/WPO-Foundation/wptagent/blob/3f2128a9815838f462187b870be3c666ebd13d95/internal/support/pcap-parser.py) (parses PCAP files)
 
 # Infrastructure
 ### WebPageTest Instance (*Mozilla-internal*)
 * https://wpt.stage.mozaws.net - Auth0/OAuth
 * https://wpt-api.stage.mozaws.net - Basic Auth
-   * You'll need to file a bug in Cloud Ops, requesting access
+   * (You'll need to file a bug in Cloud Ops, requesting access from either :jbuck or :jrgm
+
+To run a test via the API, using our **internal instance** at [wpt-api.stage.mozaws.net](https://www.webpagetest.org), is something like:  
+```
+$ webpagetest test www.twitch.tv  --server https://username:passkey@wpt-api.stage.mozaws.net --location us-east-1-linux:Firefox --bodies --keepua -r 3 --first --reporter json
+```
+
+To run the same test, but using the public instance now, would be:
+
+```
+$ webpagetest test www.twitch.tv -k your_API_key --location ec2-us-east-1:Firefox --bodies --keepua -r 3 --first --reporter json
+```
 
 ### Jenkins
 * [```https://qa-preprod-master.fxtest.jenkins.stage.mozaws.net/job/wpt/```](https://qa-preprod-master.fxtest.jenkins.stage.mozaws.net/job/wpt/)
@@ -76,7 +86,7 @@ This should be a mid-to-high level overview of pertinent Mozilla-specific goals,
 ## Dependencies
 #### Core:
 * [WebPageTest](https://github.com/WPO-Foundation/webpagetest/blob/master/README.md) (core/server)
-* [wptagent](https://github.com/WPO-Foundation/wptagent/blob/master/README.md) (configs/runs browser tests, and collects and submits metrics/data to be post-processed by the above core WebPageTest server; the project formerly known as "wptdriver."
+* [wptagent](https://github.com/WPO-Foundation/wptagent/blob/master/README.md) (configs/runs browser tests, and collects and submits metrics/data to be post-processed by the above core WebPageTest server; a rewrite of the project formerly known as "wptdriver."
 * [webpagetest-api](https://github.com/marcelduran/webpagetest-api/blob/master/README.md) (NodeJS-wrapped core API)
 
 Mobile (Android) Testing
