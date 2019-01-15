@@ -7,22 +7,23 @@
 * Leverage, and be an integral part of, the [WebPageTest](https://www.webpagetest.org/) ecosystem
 
 ## Metrics & Metadata:
-**Currently tracked metrics:**  
-** ----------------------------- **  
-domContentFlushed  
-timeToFirstByte  
-timeToFirstNonBlankPaint  
-timeToFirstMeaningfulPaint  
-timeToConsistentlyInteractive  
-visualComplete  
-pageLoadTime  
-requestsFull  
-bytesInDoc  
+**Currently tracked metrics:**
+|        metric     | common/short name | units | derivation |
+| domContentFlushed | | | |
+| timeToFirstByte | | | |
+| timeToFirstNonBlankPaint | | | |
+| timeToFirstMeaningfulPaint | | | |
+| timeToConsistentlyInteractive | | | |
+| visualComplete | | | |
+| [SpeedIndex](https://sites.google.com/a/webpagetest.org/docs/using-webpagetest/metrics/speed-index) | | | |
+| pageLoadTime | | | |
+| requestsFull | | | |  
+| bytesInDoc | | | |  
 
 **Test Metadata:**  
-** ---------------- **  
-browser_version  
-browser_name  
+|         **name**          | **type** | **value(s)** |  
+| ```browser_version``` | _string_  |  "66.0a1" |   
+| ```browser_name``` | _string_ | "Firefox Nightly" |  
 
 ### Manually Testing Metrics in Firefox
 1. Enable/modify any (missing) prefs/pref-overrides
