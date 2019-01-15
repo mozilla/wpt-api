@@ -8,22 +8,21 @@
 
 ## Metrics & Metadata:  
 **Currently tracked metrics:**  
-|        **metric**     | **common/short name** | **units** | **derivation** |  
-______________________________________________________________________________  
-| domContentFlushed | . | . | . |  
-| timeToFirstByte | . | . | . |  
-| timeToFirstNonBlankPaint | . | . | . |  
-| timeToFirstMeaningfulPaint | . | . | . |  
-| timeToConsistentlyInteractive | . | . | . |  
-| visualComplete | . | . | . |  
-| [SpeedIndex](https://sites.google.com/a/webpagetest.org/docs/using-webpagetest/metrics/speed-index) | . | . | . |  
-| pageLoadTime | . | . | . |  
-| requestsFull | . | . | . |  
-| bytesInDoc | . | . | . |  
+|        **metric**     | **name(s)** | **units** | **type** |  **derivation** |  
+
+| domContentFlushed | ms | . | . | . |  
+| timeToFirstByte | sec | . | . | . |  
+| timeToFirstNonBlankPaint | sec | . | . | . |  
+| timeToFirstMeaningfulPaint | sec | . | . | . |  
+| timeToConsistentlyInteractive | sec | . | . | . |  
+| visualComplete | sec | . | . | . |  
+| [SpeedIndex](https://sites.google.com/a/webpagetest.org/docs/using-webpagetest/metrics/speed-index) | algo | . | . | . |   
+| pageLoadTime | sec | . | . | . |  
+| requestsFull |  | num | count | . |  
+| bytesInDoc |  | num | . | count | 
 
 **Test Metadata:**  
 |         **name**          | **type** | **value(s)** |  
-_______________________________________________________
 | ```browser_version``` | _string_  |  "66.0a1" |   
 | ```browser_name``` | _string_ | "Firefox Nightly" |  
 
