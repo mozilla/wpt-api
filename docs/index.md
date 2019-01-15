@@ -6,15 +6,16 @@
 * Accurately measure, track, and report on key Firefox-performance metrics, over time
 * Leverage, and be an integral part of, the [WebPageTest](https://www.webpagetest.org/) ecosystem
 
-## Metrics & Metadata:  
-**Currently tracked metrics:**  
-|        **metric**     | **name(s)** | **units** | **type** |  **derivation** |  
+## Metrics & Metadata    
 
-| ```domContentFlushed``` | ms | ... | ... | ... |  
+**Currently tracked metrics:**  
+
+|        **metric**     | **name(s)** | **units** | **type** |  **derivation** |  
+| ```domContentFlushed``` | ```dcf``` | ms | duration? | wptagent [```timeToDOMContentFlushed - fetchStart```](https://github.com/WPO-Foundation/wptagent/pull/230/files) |    
 | ```timeToFirstByte``` | ms,sec | ... | ... | ... |  
 | ```timeToFirstNonBlankPaint``` | ms,sec | ... | ... | ... |  
 | ```timeToFirstMeaningfulPaint``` | ms,sec | ... | ... | ... |  
-| ```timeToConsistentlyInteractive``` | n/a | ... | ... | ... |  
+| ```timeToConsistentlyInteractive``` | n/a: non-spec | ... | ... | ... |  
 | ```visualComplete``` | sec | ... | ... | ... |  
 | [ ```SpeedIndex``` ](https://sites.google.com/a/webpagetest.org/docs/using-webpagetest/metrics/speed-index) | algo | ... | ... | ... |   
 | ```pageLoadTime``` | ```pageload``` in Raptor | ... | ... | ... |  
