@@ -10,7 +10,7 @@
 
 **Currently tracked metrics:**  
 
-| metric | name | units | type |  from |  
+| metric | alt. name | units | type |  from |  
 |:--------- | :---: | :---: | :---: | :--- |
 | ```domContentFlushed``` | ```dcf``` | ms | duration? | wptagent [```timeToDOMContentFlushed - fetchStart```](https://github.com/WPO-Foundation/wptagent/pull/230/files) |    
 | ```timeToFirstByte``` | TTFB | ms,sec | ... | ... |  
@@ -18,8 +18,8 @@
 | ```timeToFirstMeaningfulPaint``` | FMP | ms,sec | ... | ... |  
 | ```timeToConsistentlyInteractive``` | n/a: non-spec | ... | ... | ... |  
 | ```visualComplete``` | sec | ... | ... | ... |  
-| [ ```SpeedIndex``` ](https://sites.google.com/a/webpagetest.org/docs/using-webpagetest/metrics/speed-index) | algo | ... | ... | ... |   
-| ```pageLoadTime``` | ```pageload``` in Raptor | ... | ... | ... |  
+| [ ```SpeedIndex``` ](https://sites.google.com/a/webpagetest.org/docs/using-webpagetest/metrics/speed-index) | ... | ... | ... | ... |   
+| ```pageLoadTime``` | ```pageload``` in Raptor | ... | ... | custom-metric [```loadEventStart - fetchStart```](https://github.com/mozilla-services/cloudops-deployment/blob/5de5b9c90353b186e5ed1f0cb1b8f5e2296a988b/projects/wpt/puppet/modules/wpt/templates/settings/custom_metrics/pageLoadTime.js.epp) |  
 | ```requestsFull``` |  ... | num | count | ... |  
 | ```bytesInDoc``` | total bytes | num | count | ... | 
 
