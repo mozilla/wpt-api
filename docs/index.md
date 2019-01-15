@@ -6,23 +6,26 @@
 * Accurately measure, track, and report on key Firefox-performance metrics, over time
 * Leverage, and be an integral part of, the [WebPageTest](https://www.webpagetest.org/) ecosystem
 
-## Metrics & Metadata:
+## Metrics & Metadata    
+
 **Currently tracked metrics:**  
-** ----------------------------- **  
-domContentFlushed  
-timeToFirstByte  
-timeToFirstNonBlankPaint  
-timeToFirstMeaningfulPaint  
-timeToConsistentlyInteractive  
-visualComplete  
-pageLoadTime  
-requestsFull  
-bytesInDoc  
+
+|        **metric**     | **name(s)** | **units** | **type** |  **derivation** |  
+| ```domContentFlushed``` | ```dcf``` | ms | duration? | wptagent [```timeToDOMContentFlushed - fetchStart```](https://github.com/WPO-Foundation/wptagent/pull/230/files) |    
+| ```timeToFirstByte``` | ms,sec | ... | ... | ... |  
+| ```timeToFirstNonBlankPaint``` | ms,sec | ... | ... | ... |  
+| ```timeToFirstMeaningfulPaint``` | ms,sec | ... | ... | ... |  
+| ```timeToConsistentlyInteractive``` | n/a: non-spec | ... | ... | ... |  
+| ```visualComplete``` | sec | ... | ... | ... |  
+| [ ```SpeedIndex``` ](https://sites.google.com/a/webpagetest.org/docs/using-webpagetest/metrics/speed-index) | algo | ... | ... | ... |   
+| ```pageLoadTime``` | ```pageload``` in Raptor | ... | ... | ... |  
+| ```requestsFull``` |  ... | num | count | ... |  
+| ```bytesInDoc``` | total bytes | num | count | ... | 
 
 **Test Metadata:**  
-** ---------------- **  
-browser_version  
-browser_name  
+|         **name**          | **type** | **value(s)** |  
+| ```browser_version``` | _string_  |  "66.0a1" |   
+| ```browser_name``` | _string_ | "Firefox Nightly" |  
 
 ### Manually Testing Metrics in Firefox
 1. Enable/modify any (missing) prefs/pref-overrides
