@@ -102,9 +102,8 @@ Mobile (Android) Testing
 * [User Timing](https://www.w3.org/TR/user-timing/)
 
 ## Assorted Links:
-* Example Mobile-Device Lab Config: https://github.com/WPO-Foundation/webpagetest-docs/blob/2db35b31fe1c992c02650a5b401f7ed208d8fa27/user/Private%20Instances/mobile/example.md  
-* https://www.w3.org/2000/09/dbwg/details?group=45211&order=org&public=1  
-* Web-platform tests we run: https://github.com/web-platform-tests/wpt/tree/744325921ba52791bc8db1b45d2aed097577753a/navigation-timing  
+* [Example Mobile-Device Lab Config](https://github.com/WPO-Foundation/webpagetest-docs/blob/2db35b31fe1c992c02650a5b401f7ed208d8fa27/user/Private%20Instances/mobile/example.md)
+* [Web-platform tests we run](https://github.com/web-platform-tests/wpt/tree/744325921ba52791bc8db1b45d2aed097577753a/navigation-timing)
 ***
 
 ## Contributions
