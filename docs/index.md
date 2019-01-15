@@ -6,22 +6,24 @@
 * Accurately measure, track, and report on key Firefox-performance metrics, over time
 * Leverage, and be an integral part of, the [WebPageTest](https://www.webpagetest.org/) ecosystem
 
-## Metrics & Metadata:
-**Currently tracked metrics:**
-|        metric     | common/short name | units | derivation |  
-| domContentFlushed | | | |  
-| timeToFirstByte | | | |  
-| timeToFirstNonBlankPaint | | | |  
-| timeToFirstMeaningfulPaint | | | |  
-| timeToConsistentlyInteractive | | | |  
-| visualComplete | | | |  
-| [SpeedIndex](https://sites.google.com/a/webpagetest.org/docs/using-webpagetest/metrics/speed-index) | | | |  
-| pageLoadTime | | | |  
-| requestsFull | | | |  
-| bytesInDoc | | | |  
+## Metrics & Metadata:  
+**Currently tracked metrics:**  
+|        **metric**     | **common/short name** | **units** | **derivation** |  
+______________________________________________________________________________  
+| domContentFlushed | . | . | . |  
+| timeToFirstByte | . | . | . |  
+| timeToFirstNonBlankPaint | . | . | . |  
+| timeToFirstMeaningfulPaint | . | . | . |  
+| timeToConsistentlyInteractive | . | . | . |  
+| visualComplete | . | . | . |  
+| [SpeedIndex](https://sites.google.com/a/webpagetest.org/docs/using-webpagetest/metrics/speed-index) | . | . | . |  
+| pageLoadTime | . | . | . |  
+| requestsFull | . | . | . |  
+| bytesInDoc | . | . | . |  
 
 **Test Metadata:**  
 |         **name**          | **type** | **value(s)** |  
+_______________________________________________________
 | ```browser_version``` | _string_  |  "66.0a1" |   
 | ```browser_name``` | _string_ | "Firefox Nightly" |  
 
