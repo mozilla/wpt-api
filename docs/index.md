@@ -64,7 +64,7 @@ Example: https://github.com/WPO-Foundation/wptagent/pull/230
 * https://wpt-api.stage.mozaws.net - Basic Auth
    * (You'll need to file a bug in Cloud Ops, requesting access from either :jbuck or :jrgm
 
-To run a test via the API, using our **internal instance** at [wpt-api.stage.mozaws.net](https://www.webpagetest.org), is something like:  
+To run a test via the API, using our **internal instance** at [wpt-api.stage.mozaws.net](https://wpt-api.stage.mozaws.net/), is something like:  
 ```
 $ webpagetest test www.twitch.tv  --server https://username:passkey@wpt-api.stage.mozaws.net --location us-east-1-linux:Firefox --bodies --keepua -r 3 --first --reporter json
 ```
