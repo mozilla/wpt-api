@@ -1,5 +1,5 @@
 # Mozilla wpt-api Documentation
-## (a.k.a Using WebPageTest...Mozilla Edition)
+(a.k.a **Using WebPageTest... _Mozilla Edition_**)
 
 ## Introduction
 ## Project Goals:
@@ -10,8 +10,8 @@
 
 **Currently tracked metrics:**  
 
-| metric | alt. name | units | type |  from |  
-|:--------- | :---: | :---: | :---: | :--- |
+| metric | alt. name | units | type | from |  
+| :----: | :-------: | :---: | :--: | :--: |
 | ```domContentFlushed``` | ```dcf``` | ms | duration? | wptagent [```timeToDOMContentFlushed - fetchStart```](https://github.com/WPO-Foundation/wptagent/pull/230/files) |    
 | ```timeToFirstByte``` | TTFB | ms,sec | ... | ... |  
 | ```timeToFirstNonBlankPaint``` | FNBP | ms,sec | ... | ... |  
@@ -26,7 +26,7 @@
 **Test Metadata:**  
 
 | name | type | value(s) |
-| :--- | :---:| :-----:  |
+| :--: | :--: | :------: |
 | ```browser_version``` | _string_  |  "66.0a1" |   
 | ```browser_name``` | _string_ | "Firefox Nightly" |  
 
