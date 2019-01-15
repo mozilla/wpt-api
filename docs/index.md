@@ -12,7 +12,7 @@
 
 | metric | alt. name | units | type | from |  
 | :-- | :-------: | :---: | :--: | :--: |
-| ```domContentFlushed``` | ```dcf``` | ms | duration? | wptagent [```timeToDOMContentFlushed - fetchStart```](https://github.com/WPO-Foundation/wptagent/pull/230/files) |    
+| ```domContentFlushed``` | dcf | ms | duration? | wptagent [```timeToDOMContentFlushed - fetchStart```](https://github.com/WPO-Foundation/wptagent/pull/230/files) |    
 | ```timeToFirstByte``` | TTFB | ms,sec | ... | ... |  
 | ```timeToFirstNonBlankPaint``` | FNBP | ms,sec | ... | ... |  
 | ```timeToFirstMeaningfulPaint``` | FMP | ms,sec | ... | ... |  
