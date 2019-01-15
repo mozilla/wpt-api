@@ -69,7 +69,7 @@ To run a test via the API, using our **internal instance** at [wpt-api.stage.moz
 $ webpagetest test www.twitch.tv  --server https://username:passkey@wpt-api.stage.mozaws.net --location us-east-1-linux:Firefox --bodies --keepua -r 3 --first --reporter json
 ```
 
-To run the same test, but using the public instance now, would be:
+To run the same test, but using the **public instance** now at [www.webpagetest.org](https://www.webpagetest.org), would be:
 
 ```
 $ webpagetest test www.twitch.tv -k your_API_key --location ec2-us-east-1:Firefox --bodies --keepua -r 3 --first --reporter json
@@ -92,7 +92,6 @@ $ webpagetest test www.twitch.tv -k your_API_key --location ec2-us-east-1:Firefo
 Mobile (Android) Testing
 * TBD; scaffolding up soon, here
 
-
 ## W3C (Draft) Specs
 
 * [Perf-Timing Primer](https://w3c.github.io/perf-timing-primer/)
@@ -103,9 +102,9 @@ Mobile (Android) Testing
 * [User Timing](https://www.w3.org/TR/user-timing/)
 
 ## Assorted Links:
-* Example Mobile-Device Lab Config: https://github.com/WPO-Foundation/webpagetest-docs/blob/2db35b31fe1c992c02650a5b401f7ed208d8fa27/user/Private%20Instances/mobile/example.md
-* https://www.w3.org/2000/09/dbwg/details?group=45211&order=org&public=1
-* Web-platform tests we run: https://github.com/web-platform-tests/wpt/tree/744325921ba52791bc8db1b45d2aed097577753a/navigation-timing
+* Example Mobile-Device Lab Config: https://github.com/WPO-Foundation/webpagetest-docs/blob/2db35b31fe1c992c02650a5b401f7ed208d8fa27/user/Private%20Instances/mobile/example.md  
+* https://www.w3.org/2000/09/dbwg/details?group=45211&order=org&public=1  
+* Web-platform tests we run: https://github.com/web-platform-tests/wpt/tree/744325921ba52791bc8db1b45d2aed097577753a/navigation-timing  
 ***
 
 ## Contributions
