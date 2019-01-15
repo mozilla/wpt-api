@@ -8,15 +8,15 @@
 
 ## Metrics & Metadata:
 **Currently tracked metrics:**
-|        metric     | common/short name | units | derivation |
-| domContentFlushed | | | |
-| timeToFirstByte | | | |
-| timeToFirstNonBlankPaint | | | |
-| timeToFirstMeaningfulPaint | | | |
-| timeToConsistentlyInteractive | | | |
-| visualComplete | | | |
-| [SpeedIndex](https://sites.google.com/a/webpagetest.org/docs/using-webpagetest/metrics/speed-index) | | | |
-| pageLoadTime | | | |
+|        metric     | common/short name | units | derivation |  
+| domContentFlushed | | | |  
+| timeToFirstByte | | | |  
+| timeToFirstNonBlankPaint | | | |  
+| timeToFirstMeaningfulPaint | | | |  
+| timeToConsistentlyInteractive | | | |  
+| visualComplete | | | |  
+| [SpeedIndex](https://sites.google.com/a/webpagetest.org/docs/using-webpagetest/metrics/speed-index) | | | |  
+| pageLoadTime | | | |  
 | requestsFull | | | |  
 | bytesInDoc | | | |  
 
