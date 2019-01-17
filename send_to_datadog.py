@@ -70,7 +70,7 @@ def main(path):
                     }
                 })
             value = test["data"]["median"]["firstView"][name]
-            print(f"- {name}: {value}")
+            print(f"- {name}: {value} ({metric['unit']})")
             statsd.gauge(f"wpt.batch.{label}.median.firstView.{name}", value)
 
     # pprint(tb)
