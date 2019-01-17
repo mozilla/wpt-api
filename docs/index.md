@@ -47,9 +47,28 @@ PRO-TIP: you can and *should* input ```window.performance.timing``` into the Con
 3. Additionally, we might need to have the metric (if not available via standard APIs) emitted in WebPageTest, in [```wptagent/internal/js/page_data.js```](https://github.com/WPO-Foundation/wptagent/blob/3f2128a9815838f462187b870be3c666ebd13d95/internal/js/page_data.js#L27).
 Example: https://github.com/WPO-Foundation/wptagent/pull/230
 
-## Firefox-Pertinent WebPageTest (server + test-agent) Code:
+## Mini WebPageTest Compendium
+* Batch/bulk-test (Python API/lib)
+* Firefox WebExtension
+* HAR files
+** ```send``` and ```wait``` events/timings are lumped into a shared ```wait``` metric
+*** https://github.com/WPO-Foundation/webpagetest/blob/0da83ac3f7e7407c96feaff46af1cfa65c461d6a/www/har/HttpArchiveGenerator.php#L379-L410
+* logging
+* log-parsing/recreation
+  * devtools_parser.py
+  * firefox_log_parser.py
+* mobile-device testing (Android)
+* MOZ_LOG
+* networking
+** DNS
+* filmstrips
+* screenshots
+* optimization checks
+* timeouts
+* video
+* webPageReplay *
 
-### webpagetest ###
+### webpagetest
 * [```install/index.php```](https://github.com/WPO-Foundation/webpagetest/blob/53590782310e26654fd068bd1431667305b6443d/www/install/index.php) (Post-install-check page)
 ###  wptagent
 * [```Dockerfile```](https://github.com/WPO-Foundation/wptagent/blob/3f2128a9815838f462187b870be3c666ebd13d95/Dockerfile)
@@ -94,9 +113,6 @@ $ webpagetest test www.twitch.tv -k your_API_key --location ec2-us-east-1:Firefo
 * [WebPageTest](https://github.com/WPO-Foundation/webpagetest/blob/master/README.md) (core/server)
 * [wptagent](https://github.com/WPO-Foundation/wptagent/blob/master/README.md) (configs/runs browser tests, and collects and submits metrics/data to be post-processed by the above core WebPageTest server; a rewrite of the project formerly known as "wptdriver."
 * [webpagetest-api](https://github.com/marcelduran/webpagetest-api/blob/master/README.md) (NodeJS-wrapped core API)
-
-Mobile (Android) Testing
-* TBD; scaffolding up soon, here
 
 ## W3C (Draft) Specs
 
