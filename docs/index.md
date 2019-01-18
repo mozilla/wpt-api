@@ -38,7 +38,7 @@
 5. Hit return/enter
 6. You should see a value similar to ```1542438605479``` (time-stamped offset, in milliseconds)
 
-PRO-TIP: you can and *should* input ```window.performance.timing``` into the Console, to dump the entire PerformanceTiming object
+PRO-TIPs: you can and *should* input ```window.performance.timing``` and/or ```performance.getEntriesByType("navigation")``` into the console, for the full data
 
 ### Adding Metrics to WebPageTest with Firefox
 1. Manually test the metric + pref (ahem); most metrics can be found in the following Firefox DOM WebIDL:  [```mozilla-central/dom/webidl/PerformanceTiming.webidl```](https://hg.mozilla.org/mozilla-central/file/tip/dom/webidl/PerformanceTiming.webidl)
