@@ -10,18 +10,18 @@
 
 **Currently tracked metrics:**  
 
-| metric | alt. name | units | type | from |  
+| metric | alt. name | units | type | derived |  
 | :--: | :-------: | :---: | :--: | :--: |  
-| ```domContentFlushed``` | dcf | ms | duration? | wptagent [```timeToDOMContentFlushed - fetchStart```](https://github.com/WPO-Foundation/wptagent/pull/230/files) |    
-| ```timeToFirstByte``` | TTFB | ms,sec | ... | ... |  
-| ```timeToFirstNonBlankPaint``` | FNBP | ms,sec | ... | ... |  
-| ```timeToFirstMeaningfulPaint``` | FMP | ms,sec | ... | ... |  
+| ```domContentFlushed``` | dcf | ms | duration? | [```timeToDOMContentFlushed - fetchStart```](https://github.com/WPO-Foundation/wptagent/pull/230/files) |    
+| ```timeToFirstByte``` | TTFB | ms, sec | ... | ... |  
+| ```timeToFirstNonBlankPaint``` | FNBP | ms, sec | ... | ... |  
+| ```timeToFirstMeaningfulPaint``` | FMP | ms, sec | ... | ... |  
 | ```timeToConsistentlyInteractive``` | n/a: non-spec | ... | ... | ... |  
-| ```visualComplete``` | sec | ... | ... | ... |  
-| [ ```SpeedIndex``` ](https://sites.google.com/a/webpagetest.org/docs/using-webpagetest/metrics/speed-index) | ... | ... | ... | ... |   
-| ```pageLoadTime``` | ```pageload``` in Raptor | ... | ... | custom-metric [```loadEventStart - fetchStart```](https://github.com/mozilla-services/cloudops-deployment/blob/5de5b9c90353b186e5ed1f0cb1b8f5e2296a988b/projects/wpt/puppet/modules/wpt/templates/settings/custom_metrics/pageLoadTime.js.epp) |  
+| ```visualComplete``` | visually complete | ms, ? | ... | ... |  
+| [ ```SpeedIndex``` ](https://sites.google.com/a/webpagetest.org/docs/using-webpagetest/metrics/speed-index) | Speed Index | ... | score | ... |   
+| ```pageLoadTime``` | ```pageload``` in Raptor | ms, sec | duration | [```loadEventStart - fetchStart```](https://github.com/mozilla-services/cloudops-deployment/blob/5de5b9c90353b186e5ed1f0cb1b8f5e2296a988b/projects/wpt/puppet/modules/wpt/templates/settings/custom_metrics/pageLoadTime.js.epp) |  
 | ```requestsFull``` |  ... | num | count | ... |  
-| ```bytesInDoc``` | total bytes | num | count | ... | 
+| ```bytesInDoc``` | total bytes | num | count | ... |
 
 **Test Metadata:**  
 
@@ -41,11 +41,11 @@
 PRO-TIPs: you can and *should* input ```window.performance.timing``` and/or ```performance.getEntriesByType("navigation")``` into the console, for the full data
 
 ### Adding Metrics to WebPageTest with Firefox
-1. Manually test the metric + pref (ahem); most metrics can be found in the following Firefox DOM WebIDL:  [```mozilla-central/dom/webidl/PerformanceTiming.webidl```](https://hg.mozilla.org/mozilla-central/file/tip/dom/webidl/PerformanceTiming.webidl)
+1. Manually test the metric + prefs; most metrics can be found in the following Firefox DOM WebIDL:  [```mozilla-central/dom/webidl/PerformanceTiming.webidl```](https://hg.mozilla.org/mozilla-central/file/tip/dom/webidl/PerformanceTiming.webidl)
 2. If needed, add/modify Firefox's `prefs.js`, via a PR to  [```wptagent/internal/support/Firefox/profile/prefs.js```](https://github.com/WPO-Foundation/wptagent/blob/3f2128a9815838f462187b870be3c666ebd13d95/internal/support/Firefox/profile/prefs.js)
-  Example: https://github.com/WPO-Foundation/wptagent/pull/181/files#diff-69b0882d86377063fd0514c0dc978308
+ * Example: https://github.com/WPO-Foundation/wptagent/pull/181/files#diff-69b0882d86377063fd0514c0dc978308
 3. Additionally, we might need to have the metric (if not available via standard APIs) emitted in WebPageTest, in [```wptagent/internal/js/page_data.js```](https://github.com/WPO-Foundation/wptagent/blob/3f2128a9815838f462187b870be3c666ebd13d95/internal/js/page_data.js#L27).
-Example: https://github.com/WPO-Foundation/wptagent/pull/230
+ * Example: https://github.com/WPO-Foundation/wptagent/pull/230
 
 ## Mini WebPageTest Compendium
 * Batch/bulk-test (Python API/lib)
@@ -65,6 +65,15 @@ Example: https://github.com/WPO-Foundation/wptagent/pull/230
 * screenshots
 * optimization checks
 * timeouts
+ * **```run_time_limit```** (180, sec) which is __"Time limit for all steps in a single test run"__ in https://github.com/WPO-Foundation/webpagetest/blob/7b8d5d0821ae18b547f475133cae28a3c2b2778a/www/settings/settings.ini.sample#L60 **[webpagetest]**
+ * **```time```** (???, ???) which __"Set[s] the timeout on a per-test basis (not documented because I was a bit worried about abuse but it's there)."__ found in  https://www.webpagetest.org/forums/showthread.php?tid=3653&pid=25308#pid25308 **[wptagent?]**
+ * **```--timeout```** (120, sec) which is __"<seconds>: timeout for polling and waiting results [no timeout]"__ in https://github.com/marcelduran/webpagetest-api#test-works-for-test-command-only **[webpagetest-api]**
+ * **```timeout```** and **```time_limit```** in https://github.com/WPO-Foundation/wptagent/blob/11222c7ab48bafb1203494dc4089fa298e75e040/internal/webpagetest.py#L429-L430 **[wptagent]**
+ * **```maxtime```** (600, sec) which is __"Maximum amount of time for a test run (if requested by timeout=X)"__  in https://github.com/mozilla-services/cloudops-deployment/blob/73ecc43a1c3a3da7c73a4d3d939b16e70cacf112/projects/wpt/puppet/modules/wpt/templates/settings/settings.ini.epp#L23-L24 **[webpagetest]**
+ * **```max_run_minutes```** (60, min) which is __"Force individual runs to end if they didn't complete."__ in https://github.com/WPO-Foundation/webpagetest/blob/7b8d5d0821ae18b547f475133cae28a3c2b2778a/www/settings/settings.ini.sample#L63
+Also see https://github.com/WPO-Foundation/webpagetest/commit/ae11833a986260cf83f66b10fff4a9648f8dfa23, which added it
+**[webpagetest]**
+ * **```step_timeout```** (120, sec) which is __"Default timeout for each step of a test (in seconds)"__ in https://github.com/WPO-Foundation/webpagetest/blob/7b8d5d0821ae18b547f475133cae28a3c2b2778a/www/settings/settings.ini.sample#L54 **[webpagetest]**
 * video
 * webPageReplay *
 
