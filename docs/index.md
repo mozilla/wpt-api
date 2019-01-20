@@ -10,12 +10,13 @@
 
 **Currently tracked metrics:**  
 
-| metric | alt. name | units | type | derived |  
+| metric | a.k.a. | units | type | derived |  
 | :--: | :-------: | :---: | :--: | :--: |  
-| ```domContentFlushed``` | dcf | ms | duration? | [```timeToDOMContentFlushed - fetchStart```](https://github.com/WPO-Foundation/wptagent/pull/230/files) |    
+| ```domContentFlushed``` | dcf | ms | duration? | ```timeToDOMContentFlushed - fetchStart```(https://github.com/WPO-Foundation/wptagent/pull/230/files) |    
+| [```fetchStart```](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceTiming/fetchStart) | | | |
 | ```timeToFirstByte``` | TTFB | ms, sec | ... | ... |  
 | ```timeToFirstNonBlankPaint``` | FNBP | ms, sec | ... | ... |  
-| ```timeToFirstMeaningfulPaint``` | FMP | ms, sec | ... | ... |  
+| [```timeToFirstMeaningfulPaint```](https://developer.mozilla.org/en-US/docs/Web/API/PerformancePaintTiming) | FMP | ms, sec | ... | ... |  
 | ```timeToConsistentlyInteractive``` | n/a: non-spec | ... | ... | ... |  
 | ```visualComplete``` | visually complete | ms, ? | ... | ... |  
 | [ ```SpeedIndex``` ](https://sites.google.com/a/webpagetest.org/docs/using-webpagetest/metrics/speed-index) | Speed Index | ... | score | ... |   
@@ -65,17 +66,16 @@ PRO-TIPs: you can and *should* input ```window.performance.timing``` and/or ```p
 * screenshots
 * optimization checks
 * timeouts
- * **```run_time_limit```** (180, sec) which is __"Time limit for all steps in a single test run"__ in https://github.com/WPO-Foundation/webpagetest/blob/7b8d5d0821ae18b547f475133cae28a3c2b2778a/www/settings/settings.ini.sample#L60 **[webpagetest]**
- * **```time```** (???, ???) which __"Set[s] the timeout on a per-test basis (not documented because I was a bit worried about abuse but it's there)."__ found in  https://www.webpagetest.org/forums/showthread.php?tid=3653&pid=25308#pid25308 **[wptagent?]**
- * **```--timeout```** (120, sec) which is __"<seconds>: timeout for polling and waiting results [no timeout]"__ in https://github.com/marcelduran/webpagetest-api#test-works-for-test-command-only **[webpagetest-api]**
- * **```timeout```** and **```time_limit```** in https://github.com/WPO-Foundation/wptagent/blob/11222c7ab48bafb1203494dc4089fa298e75e040/internal/webpagetest.py#L429-L430 **[wptagent]**
- * **```maxtime```** (600, sec) which is __"Maximum amount of time for a test run (if requested by timeout=X)"__  in https://github.com/mozilla-services/cloudops-deployment/blob/73ecc43a1c3a3da7c73a4d3d939b16e70cacf112/projects/wpt/puppet/modules/wpt/templates/settings/settings.ini.epp#L23-L24 **[webpagetest]**
- * **```max_run_minutes```** (60, min) which is __"Force individual runs to end if they didn't complete."__ in https://github.com/WPO-Foundation/webpagetest/blob/7b8d5d0821ae18b547f475133cae28a3c2b2778a/www/settings/settings.ini.sample#L63
+ * ```run_time_limit``` (180, sec) which is __"Time limit for all steps in a single test run"__ in https://github.com/WPO-Foundation/webpagetest/blob/7b8d5d0821ae18b547f475133cae28a3c2b2778a/www/settings/settings.ini.sample#L60
+  * ```time``` (???, ???) which __"Set[s] the timeout on a per-test basis (not documented because I was a bit worried about abuse but it's there)."__ found in  https://www.webpagetest.org/forums/showthread.php?tid=3653&pid=25308#pid25308
+  * ```--timeout``` (120, sec) which is __"<seconds>: timeout for polling and waiting results [no timeout]"__ in https://github.com/marcelduran/webpagetest-api#test-works-for-test-command-only
+  * ```timeout``` and ```time_limit```** in https://github.com/WPO-Foundation/wptagent/blob/11222c7ab48bafb1203494dc4089fa298e75e040/internal/webpagetest.py#L429-L430
+  * ```maxtime```(600, sec) which is __"Maximum amount of time for a test run (if requested by timeout=X)"__  in https://github.com/mozilla-services/cloudops-deployment/blob/73ecc43a1c3a3da7c73a4d3d939b16e70cacf112/projects/wpt/puppet/modules/wpt/templates/settings/settings.ini.epp#L23-L24
+  * ```max_run_minutes``` (60, min) which is __"Force individual runs to end if they didn't complete."__ in https://github.com/WPO-Foundation/webpagetest/blob/7b8d5d0821ae18b547f475133cae28a3c2b2778a/www/settings/settings.ini.sample#L63
 Also see https://github.com/WPO-Foundation/webpagetest/commit/ae11833a986260cf83f66b10fff4a9648f8dfa23, which added it
-**[webpagetest]**
- * **```step_timeout```** (120, sec) which is __"Default timeout for each step of a test (in seconds)"__ in https://github.com/WPO-Foundation/webpagetest/blob/7b8d5d0821ae18b547f475133cae28a3c2b2778a/www/settings/settings.ini.sample#L54 **[webpagetest]**
+  * ```step_timeout``` (120, sec) which is __"Default timeout for each step of a test (in seconds)"__ in https://github.com/WPO-Foundation/webpagetest/blob/7b8d5d0821ae18b547f475133cae28a3c2b2778a/www/settings/settings.ini.sample#L54
 * video
-* webPageReplay *
+* webPageReplay
 
 ### webpagetest
 * [```install/index.php```](https://github.com/WPO-Foundation/webpagetest/blob/53590782310e26654fd068bd1431667305b6443d/www/install/index.php) (Post-install-check page)
