@@ -12,25 +12,25 @@
 
 | metric | a.k.a. | units | type | derived |  
 | :--: | :-------: | :---: | :--: | :--: |  
-| ```domContentFlushed``` | dcf | ms | duration? | ```timeToDOMContentFlushed - fetchStart```(https://github.com/WPO-Foundation/wptagent/pull/230/files) |    
+| ```domContentFlushed``` | dcf | ms | duration? | ```timeToDOMContentFlushed - fetchStart```[wptagent](https://github.com/WPO-Foundation/wptagent/pull/230/files) |    
 | [```fetchStart```](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceTiming/fetchStart) | | | |
 | ```timeToFirstByte``` | TTFB | ms, sec | ... | ... |  
-| ```timeToFirstNonBlankPaint``` | FNBP | ms, sec | ... | ... |  
+| ```timeToContentfulPaint``` | FCP | ms, sec | ... |```user_pref("dom.performance.time_to_contentful_paint.enabled", true)```[wptagent/internal/support/Firefox/profile/prefs.js(https://github.com/WPO-Foundation/wptagent/pull/214/files#diff-463e288bcde710e9a9ef8a46d490aac1R58] and ```addTime("timeToContentfulPaint");```[wptagent](https://github.com/WPO-Foundation/wptagent/pull/214/files#diff-69b0882d86377063fd0514c0dc978308R22)| |
+| ```timeToFirstNonBlankPaint``` | FNBP | ms, sec | ... |```user_pref("dom.performance.time.to_non_blank_paint", true)``` in [wptagent/internal/support/Firefox/profile/prefs.js](https://github.com/WPO-Foundation/wptagent/blob/3f2128a9815838f462187b870be3c666ebd13d95/internal/support/Firefox/profile/prefs.js#L60) | |  
 | [```timeToFirstMeaningfulPaint```](https://developer.mozilla.org/en-US/docs/Web/API/PerformancePaintTiming) | FMP | ms, sec | ... | ... |  
-| ```timeToConsistentlyInteractive``` | n/a: non-spec | ... | ... | ... |  
+| ```timeToConsistentlyInteractive``` | TTI | ms, sec | ... | ... |  
 | ```visualComplete``` | visually complete | ms, ? | ... | ... |  
 | [ ```SpeedIndex``` ](https://sites.google.com/a/webpagetest.org/docs/using-webpagetest/metrics/speed-index) | Speed Index | ... | score | ... |   
-| ```pageLoadTime``` | ```pageload``` in Raptor | ms, sec | duration | [```loadEventStart - fetchStart```](https://github.com/mozilla-services/cloudops-deployment/blob/5de5b9c90353b186e5ed1f0cb1b8f5e2296a988b/projects/wpt/puppet/modules/wpt/templates/settings/custom_metrics/pageLoadTime.js.epp) |  
-| ```requestsFull``` |  ... | num | count | ... |  
+| ```pageLoadTime``` | ```pageload``` in Raptor | ms, sec | duration | [```loadEventStart - fetchStart```][cloudops-deployment](https://github.com/mozilla-services/cloudops-deployment/blob/5de5b9c90353b186e5ed1f0cb1b8f5e2296a988b/projects/wpt/puppet/modules/wpt/templates/settings/custom_metrics/pageLoadTime.js.epp) |  
+| ```requestsFull``` |  total requests | num | count | ... |  
 | ```bytesInDoc``` | total bytes | num | count | ... |
 
 **Test Metadata:**  
 
-| name | type | value(s) |
-| :---: | :--: | :------: |
-| ```browser_version``` | _string_  |  "66.0a1" |   
-| ```browser_name``` | _string_ | "Firefox Nightly" |  
-
+| name | type | value(s) | derived |
+| :--: | :--: | :------: | :-----: |
+| ```browser_version``` | _string_  |  "66.0a1" | ```self.marionette.session.capabilities``` in [wptagent/internal/firefox.py](https://github.com/WPO-Foundation/wptagent/blob/84018f548a2dea78dfca0ca64c19386adc6e2bca/internal/firefox.py#L128-L129) |  
+| ```browser_name``` | _string_ | "Firefox Nightly" | ... |
 ### Manually Testing Metrics in Firefox
 1. Enable/modify any (missing) prefs/pref-overrides
 2. Open Tools -> Web Developer -> Web Console
@@ -39,7 +39,15 @@
 5. Hit return/enter
 6. You should see a value similar to ```1542438605479``` (time-stamped offset, in milliseconds)
 
-PRO-TIPs: you can and *should* input ```window.performance.timing``` and/or ```performance.getEntriesByType("navigation")``` into the console, for the full data
+PRO-TIPs: you can and *should* input ```window.performance.timing``` and/or ```performance.getEntriesByType("navigation")``` into the console, for the full data.
+
+```window.performance.timing:```
+
+![twitch-performance-timing](https://user-images.githubusercontent.com/387249/51446908-1a804c80-1ccd-11e9-9c33-52cadca49c30.png)
+
+
+```performance.getEntriesByType("navigation"):```
+![nav-timing](https://user-images.githubusercontent.com/387249/51446966-bf9b2500-1ccd-11e9-817d-b681728489d2.png)
 
 ### Adding Metrics to WebPageTest with Firefox
 1. Manually test the metric + prefs; most metrics can be found in the following Firefox DOM WebIDL:  [```mozilla-central/dom/webidl/PerformanceTiming.webidl```](https://hg.mozilla.org/mozilla-central/file/tip/dom/webidl/PerformanceTiming.webidl)
