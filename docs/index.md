@@ -12,18 +12,19 @@
 
 | metric | a.k.a. | units | type | derived |  
 | :--: | :-------: | :---: | :--: | :--: |  
-| ```domContentFlushed``` | dcf | ms | duration? | ```timeToDOMContentFlushed - fetchStart```[wptagent](https://github.com/WPO-Foundation/wptagent/pull/230/files) |    
+| ```bytesInDoc``` | total bytes | num | count | ... |  
+| ```domContentFlushed``` | dcf | ms | duration? | ```timeToDOMContentFlushed - fetchStart``` in [wptagent](https://github.com/WPO-Foundation/wptagent/pull/230/files) |    
 | [```fetchStart```](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceTiming/fetchStart) | | | |
-| ```timeToFirstByte``` | TTFB | ms, sec | ... | ... |  
-| ```timeToContentfulPaint``` | FCP | ms, sec | ... |```user_pref("dom.performance.time_to_contentful_paint.enabled", true)```[wptagent/internal/support/Firefox/profile/prefs.js(https://github.com/WPO-Foundation/wptagent/pull/214/files#diff-463e288bcde710e9a9ef8a46d490aac1R58] and ```addTime("timeToContentfulPaint");```[wptagent](https://github.com/WPO-Foundation/wptagent/pull/214/files#diff-69b0882d86377063fd0514c0dc978308R22)| |
+| ```pageLoadTime``` | ```pageload``` in Raptor | ms, sec | duration | ```loadEventStart - fetchStart``` in [cloudops-deployment](https://github.com/mozilla-services/cloudops-deployment/blob/5de5b9c90353b186e5ed1f0cb1b8f5e2296a988b/projects/wpt/puppet/modules/wpt/templates/settings/custom_metrics/pageLoadTime.js.epp) |  ... |
+[```timeToDOMContentFlushed``` | TTDCF | ms, ms | ... | ... |
+| ```timeToFirstByte``` | TTFB | ms, sec | ... | ... |
+| ```timeToContentfulPaint``` | FCP | ms, sec | ... |```user_pref("dom.performance.time_to_contentful_paint.enabled", true)``` in [wptagent](wptagent/internal/support/Firefox/profile/prefs.js(https://github.com/WPO-Foundation/wptagent/pull/214/files#diff-463e288bcde710e9a9ef8a46d490aac1R58]``` and ```addTime("timeToContentfulPaint");``` in ```[wptagent](https://github.com/WPO-Foundation/wptagent/pull/214/files#diff-69b0882d86377063fd0514c0dc978308R22)| |
 | ```timeToFirstNonBlankPaint``` | FNBP | ms, sec | ... |```user_pref("dom.performance.time.to_non_blank_paint", true)``` in [wptagent/internal/support/Firefox/profile/prefs.js](https://github.com/WPO-Foundation/wptagent/blob/3f2128a9815838f462187b870be3c666ebd13d95/internal/support/Firefox/profile/prefs.js#L60) | |  
 | [```timeToFirstMeaningfulPaint```](https://developer.mozilla.org/en-US/docs/Web/API/PerformancePaintTiming) | FMP | ms, sec | ... | ... |  
-| ```timeToConsistentlyInteractive``` | TTI | ms, sec | ... | ... |  
+| ```timeToFirstInteractive``` | TTI | ms, sec | ... | ... |  
 | ```visualComplete``` | visually complete | ms, ? | ... | ... |  
 | [ ```SpeedIndex``` ](https://sites.google.com/a/webpagetest.org/docs/using-webpagetest/metrics/speed-index) | Speed Index | ... | score | ... |   
-| ```pageLoadTime``` | ```pageload``` in Raptor | ms, sec | duration | [```loadEventStart - fetchStart```][cloudops-deployment](https://github.com/mozilla-services/cloudops-deployment/blob/5de5b9c90353b186e5ed1f0cb1b8f5e2296a988b/projects/wpt/puppet/modules/wpt/templates/settings/custom_metrics/pageLoadTime.js.epp) |  
 | ```requestsFull``` |  total requests | num | count | ... |  
-| ```bytesInDoc``` | total bytes | num | count | ... |
 
 **Test Metadata:**  
 
