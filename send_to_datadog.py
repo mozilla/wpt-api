@@ -74,6 +74,7 @@ def main(path):
             statsd.gauge(f"wpt.batch.{label}.median.firstView.{name}", value)
         summary = test["data"]["summary"]
         print(summary)
+        print("=====================")
 
     # pprint(tb)
     for item in tbdata.values():
