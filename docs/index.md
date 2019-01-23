@@ -14,7 +14,7 @@
 | :--: | :-------: | :---: | :--: | :--: |  
 | ```bytesInDoc``` | total bytes | num | count | Mult. sources[0] |  
 | ```domContentFlushed``` | dcf | ms | duration | ```timeToDOMContentFlushed - fetchStart``` in <br>[wptagent/internal/js/page_data.js](https://github.com/WPO-Foundation/wptagent/pull/230/files) |    
-| [```fetchStart```](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceTiming/fetchStart) | | | gecko |
+| [```fetchStart```](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceTiming/fetchStart) | same | ms, sec | duration | gecko |
 | ```pageLoadTime``` | ```pageload``` in [Raptor](https://searchfox.org/mozilla-central/rev/6c784c93cfbd5119ed07773a170b59fbce1377ea/testing/raptor/webext/raptor/measure.js#287-308) | ms, sec | duration | ```loadEventStart - fetchStart``` in <br> [cloudops-deployment/projects/wpt/puppet/modules/wpt/templates/settings/custom_metrics/pageLoadTime.js.epp](https://github.com/mozilla-services/cloudops-deployment/blob/5de5b9c90353b186e5ed1f0cb1b8f5e2296a988b/projects/wpt/puppet/modules/wpt/templates/settings/custom_metrics/pageLoadTime.js.epp) |  gecko |
 | ```timeToDOMContentFlushed``` | TTDCF | ms, ms | duration | gecko |
 | ```timeToFirstByte``` | TTFB | ms, sec | duration | Mult. sources[0] |
