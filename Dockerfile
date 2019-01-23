@@ -4,7 +4,7 @@ WORKDIR /src
 
 COPY Pipfile Pipfile.lock pipenv.txt send_to_datadog.py /src/
 
-RUN pip install -r pipenv.txt && \
+RUN pip install -r pipenv.txt --upgrade pip && \
   pipenv install --dev --system
 
 COPY . /src

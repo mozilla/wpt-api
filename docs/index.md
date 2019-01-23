@@ -10,25 +10,26 @@
 
 **Currently tracked metrics:**  
 
-| metric | a.k.a. | units | type | derived |  
+| metric | a.k.a. | units | type | source |  
 | :--: | :-------: | :---: | :--: | :--: |  
-| ```bytesInDoc``` | total bytes | num | count | ... |  
-| ```domContentFlushed``` | dcf | ms | duration? | ```timeToDOMContentFlushed - fetchStart``` in <br>[wptagent/internal/js/page_data.js](https://github.com/WPO-Foundation/wptagent/pull/230/files) |    
-| [```fetchStart```](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceTiming/fetchStart) | | | |
-| ```pageLoadTime``` | ```pageload``` in Raptor | ms, sec | duration | ```loadEventStart - fetchStart``` in <br> [cloudops-deployment/projects/wpt/puppet/modules/wpt/templates/settings/custom_metrics/pageLoadTime.js.epp](https://github.com/mozilla-services/cloudops-deployment/blob/5de5b9c90353b186e5ed1f0cb1b8f5e2296a988b/projects/wpt/puppet/modules/wpt/templates/settings/custom_metrics/pageLoadTime.js.epp) |  ... |
-| ```timeToDOMContentFlushed``` | TTDCF | ms, ms | ... | ... |
-| ```timeToFirstByte``` | TTFB | ms, sec | ... | ... |
-| ```timeToContentfulPaint``` | FCP | ms, sec | ... |(1)```user_pref("dom.performance.time_to_contentful_paint.enabled", true)``` in <br> [wptagent/internal/support/Firefox/profile.prefs.js](https://github.com/WPO-Foundation/wptagent/pull/214/files#diff-463e288bcde710e9a9ef8a46d490aac1R58) <br> and <br> (2)```addTime("timeToContentfulPaint");``` in <br> [wptagent/internal/js/page_data.js](https://github.com/WPO-Foundation/wptagent/pull/214/files#diff-69b0882d86377063fd0514c0dc978308R22)| |
-| ```timeToFirstNonBlankPaint``` | FNBP | ms, sec | ... |```user_pref("dom.performance.time.to_non_blank_paint", true)``` in <br> [wptagent/internal/support/Firefox/profile/prefs.js](https://github.com/WPO-Foundation/wptagent/blob/3f2128a9815838f462187b870be3c666ebd13d95/internal/support/Firefox/profile/prefs.js#L60) | |  
-| [```timeToFirstMeaningfulPaint```](https://developer.mozilla.org/en-US/docs/Web/API/PerformancePaintTiming) | FMP | ms, sec | ... | ... |  
-| ```timeToFirstInteractive``` | TTI | ms, sec | ... | ... |  
-| ```visualComplete``` | visually complete | ms, ? | ... | ... |  
-| [ ```SpeedIndex``` ](https://sites.google.com/a/webpagetest.org/docs/using-webpagetest/metrics/speed-index) | Speed Index | ... | score | ... |   
-| ```requestsFull``` |  total requests | num | count | ... |  
+| ```bytesInDoc``` | total bytes | num | count | Mult. sources[0] |  
+| ```domContentFlushed``` | dcf | ms | duration | ```timeToDOMContentFlushed - fetchStart``` in <br>[wptagent/internal/js/page_data.js](https://github.com/WPO-Foundation/wptagent/pull/230/files) |    
+| [```fetchStart```](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceTiming/fetchStart) | same | ms, sec | duration | gecko |
+| ```pageLoadTime``` | ```pageload``` in [Raptor](https://searchfox.org/mozilla-central/rev/6c784c93cfbd5119ed07773a170b59fbce1377ea/testing/raptor/webext/raptor/measure.js#287-308) | ms, sec | duration | ```loadEventStart - fetchStart``` in <br> [cloudops-deployment/projects/wpt/puppet/modules/wpt/templates/settings/custom_metrics/pageLoadTime.js.epp](https://github.com/mozilla-services/cloudops-deployment/blob/5de5b9c90353b186e5ed1f0cb1b8f5e2296a988b/projects/wpt/puppet/modules/wpt/templates/settings/custom_metrics/pageLoadTime.js.epp) |  gecko |
+| ```timeToDOMContentFlushed``` | TTDCF | ms, ms | duration | gecko |
+| ```timeToFirstByte``` | TTFB | ms, sec | duration | Mult. sources[0] |
+| ```timeToContentfulPaint``` | FCP | ms, sec | duration |(1)```user_pref("dom.performance.time_to_contentful_paint.enabled", true)``` in <br> [wptagent/internal/support/Firefox/profile.prefs.js](https://github.com/WPO-Foundation/wptagent/pull/214/files#diff-463e288bcde710e9a9ef8a46d490aac1R58) <br> and <br> (2)```addTime("timeToContentfulPaint");``` in <br> [wptagent/internal/js/page_data.js](https://github.com/WPO-Foundation/wptagent/pull/214/files#diff-69b0882d86377063fd0514c0dc978308R22)| gecko |
+| ```timeToFirstNonBlankPaint``` | FNBP | ms, sec | duration |```user_pref("dom.performance.time.to_non_blank_paint", true)``` in <br> [wptagent/internal/support/Firefox/profile/prefs.js](https://github.com/WPO-Foundation/wptagent/blob/3f2128a9815838f462187b870be3c666ebd13d95/internal/support/Firefox/profile/prefs.js#L60) | gecko |  
+| ```timeToFirstInteractive``` | TTI | ms, sec | duration | gecko |  
+| [```visualComplete```](https://www.webpagetest.org/forums/showthread.php?tid=12846) | visually complete | ms, sec | duration | WebPageTest (video) |  
+| [ ```SpeedIndex``` ](https://sites.google.com/a/webpagetest.org/docs/using-webpagetest/metrics/speed-index) | Speed Index | ... | score | WebPageTest (video) |   
+| ```requestsFull``` |  total requests | num | count | Mult. sources[0]|  
+
+[0] Multiple sources: (1) gecko (2) wptagent (3) another I'm forgetting?  The key takeaway is that because WPT can't get a trustable set of network events from Firefox, it does log-culling/HAR-generating "magic" (less magic is good!)
 
 **Test Metadata:**  
 
-| name | type | value(s) | derived |
+| name | type | value(s) | source |
 | :--: | :--: | :------: | :-----: |
 | ```browser_version``` | _string_  |  "66.0a1" | ```self.marionette.session.capabilities``` in [wptagent/internal/firefox.py](https://github.com/WPO-Foundation/wptagent/blob/84018f548a2dea78dfca0ca64c19386adc6e2bca/internal/firefox.py#L128-L129) |  
 | ```browser_name``` | _string_ | "Firefox Nightly" | ... |
@@ -75,7 +76,7 @@ PRO-TIPs: you can and *should* input ```window.performance.timing``` and/or ```p
 * screenshots
 * optimization checks
 * timeouts
- * ```run_time_limit``` (180, sec) which is __"Time limit for all steps in a single test run"__ in https://github.com/WPO-Foundation/webpagetest/blob/7b8d5d0821ae18b547f475133cae28a3c2b2778a/www/settings/settings.ini.sample#L60
+  * ```run_time_limit``` (180, sec) which is __"Time limit for all steps in a single test run"__ in https://github.com/WPO-Foundation/webpagetest/blob/7b8d5d0821ae18b547f475133cae28a3c2b2778a/www/settings/settings.ini.sample#L60
   * ```time``` (???, ???) which __"Set[s] the timeout on a per-test basis (not documented because I was a bit worried about abuse but it's there)."__ found in  https://www.webpagetest.org/forums/showthread.php?tid=3653&pid=25308#pid25308
   * ```--timeout``` (120, sec) which is __"<seconds>: timeout for polling and waiting results [no timeout]"__ in https://github.com/marcelduran/webpagetest-api#test-works-for-test-command-only
   * ```timeout``` and ```time_limit```** in https://github.com/WPO-Foundation/wptagent/blob/11222c7ab48bafb1203494dc4089fa298e75e040/internal/webpagetest.py#L429-L430
