@@ -43,17 +43,17 @@
 
 PRO-TIPs: you can and *should* input ```window.performance.timing``` and/or ```performance.getEntriesByType("navigation")``` into the console, for the full data.
 
-```window.performance.timing:```
+```window.performance.timing```:
 
 ![twitch-performance-timing](https://user-images.githubusercontent.com/387249/51446908-1a804c80-1ccd-11e9-9c33-52cadca49c30.png)
 
 
-```performance.getEntriesByType("navigation"):```
+```performance.getEntriesByType("navigation")```:
 ![nav-timing](https://user-images.githubusercontent.com/387249/51446966-bf9b2500-1ccd-11e9-817d-b681728489d2.png)
 
 ### Adding Metrics to WebPageTest with Firefox
 1. Manually test the metric + prefs; most metrics can be found in the following Firefox DOM WebIDL:  [```mozilla-central/dom/webidl/PerformanceTiming.webidl```](https://hg.mozilla.org/mozilla-central/file/tip/dom/webidl/PerformanceTiming.webidl)
-2. If needed, add/modify Firefox's `prefs.js`, via a PR to  [```wptagent/internal/support/Firefox/profile/prefs.js```](https://github.com/WPO-Foundation/wptagent/blob/3f2128a9815838f462187b870be3c666ebd13d95/internal/support/Firefox/profile/prefs.js)
+2. If needed, add/modify Firefox's `prefs.js`, via a PR to [```wptagent/internal/support/Firefox/profile/prefs.js```](https://github.com/WPO-Foundation/wptagent/blob/3f2128a9815838f462187b870be3c666ebd13d95/internal/support/Firefox/profile/prefs.js)
  * Example: https://github.com/WPO-Foundation/wptagent/pull/181/files#diff-69b0882d86377063fd0514c0dc978308
 3. Additionally, we might need to have the metric (if not available via standard APIs) emitted in WebPageTest, in [```wptagent/internal/js/page_data.js```](https://github.com/WPO-Foundation/wptagent/blob/3f2128a9815838f462187b870be3c666ebd13d95/internal/js/page_data.js#L27).
  * Example: https://github.com/WPO-Foundation/wptagent/pull/230
@@ -70,7 +70,7 @@ PRO-TIPs: you can and *should* input ```window.performance.timing``` and/or ```p
   * firefox_log_parser.py
 * mobile-device testing (Android)
   * public instance:
-    * ```$ webpagetest test https://faraday.basschouten.com/mozilla/executionorder/externaltimeout0.html --server http://webpagetest.org -k [redacted_API_key] --location "Dulles_MotoG4:Moto G4 - Firefox" --connectivity 3GFast --runs 3 --first```
+    ```$ webpagetest test https://faraday.basschouten.com/mozilla/executionorder/externaltimeout0.html --server http://webpagetest.org -k [redacted_API_key] --location "Dulles_MotoG4:Moto G4 - Firefox" --connectivity 3GFast --runs 3 --first```
     
 You'll see something like the following JSON returned:
 
@@ -90,7 +90,6 @@ You'll see something like the following JSON returned:
 ```
 
 To view the full test results in the Web UI, just use that ```userURL```, which is http://webpagetest.org/result/190123_FA_dcbc2acb71e08a640f81999f9d2360dd/, in this case.
-```
 * MOZ_LOG
 * networking
 ** DNS
