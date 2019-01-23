@@ -69,6 +69,28 @@ PRO-TIPs: you can and *should* input ```window.performance.timing``` and/or ```p
   * devtools_parser.py
   * firefox_log_parser.py
 * mobile-device testing (Android)
+  * public instance:
+    * ```$ webpagetest test https://faraday.basschouten.com/mozilla/executionorder/externaltimeout0.html --server http://webpagetest.org -k [redacted_API_key] --location "Dulles_MotoG4:Moto G4 - Firefox" --connectivity 3GFast --runs 3 --first```
+    
+You'll see something like the following JSON returned:
+
+```
+{
+  "statusCode": 200,
+  "statusText": "Ok",
+  "data": {
+    "testId": "190123_FA_dcbc2acb71e08a640f81999f9d2360dd",
+    "ownerKey": "5f84816b2aaf6c795cb4dad85e2a472e004f58c2",
+    "jsonUrl": "http://webpagetest.org/jsonResult.php?test=190123_FA_dcbc2acb71e08a640f81999f9d2360dd",
+    "xmlUrl": "http://webpagetest.org/xmlResult/190123_FA_dcbc2acb71e08a640f81999f9d2360dd/",
+    "userUrl": "http://webpagetest.org/result/190123_FA_dcbc2acb71e08a640f81999f9d2360dd/",
+    "summaryCSV": "http://webpagetest.org/result/190123_FA_dcbc2acb71e08a640f81999f9d2360dd/page_data.csv",
+    "detailCSV": "http://webpagetest.org/result/190123_FA_dcbc2acb71e08a640f81999f9d2360dd/requests.csv"
+  }
+```
+
+To view the full test results in the Web UI, just use that ```userURL```, which is http://webpagetest.org/result/190123_FA_dcbc2acb71e08a640f81999f9d2360dd/, in this case.
+```
 * MOZ_LOG
 * networking
 ** DNS
@@ -76,14 +98,14 @@ PRO-TIPs: you can and *should* input ```window.performance.timing``` and/or ```p
 * screenshots
 * optimization checks
 * timeouts
-  * ```run_time_limit``` (180, sec) which is __"Time limit for all steps in a single test run"__ in https://github.com/WPO-Foundation/webpagetest/blob/7b8d5d0821ae18b547f475133cae28a3c2b2778a/www/settings/settings.ini.sample#L60
-  * ```time``` (???, ???) which __"Set[s] the timeout on a per-test basis (not documented because I was a bit worried about abuse but it's there)."__ found in  https://www.webpagetest.org/forums/showthread.php?tid=3653&pid=25308#pid25308
-  * ```--timeout``` (120, sec) which is __"<seconds>: timeout for polling and waiting results [no timeout]"__ in https://github.com/marcelduran/webpagetest-api#test-works-for-test-command-only
-  * ```timeout``` and ```time_limit```** in https://github.com/WPO-Foundation/wptagent/blob/11222c7ab48bafb1203494dc4089fa298e75e040/internal/webpagetest.py#L429-L430
-  * ```maxtime```(600, sec) which is __"Maximum amount of time for a test run (if requested by timeout=X)"__  in https://github.com/mozilla-services/cloudops-deployment/blob/73ecc43a1c3a3da7c73a4d3d939b16e70cacf112/projects/wpt/puppet/modules/wpt/templates/settings/settings.ini.epp#L23-L24
-  * ```max_run_minutes``` (60, min) which is __"Force individual runs to end if they didn't complete."__ in https://github.com/WPO-Foundation/webpagetest/blob/7b8d5d0821ae18b547f475133cae28a3c2b2778a/www/settings/settings.ini.sample#L63
+  *  ```run_time_limit``` (180, sec) which is __"Time limit for all steps in a single test run"__ in https://github.com/WPO-Foundation/webpagetest/blob/7b8d5d0821ae18b547f475133cae28a3c2b2778a/www/settings/settings.ini.sample#L60
+  *  ```time``` (???, ???) which __"Set[s] the timeout on a per-test basis (not documented because I was a bit worried about abuse but it's there)."__ found in  https://www.webpagetest.org/forums/showthread.php?tid=3653&pid=25308#pid25308
+  *  ```--timeout``` (120, sec) which is __"<seconds>: timeout for polling and waiting results [no timeout]"__ in https://github.com/marcelduran/webpagetest-api#test-works-for-test-command-only
+  *  ```timeout``` and ```time_limit```** in https://github.com/WPO-Foundation/wptagent/blob/11222c7ab48bafb1203494dc4089fa298e75e040/internal/webpagetest.py#L429-L430
+  *  ```maxtime```(600, sec) which is __"Maximum amount of time for a test run (if requested by timeout=X)"__  in https://github.com/mozilla-services/cloudops-deployment/blob/73ecc43a1c3a3da7c73a4d3d939b16e70cacf112/projects/wpt/puppet/modules/wpt/templates/settings/settings.ini.epp#L23-L24
+  *  ```max_run_minutes``` (60, min) which is __"Force individual runs to end if they didn't complete."__ in https://github.com/WPO-Foundation/webpagetest/blob/7b8d5d0821ae18b547f475133cae28a3c2b2778a/www/settings/settings.ini.sample#L63
 Also see https://github.com/WPO-Foundation/webpagetest/commit/ae11833a986260cf83f66b10fff4a9648f8dfa23, which added it
-  * ```step_timeout``` (120, sec) which is __"Default timeout for each step of a test (in seconds)"__ in https://github.com/WPO-Foundation/webpagetest/blob/7b8d5d0821ae18b547f475133cae28a3c2b2778a/www/settings/settings.ini.sample#L54
+  *  ```step_timeout``` (120, sec) which is __"Default timeout for each step of a test (in seconds)"__ in https://github.com/WPO-Foundation/webpagetest/blob/7b8d5d0821ae18b547f475133cae28a3c2b2778a/www/settings/settings.ini.sample#L54
 * video
 * webPageReplay
 
