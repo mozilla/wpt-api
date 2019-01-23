@@ -72,6 +72,7 @@ def main(path):
             value = test["data"]["median"]["firstView"][name]
             print(f"- {name}: {value} ({metric['unit']})")
             statsd.gauge(f"wpt.batch.{label}.median.firstView.{name}", value)
+            print(["summary"])
 
     # pprint(tb)
     for item in tbdata.values():
