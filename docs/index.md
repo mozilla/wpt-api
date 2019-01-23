@@ -25,7 +25,7 @@
 | [ ```SpeedIndex``` ](https://sites.google.com/a/webpagetest.org/docs/using-webpagetest/metrics/speed-index) | Speed Index | ... | score | WebPageTest (video) |   
 | ```requestsFull``` |  total requests | num | count | Mult. sources[0]|  
 
-[0] Multiple sources: (1) gecko (2) wptagent (3) another I'm forgetting?  The key takeaway is that because WPT can't get a trustable set of network events from Firefox, it does log-culling/HAR-generating "magic" (less magic is good!)
+[0] Multiple sources: (1) gecko (2) wptagent (3) another I'm forgetting?  The key takeaway is that because WPT can't get a trustable set of network events from Firefox, it does log-culling/HAR-generating "magic" (less magic is good!)  See https://github.com/WPO-Foundation/webpagetest/issues/1199
 
 **Test Metadata:**  
 
