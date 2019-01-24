@@ -10,6 +10,7 @@ pipeline {
   environment {
     WEB_PAGE_TEST = credentials('WEB_PAGE_TEST')
     WEBPAGETEST_SERVER = "https://${WEB_PAGE_TEST}@wpt-api.stage.mozaws.net/"
+    PUB_WPT_API_KEY = credentials('PUB_WPT_API_KEY')
   }
   options {
     ansiColor('xterm')
