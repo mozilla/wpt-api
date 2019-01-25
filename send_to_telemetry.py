@@ -18,9 +18,10 @@ def main(path):
 
     for test in data:
         sample = test["data"]["median"]["firstView"]
-        metrics = {TTFB, render, firstPaint, timeToContentfulPaint,
-                   domContentFlushed, timeToFirstInteractive, pageLoadTime,
-                   SpeedIndex, bytesInDoc, visualComplete, requestsFull}
+        metrics = {"TTFB": TTFB, "startRender": startRender, "firstPaint": firstPaint,
+                    "timeToContentfulPaint": timeToContentfulPaint,
+                    "domContentFlushed":, "timeToFirstInteractive", "pageLoadTime": pageLoadTime,
+                    "SpeedIndex": SpeedIndex, "bytesInDoc": bytesInDoc, "visualComplete": visualComplete, "requestsFull": requestsFull}
         result = TestResult(
             appName=sample["browser_name"],
             channel="",
