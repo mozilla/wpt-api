@@ -3,13 +3,13 @@ import json
 import sys
 
 
-@dataclass
-class TestResult:
-    appName: str
-    channel: str
-    version: str
-    url: str
-    metrics: dict
+# @dataclass
+# class TestResult:
+#    appName: str
+#    channel: str
+#    version: str
+#    url: str
+#    metrics: dict
 
 
 def main(path):
@@ -20,7 +20,7 @@ def main(path):
         sample = test["data"]["median"]["firstView"]
         metrics = {"TTFB": TTFB, "startRender": startRender, "firstPaint": firstPaint,
                     "timeToContentfulPaint": timeToContentfulPaint,
-                    "domContentFlushed":, "timeToFirstInteractive", "pageLoadTime": pageLoadTime,
+                    "domContentFlushed":, "timeToFirstInteractive":, "pageLoadTime": pageLoadTime,
                     "SpeedIndex": SpeedIndex, "bytesInDoc": bytesInDoc, "visualComplete": visualComplete, "requestsFull": requestsFull}
         result = TestResult(
             appName=sample["browser_name"],
