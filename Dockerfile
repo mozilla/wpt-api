@@ -9,4 +9,4 @@ RUN pip install -r pipenv.txt --upgrade pip && \
 
 COPY . /src
 
-CMD python send_to_telemetry.py
+CMD python send_to_datadog.py
