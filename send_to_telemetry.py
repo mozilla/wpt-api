@@ -11,7 +11,6 @@ class TestResult:
     url: str
     metrics: dict
 
-
 def main(path):
     with open(path) as f:
         data = json.load(f)
