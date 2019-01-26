@@ -3,13 +3,13 @@ import json
 import sys
 
 
-# @dataclass
-# class TestResult:
-#    appName: str
-#    channel: str
-#    version: str
-#    url: str
-#    metrics: dict
+@dataclass
+class TestResult:
+   appName: str
+    channel: str
+    version: str
+    url: str
+    metrics: dict
 
 
 def main(path):
