@@ -36,10 +36,10 @@ pipeline {
         writeFile([
           file: 'commands.txt',
           encoding: 'UTF-8',
-          text: """test ${TARGET_URL} --location us-east-1-linux:Firefox --keepua --noopt --noimages -r 3 --first --priority 1 --poll 5 --reporter json --label ${TARGET_NAME}.fx.release
-test ${TARGET_URL} --location us-east-1-linux:Firefox%20Nightly --keepua  --noopt --noimages -r 3 --first --priority 1 --poll 5 --reporter json --label ${TARGET_NAME}.fx.nightly
-test ${TARGET_URL} --location us-east-1-linux:Chrome --keepua  --noopt --noimages -r 3 --first --priority 1 --poll 5 --reporter json --label ${TARGET_NAME}.chrome.release
-test ${TARGET_URL} --location us-east-1-linux:Chrome%20Canary --keepua  --noopt --noimages -r 3 --first --priority 1 --poll 5 --reporter json --label ${TARGET_NAME}.chrome.canary"""])
+          text: """test ${TARGET_URL} --location us-east-1-linux:Firefox --keepua --noopt --noimages -r 3 --first --priority 1 --reporter json --label ${TARGET_NAME}.fx.release
+test ${TARGET_URL} --location us-east-1-linux:Firefox%20Nightly --keepua  --noopt --noimages -r 3 --first --priority 1 --reporter json --label ${TARGET_NAME}.fx.nightly
+test ${TARGET_URL} --location us-east-1-linux:Chrome --keepua  --noopt --noimages -r 3 --first --priority 1 --reporter json --label ${TARGET_NAME}.chrome.release
+test ${TARGET_URL} --location us-east-1-linux:Chrome%20Canary --keepua  --noopt --noimages -r 3 --first --priority 1 --reporter json --label ${TARGET_NAME}.chrome.canary"""])
         sh '/usr/src/app/bin/webpagetest batch commands.txt > "wpt.json"'
       }
       post {
@@ -60,30 +60,14 @@ test ${TARGET_URL} --location us-east-1-linux:Chrome%20Canary --keepua  --noopt 
         }
       }
     }
-    stage('Submit stats to Telemetry') {
+  stage('Submit stats to Telemetry') {
       agent {
         dockerfile {
-        }
-      }
-      steps {
-        unstash 'wpt.json'
-        sh 'python ./send_to_telemetry.py wpt.json'
       }
     }
-    stage('Submit stats to Datadog') {
-      agent {
-        dockerfile {
-          args '--net host'
-        }
-      }
-      environment {
-        DATADOG_API_KEY = credentials("DATADOG_API_KEY")
-        DATADOG_APP_KEY = credentials("DATADOG_APP_KEY")
-      }
-      steps {
-        unstash 'wpt.json'
-        sh 'python ./send_to_datadog.py wpt.json'
-      }
+    steps {
+      unstash 'wpt.json'
+      sh 'python ./send_to_telemetry.py wpt.json'
     }
   }
 }

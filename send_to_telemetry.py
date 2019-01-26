@@ -17,7 +17,8 @@ def main(path):
 
     for test in data:
         sample = test["data"]["median"]["firstView"]
-        metrics = {"TTFB": TTFB,
+        metrics = {
+                    "TTFB": TTFB,
                     "startRender": startRender,
                     "firstPaint": firstPaint,
                     "timeToContentfulPaint": timeToContentfulPaint,
@@ -34,7 +35,7 @@ def main(path):
             version=sample["browser_version"],
             url=test["data"]["testUrl"],
             metrics=metrics)
-        print(result)
+        #print(result)
         print(metrics)
         print(asdict(result))
         print(json.dumps(asdict(result)))
