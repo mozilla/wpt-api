@@ -29,7 +29,8 @@ def main(path):
                     "visualComplete": visualComplete,
                     "requestsFull": requestsFull}
         result = TestResult(
-            appName=sample["browser_name"],
+            appName=Firefox
+            #appName=sample["browser_name"],
             channel="",
             version=sample["browser_version"],
             url=test["data"]["testUrl"],
