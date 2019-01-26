@@ -5,7 +5,7 @@ import sys
 
 @dataclass
 class TestResult:
-   appName: str
+    appName: str
     channel: str
     version: str
     url: str
@@ -18,10 +18,17 @@ def main(path):
 
     for test in data:
         sample = test["data"]["median"]["firstView"]
-        metrics = {"TTFB": TTFB, "startRender": startRender, "firstPaint": firstPaint,
+        metrics = {"TTFB": TTFB,
+                    "startRender": startRender,
+                    "firstPaint": firstPaint,
                     "timeToContentfulPaint": timeToContentfulPaint,
-                    "domContentFlushed": domContentFlushed, "timeToFirstInteractive": timeToFirstInteractive, "pageLoadTime": pageLoadTime,
-                    "SpeedIndex": SpeedIndex, "bytesInDoc": bytesInDoc, "visualComplete": visualComplete, "requestsFull": requestsFull}
+                    "domContentFlushed": domContentFlushed,
+                    "timeToFirstInteractive": timeToFirstInteractive,
+                    "pageLoadTime": pageLoadTime,
+                    "SpeedIndex": SpeedIndex,
+                    "bytesInDoc": bytesInDoc,
+                    "visualComplete": visualComplete,
+                    "requestsFull": requestsFull}
         result = TestResult(
             appName=sample["browser_name"],
             channel="",
