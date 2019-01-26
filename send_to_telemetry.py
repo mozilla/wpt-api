@@ -12,7 +12,7 @@ class TestResult:
     metrics: dict
 
 def main(path):
-    with open(path) as f:
+    with open("/Users/stephendonner/Desktop/test-wpt-data.json") as f:
         data = json.load(f)
 
     for test in data:
@@ -29,8 +29,7 @@ def main(path):
                     "visualComplete": visualComplete,
                     "requestsFull": requestsFull}
         result = TestResult(
-            appName=Firefox
-            #appName=sample["browser_name"],
+            appName=sample["browser_name"],
             channel="",
             version=sample["browser_version"],
             url=test["data"]["testUrl"],
