@@ -13,8 +13,11 @@ class TestResult:
 
 
 def main(path):
-    with open("wpt.json") as f:
+    with open(path) as f:
         data = json.load(f)
+
+    with open("wpt.json") as f:
+        metrics = json.load(f)
 
     for test in data:
         sample = test["data"]["median"]["firstView"]
