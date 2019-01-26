@@ -28,14 +28,15 @@ def main(path):
                     "SpeedIndex": SpeedIndex,
                     "bytesInDoc": bytesInDoc,
                     "visualComplete": visualComplete,
-                    "requestsFull": requestsFull}
+                    "requestsFull": requestsFull
+                    }
         result = TestResult(
             appName=sample["browser_name"],
             channel="",
             version=sample["browser_version"],
             url=test["data"]["testUrl"],
             metrics=metrics)
-        #print(result)
+        print(result)
         print(metrics)
         print(asdict(result))
         print(json.dumps(asdict(result)))
