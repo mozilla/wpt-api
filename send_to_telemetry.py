@@ -12,7 +12,7 @@ class TestResult:
     metrics: dict
 
 def main(path):
-    with open("/Users/stephendonner/Desktop/test-wpt-data.json") as f:
+    with open("wpt.json") as f:
         data = json.load(f)
 
     for test in data:
