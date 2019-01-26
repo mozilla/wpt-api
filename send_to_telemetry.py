@@ -11,6 +11,7 @@ class TestResult:
     url: str
     metrics: dict
 
+
 def main(path):
     with open("wpt.json") as f:
         data = json.load(f)
@@ -18,18 +19,18 @@ def main(path):
     for test in data:
         sample = test["data"]["median"]["firstView"]
         metrics = {
-                    "TTFB": TTFB,
-                    "startRender": startRender,
-                    "firstPaint": firstPaint,
-                    "timeToContentfulPaint": timeToContentfulPaint,
-                    "domContentFlushed": domContentFlushed,
-                    "timeToFirstInteractive": timeToFirstInteractive,
-                    "pageLoadTime": pageLoadTime,
-                    "SpeedIndex": SpeedIndex,
-                    "bytesInDoc": bytesInDoc,
-                    "visualComplete": visualComplete,
-                    "requestsFull": requestsFull
-                    }
+            "TTFB": TTFB,
+            "startRender": startRender,
+            "firstPaint": firstPaint,
+            "timeToContentfulPaint": timeToContentfulPaint,
+            "domContentFlushed": domContentFlushed,
+            "timeToFirstInteractive": timeToFirstInteractive,
+            "pageLoadTime": pageLoadTime,
+            "SpeedIndex": SpeedIndex,
+            "bytesInDoc": bytesInDoc,
+            "visualComplete": visualComplete,
+            "requestsFull": requestsFull
+        }
         result = TestResult(
             appName=sample["browser_name"],
             channel="",
