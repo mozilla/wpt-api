@@ -23,7 +23,7 @@ def main(path):
         sample = test["data"]["median"]["firstView"]
         metrics = {
             "TTFB": TTFB,
-            "startRender": startRender,
+            "startRender": render,
             "firstPaint": firstPaint,
             "timeToContentfulPaint": timeToContentfulPaint,
             "domContentFlushed": domContentFlushed,
