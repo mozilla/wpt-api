@@ -61,10 +61,7 @@ test ${TARGET_URL} --location us-east-1-linux:Chrome%20Canary --keepua  --noopt 
       }
     }
     stage('Submit stats to Telemetry') {
-      agent {
-          dockerfile {
-          }
-      }
+      agent any
       steps {
         unstash 'wpt.json'
         sh 'python ./send_to_telemetry.py wpt.json'
