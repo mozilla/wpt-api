@@ -66,8 +66,8 @@ test ${TARGET_URL} --location us-east-1-linux:Chrome%20Canary --keepua  --noopt 
       }
       steps {
         unstash 'wpt.json'
-        sh 'python ./send_to_telemetry.py wpt.json'
         sh 'python --version'
+        sh 'python ./send_to_telemetry.py wpt.json'
       }
     }
     stage('Submit stats to Datadog') {
