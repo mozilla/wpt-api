@@ -69,6 +69,23 @@ test ${TARGET_URL} --location us-east-1-linux:Chrome%20Canary --keepua  --noopt 
         sh 'python --version'
         sh 'python ./send_to_telemetry.py wpt.json'
       }
+      post {
+        always {
+          archiveArtifacts 'wpt-telemetry-data.json'
+      }
+      success {
+        stash includes: 'wpt.json', name: 'wpt.json'
+      }
+      failure {
+        ircNotification('#perftest-alerts')
+          emailext(
+            attachLog: true,
+            body: '$BUILD_URL\n\n$FAILED_TESTS',
+            replyTo: '$DEFAULT_REPLYTO',
+            subject: '$DEFAULT_SUBJECT',
+            to: '$DEFAULT_RECIPIENTS')
+        }
+      }
     }
     stage('Submit stats to Datadog') {
       agent {
@@ -82,6 +99,7 @@ test ${TARGET_URL} --location us-east-1-linux:Chrome%20Canary --keepua  --noopt 
       }
       steps {
         unstash 'wpt.json'
+        sh 'python --version'
         sh 'python ./send_to_datadog.py wpt.json'
       }
     }
