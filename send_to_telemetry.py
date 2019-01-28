@@ -36,8 +36,8 @@ def main(path):
         print(asdict(result))
         # print(json.dumps(asdict(result)))
 
-        with open(f"wpt-telemetry-{test['data']['id']}.json", "w") as f:
-            json.dump(asdict(result), f)
+        # with open(f"wpt-telemetry-{test['data']['id']}.json", "w") as f:
+            # json.dump(asdict(result), f)
 
         # send to telemetry
         # r = requests.post(url="", data=asdict(result), type="json")
