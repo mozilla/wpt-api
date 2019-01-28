@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from dataclasses import asdict, dataclass
 import json
 import sys
