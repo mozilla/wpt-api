@@ -92,7 +92,7 @@ You'll see something like the following JSON returned:
 To view the full test results in the Web UI, just use that ```userURL```, which is http://webpagetest.org/result/190123_FA_dcbc2acb71e08a640f81999f9d2360dd/, in this case.
 * MOZ_LOG
 * networking
-** DNS
+  * DNS
 * filmstrips
 * screenshots
 * optimization checks
