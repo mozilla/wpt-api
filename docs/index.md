@@ -62,8 +62,8 @@ PRO-TIPs: you can and *should* input ```window.performance.timing``` and/or ```p
 * Batch/bulk-test (Python API/lib)
 * Firefox WebExtension
 * HAR files
-** ```send``` and ```wait``` events/timings are lumped into a shared ```wait``` metric
-*** https://github.com/WPO-Foundation/webpagetest/blob/0da83ac3f7e7407c96feaff46af1cfa65c461d6a/www/har/HttpArchiveGenerator.php#L379-L410
+  * ```send``` and ```wait``` events/timings are lumped into a shared ```wait``` metric
+    *  https://github.com/WPO-Foundation/webpagetest/blob/0da83ac3f7e7407c96feaff46af1cfa65c461d6a/www/har/HttpArchiveGenerator.php#L379-L410
 * logging
 * log-parsing/recreation
   * devtools_parser.py
