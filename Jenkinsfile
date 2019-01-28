@@ -69,9 +69,10 @@ test ${TARGET_URL} --location us-east-1-linux:Chrome%20Canary --keepua  --noopt 
         sh 'python --version'
         sh 'python ./send_to_telemetry.py wpt.json'
       }
-      success {
-        stash includes: 'wpt.json', name: 'wpt.json'
-      }
+      post {
+        success {
+          stash includes: 'wpt.json', name: 'wpt.json'
+        }
       failure {
         ircNotification('#perftest-alerts')
           emailext(
