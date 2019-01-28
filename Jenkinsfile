@@ -69,10 +69,6 @@ test ${TARGET_URL} --location us-east-1-linux:Chrome%20Canary --keepua  --noopt 
         sh 'python --version'
         sh 'python ./send_to_telemetry.py wpt.json'
       }
-      post {
-        always {
-          archiveArtifacts 'wpt-telemetry-data.json'
-      }
       success {
         stash includes: 'wpt.json', name: 'wpt.json'
       }
