@@ -2,6 +2,8 @@ from dataclasses import asdict, dataclass
 import json
 import sys
 
+import requests
+
 
 @dataclass
 class TestResult:
@@ -13,38 +15,31 @@ class TestResult:
 
 
 def main(path):
-    with open(path) as f:
+    with open("wpt.json") as f:
         data = json.load(f)
 
-    with open("wpt.json") as f:
+    with open("metrics.json") as f:
         metrics = json.load(f)
 
     for test in data:
         sample = test["data"]["median"]["firstView"]
-        metrics = {
-            "TTFB": TTFB,
-            "startRender": render,
-            "firstPaint": firstPaint,
-            "timeToContentfulPaint": timeToContentfulPaint,
-            "domContentFlushed": domContentFlushed,
-            "timeToFirstInteractive": timeToFirstInteractive,
-            "pageLoadTime": pageLoadTime,
-            "SpeedIndex": SpeedIndex,
-            "bytesInDoc": bytesInDoc,
-            "visualComplete": visualComplete,
-            "requestsFull": requestsFull
-        }
+        values = {m["name"]: sample[m["name"]] for m in metrics}
+
         result = TestResult(
             appName=sample["browser_name"],
             channel="",
             version=sample["browser_version"],
             url=test["data"]["testUrl"],
-            metrics=metrics)
-        print(result)
-        print(metrics)
+            metrics=values)
         print(asdict(result))
-        print(json.dumps(asdict(result)))
+        # print(json.dumps(asdict(result)))
+
+        with open(f"wpt-telemetry-{test['data']['id']}.json", "w") as f:
+            json.dump(asdict(result), f)
+
         # send to telemetry
+        # r = requests.post(url="", data=asdict(result), type="json")
+        # r.raise_on_error()
 
 
 if __name__ == "__main__":
