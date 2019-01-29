@@ -31,8 +31,8 @@ def main(path):
         values = {m["name"]: sample[m["name"]] for m in metrics}
 
         fullBrowserString = sample["browser_name"]
-        print("Full browser name and (potentially) channel (hence fullBrowserString) is: ", fullBrowserString)
-        print("Should be one of: 'Firefox', 'Firefox Nightly', 'Chrome', or 'Chrome Canary'")
+        print("fullBrowserString is: ", fullBrowserString)
+        print("(Should be one of: 'Firefox', 'Firefox Nightly', 'Chrome', or 'Chrome Canary')")
 
         # need to only partition if we have a space in fullBrowserString, e.g. "Firefox Nightly"
         if ' ' in fullBrowserString:
@@ -42,8 +42,7 @@ def main(path):
             lowercaseBrowserName = splitBrowserStrings[0].lower()
             browserName = lowercaseBrowserName
         else:
-            browserName = sample["browser_name"].lower()
-            # should be same as setting browserName from fullBrowserString
+            browserName = fullBrowserString.lower()
 
         # construct 'channel'
         print("Try to set 'channel', using splitBrowserStrings")
@@ -53,10 +52,10 @@ def main(path):
             channelName = 'release'
 
         result = TestResult(
-            appName = browserName,
+            appName = browserName.lower(),
             # appName=sample["browser_name"],
             channel=channelName,
-            connection=test["data"]["connectivity"],
+            connection=test["data"]["connectivity"].lower(),
             url=test["data"]["testUrl"],
             platform="desktop",
             runner="",
