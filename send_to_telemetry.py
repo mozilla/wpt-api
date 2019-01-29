@@ -44,10 +44,11 @@ def main(path):
             browserName = lowercaseBrowserName
         else:
             browserName = sample["browser_name"]
+            # should be same as setting browserName from fullBrowserString
 
         # construct 'channel'
         print("Try to set 'channel', using lowercaseBrowserStrings")
-        if lowercaseBrowserStrings[2]:
+        if " " in fullBrowserString:
             channelName = lowercaseBrowserStrings[2]
         else:
             channelName = 'release'
