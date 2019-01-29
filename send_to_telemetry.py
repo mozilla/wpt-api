@@ -43,8 +43,7 @@ def main(path):
             print("Lowercase browser strings: (lowercaseBrowserStrings) is: ", lowercaseBrowserStrings)
             browserName = lowercaseBrowserName
         else:
-            lowercaseBrowserName = browser_name
-            browserName = browser_name.lower()
+            browserName = sample["browser_name"]
 
         # construct 'channel'
         print("Try to set 'channel', using lowercaseBrowserStrings")
