@@ -30,30 +30,30 @@ def main(path):
         sample = test["data"]["median"]["firstView"]
         values = {m["name"]: sample[m["name"]] for m in metrics}
 
-        # browser_names we need to support:
-        # "Firefox Nightly"
-        # "Firefox"
-        # "Chrome"
-        # "Chrome Canary"
+        fullBrowserString = sample["browser_name"]
+        print("Full browser name (fullBrowserString) is: ", fullBrowserString)
+        print("Should be one of: 'Firefox', 'Firefox Nightly', 'Chrome', or 'Chrome Canary'")
 
-        fullBrowserName = sample["browser_name"]
-        print("Full browser name (fullBrowserName) is: ", fullBrowserName)
+        print("PARTITIONING")
+        uppercaseBrowserString, delim, uppercaseChannelName = fullBrowserString.partition(" ")
+        print("Partitioned browser_name string (browserName) is: ", browserName)
 
-        lowercaseBrowserName = fullBrowserName.lower()
+        lowercaseBrowserName = browserName.lower()
         print("Lowercase browser name: (lowercaseBrowserName) is: ", lowercaseBrowserName)
 
-        splitLowerBrowserName = lowercaseBrowserName.partition(' ')
-        print("Partitioned browser_name string (splitBrowserName) is: ", splitLowerBrowserName)
-
-        if splitLowerBrowserName[2]:
-            channelName = [splitLowerBrowserName]
+        # construct 'channel'
+        if lowercaseSplitBrowserName[2]:
+            channelName = lowercaseSplitBrowserName[2]
         else:
             channelName = 'release'
 
-        print(channelName)
-        print(fullBrowserName)
+
+        print("Try to set 'channel', using lowercaseSplitBrowserName[1]")
+
+
+        print("Channel is: " , channelName)
+        print()
         print(lowercaseBrowserName)
-        print(fullBrowserName[0], fullBrowserName[1], fullBrowserName[2])
 
 
         # 1. partition string on space ' '
