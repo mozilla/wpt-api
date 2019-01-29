@@ -30,17 +30,29 @@ def main(path):
         sample = test["data"]["median"]["firstView"]
         values = {m["name"]: sample[m["name"]] for m in metrics}
 
-        # fullChannel = sample["browser_name"]
-        fullChannel = 'Firefox Nightly'
-        print(fullChannel)
-        fullChannel = fullChannel.str.lower()
-        print(fullChannel)
-        fullChannel = fullChannel.str.partition(' ')
-        print(fullChannel)
+        # browser_names we need to support:
+        # "Firefox Nightly"
+        # "Firefox"
+        # "Chrome"
+        # "Chrome Canary"
+
+        fullBrowserName = sample["browser_name"]
+        print(fullBrowserName)
+        fullBrowserName = fullBrowserName.lower()
+        print(fullBrowserName)
+        fullBrowserName = fullBrowserName.partition(' ')
+        print(fullBrowserName)
+        if fullChannel[2] == 'nightly'
+            channel='nightly'
+
+        # 1. partition string on space ' '
+        # 2. call lower() on fullBrowserName[0]
+        # 3. set appName=fullBrowserName[0]
 
         result = TestResult(
-            appName=sample["browser_name"],
-            channel="",
+            appName = fullBrowserName[0]
+            # appName=sample["browser_name"],
+            channel,
             connection=test["data"]["connectivity"],
             url=test["data"]["testUrl"],
             platform="desktop",
