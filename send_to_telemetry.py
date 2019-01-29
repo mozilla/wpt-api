@@ -30,9 +30,15 @@ def main(path):
         result = TestResult(
             appName=sample["browser_name"],
             channel="",
-            version=sample["browser_version"],
+            connection=sample["connectivity"],
             url=test["data"]["testUrl"],
-            metrics=values)
+            platform="desktop",
+            runner="",
+            runId=test["data"][id"],
+            sessionState="noAuth",
+            metrics=values,
+            version=sample["browser_version"]
+            
         print(asdict(result))
         print(json.dumps(asdict(result)))
 
