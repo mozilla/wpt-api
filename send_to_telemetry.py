@@ -29,7 +29,7 @@ def main(path):
 
         result = TestResult(
             appName=sample["browser_name"],
-            channel=""
+            channel="",
             version=sample["browser_version"],
             url=test["data"]["testUrl"],
             metrics=values)
