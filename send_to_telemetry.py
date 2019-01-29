@@ -2,7 +2,7 @@ from dataclasses import asdict, dataclass
 import json
 import sys
 
-import requests
+# import requests
 
 
 @dataclass
@@ -41,11 +41,10 @@ def main(path):
             sessionState="noAuth",
             metrics=values,
             version=sample["browser_version"])
-        
         print(asdict(result))
         print(json.dumps(asdict(result)))
         # with open(f"wpt-telemetry-{test['data']['id']}.json", "w") as f:
-            # json.dump(asdict(result), f)
+        #   json.dump(asdict(result), f)
 
         # send to telemetry
         # r = requests.post(url="", data=asdict(result), type="json")
