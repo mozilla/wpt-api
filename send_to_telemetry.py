@@ -30,13 +30,17 @@ def main(path):
         sample = test["data"]["median"]["firstView"]
         values = {m["name"]: sample[m["name"]] for m in metrics}
 
+        fullChannel = sample["browser_name"]
+        fullChannel.str.partition(" ")
+        print(fullChannel)
+
         result = TestResult(
             appName=sample["browser_name"],
             # channel="",
             connection=test["data"]["connectivity"],
             url=test["data"]["testUrl"],
             platform="desktop",
-            # runner="",
+            runner="",
             runId=test["data"]["id"],
             sessionState="noAuth",
             metrics=values,
