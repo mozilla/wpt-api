@@ -35,9 +35,10 @@ def main(path):
         print("Should be one of: 'Firefox', 'Firefox Nightly', 'Chrome', or 'Chrome Canary'")
 
         splitBrowserStrings = fullBrowserString.partition(" ")
-        print("Partitioned browser_name string (splitBrowserStrings) is: ", splitBrowserStrings)
+        browserName = splitBrowserStrings[0]
+        print("Partitioned browser_name string (splitBrowserStrings) is: ", splitBrowserStrings[0])
 
-        lowercaseBrowserStrings = splitBrowserStrings.lower()
+        lowercaseBrowserStrings = splitBrowserStrings[0].lower()
         print("Lowercase browser strings: (lowercaseBrowserStrings) is: ", lowercaseBrowserStrings)
 
         # construct 'channel'
