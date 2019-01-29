@@ -31,7 +31,8 @@ def main(path):
         values = {m["name"]: sample[m["name"]] for m in metrics}
 
         fullChannel = sample["browser_name"]
-        fullChannel.str.partition(" ")
+        print(fullChannel)
+        fullChannel.str.partition("")
         print(fullChannel)
 
         result = TestResult(
