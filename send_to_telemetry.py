@@ -9,9 +9,14 @@ import requests
 class TestResult:
     appName: str
     channel: str
-    version: str
+    connection: str
     url: str
+    platform: str
+    runner: str
+    runId: str
     metrics: dict
+    sessionState: str
+    version: str
 
 
 def main(path):
