@@ -34,31 +34,19 @@ def main(path):
         print("Full browser name (fullBrowserString) is: ", fullBrowserString)
         print("Should be one of: 'Firefox', 'Firefox Nightly', 'Chrome', or 'Chrome Canary'")
 
-        print("PARTITIONING")
-        uppercaseBrowserString, delim, uppercaseChannelName = fullBrowserString.partition(" ")
-        print("Partitioned browser_name string (browserName) is: ", browserName)
+        splitBrowserStrings = fullBrowserString.partition(" ")
+        print("Partitioned browser_name string (splitBrowserStrings) is: ", splitBrowserStrings)
 
-        lowercaseBrowserName = browserName.lower()
-        print("Lowercase browser name: (lowercaseBrowserName) is: ", lowercaseBrowserName)
+        lowercaseBrowserStrings = splitBrowserStrings.lower()
+        print("Lowercase browser strings: (lowercaseBrowserStrings) is: ", lowercaseBrowserStrings)
 
         # construct 'channel'
-        if lowercaseSplitBrowserName[2]:
-            channelName = lowercaseSplitBrowserName[2]
+        print("Try to set 'channel', using lowercaseBrowserStrings")
+        if lowercaseBrowserStrings[2]:
+            channelName = lowercaseBrowserStrings[2]
         else:
             channelName = 'release'
 
-
-        print("Try to set 'channel', using lowercaseSplitBrowserName[1]")
-
-
-        print("Channel is: " , channelName)
-        print()
-        print(lowercaseBrowserName)
-
-
-        # 1. partition string on space ' '
-        # 2. call lower() on fullBrowserName[0]
-        # 3. set appName=fullBrowserName[0]
 
         result = TestResult(
             appName = lowercaseBrowserName,
