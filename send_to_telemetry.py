@@ -45,8 +45,7 @@ def main(path):
         appName = fullBrowserName[0]
         if fullBrowserName[2]:
             channel = fullBrowserName[2]
-
-        else
+        else:
             channel = 'release'
 
         print(fullBrowserName)
