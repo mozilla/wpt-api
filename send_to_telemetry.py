@@ -47,8 +47,8 @@ def main(path):
         else:
             channelName = 'release'
 
+        print(channelName)
         print(fullBrowserName)
-        print(channel)
         print(fullBrowserName[0], fullBrowserName[1], fullBrowserName[2])
 
 
@@ -59,7 +59,7 @@ def main(path):
         result = TestResult(
             appName = lowercaseBrowserName[0],
             # appName=sample["browser_name"],
-            channel,
+            channel=channelName,
             connection=test["data"]["connectivity"],
             url=test["data"]["testUrl"],
             platform="desktop",
