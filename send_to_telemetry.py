@@ -30,14 +30,17 @@ def main(path):
         sample = test["data"]["median"]["firstView"]
         values = {m["name"]: sample[m["name"]] for m in metrics}
 
-        fullChannel = sample["browser_name"]
+        # fullChannel = sample["browser_name"]
+        fullChannel = 'Firefox Nightly'
         print(fullChannel)
-        fullChannel.str.partition("")
+        fullChannel = fullChannel.str.lower()
+        print(fullChannel)
+        fullChannel = fullChannel.str.partition(' ')
         print(fullChannel)
 
         result = TestResult(
             appName=sample["browser_name"],
-            # channel="",
+            channel="",
             connection=test["data"]["connectivity"],
             url=test["data"]["testUrl"],
             platform="desktop",
