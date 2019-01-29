@@ -28,7 +28,7 @@ def main(path):
         result = TestResult(
             appName=sample["browser_name"],
             channel="",
-            connection=sample["connectivity"],
+            connection=["data"]["connectivity"],
             url=test["data"]["testUrl"],
             platform="desktop",
             runner="",
