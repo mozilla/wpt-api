@@ -29,12 +29,7 @@ def main(path):
 
         result = TestResult(
             appName=sample["browser_name"],
-            if appName=="Firefox Nightly":
-                channel="nightly"
-            elif appName == "Firefox":
-                channel="release"
-            else:
-                channel=""
+            channel=""
             version=sample["browser_version"],
             url=test["data"]["testUrl"],
             metrics=values)
