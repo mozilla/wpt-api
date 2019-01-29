@@ -31,15 +31,20 @@ def main(path):
         values = {m["name"]: sample[m["name"]] for m in metrics}
 
         fullBrowserString = sample["browser_name"]
-        print("Full browser name (fullBrowserString) is: ", fullBrowserString)
+        print("Full browser name and (potentially) channel (hence fullBrowserString) is: ", fullBrowserString)
         print("Should be one of: 'Firefox', 'Firefox Nightly', 'Chrome', or 'Chrome Canary'")
 
-        splitBrowserStrings = fullBrowserString.partition(" ")
-        browserName = splitBrowserStrings[0]
-        print("Partitioned browser_name string (splitBrowserStrings) is: ", splitBrowserStrings[0])
-
-        lowercaseBrowserStrings = splitBrowserStrings[0].lower()
-        print("Lowercase browser strings: (lowercaseBrowserStrings) is: ", lowercaseBrowserStrings)
+        # need to only partition if we have a space in fullBrowserString
+        if " " in fullBrowserString:
+            splitBrowserStrings = fullBrowserString.partition(" ")
+            uppercaseBrowserName = splitBrowserStrings[0]
+            print("Partitioned browser_name string (splitBrowserStrings) is: ", splitBrowserStrings[0])
+            lowercaseBrowserName = splitBrowserStrings[0].lower()
+            print("Lowercase browser strings: (lowercaseBrowserStrings) is: ", lowercaseBrowserStrings)
+            browserName = lowercaseBrowserName
+        else:
+            lowercaseBrowserName = browser_name
+            browserName = browser_name.lower()
 
         # construct 'channel'
         print("Try to set 'channel', using lowercaseBrowserStrings")
@@ -48,9 +53,8 @@ def main(path):
         else:
             channelName = 'release'
 
-
         result = TestResult(
-            appName = lowercaseBrowserName,
+            appName = browserName,
             # appName=sample["browser_name"],
             channel=channelName,
             connection=test["data"]["connectivity"],
