@@ -37,7 +37,7 @@ def main(path):
             metrics=values,
             version=sample["browser_version"])
         
-        # print(asdict(result))
+        print(asdict(result))
         print(json.dumps(asdict(result)))
         # with open(f"wpt-telemetry-{test['data']['id']}.json", "w") as f:
             # json.dump(asdict(result), f)
