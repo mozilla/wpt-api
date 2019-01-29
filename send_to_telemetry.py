@@ -34,7 +34,7 @@ def main(path):
             url=test["data"]["testUrl"],
             platform="desktop",
             runner="",
-            runId=test["data"][id"],
+            runId=test["data"]["id"],
             sessionState="noAuth",
             metrics=values,
             version=sample["browser_version"]
