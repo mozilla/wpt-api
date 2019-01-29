@@ -34,13 +34,12 @@ def main(path):
         print("Full browser name and (potentially) channel (hence fullBrowserString) is: ", fullBrowserString)
         print("Should be one of: 'Firefox', 'Firefox Nightly', 'Chrome', or 'Chrome Canary'")
 
-        # need to only partition if we have a space in fullBrowserString
-        if " " in fullBrowserString:
+        # need to only partition if we have a space in fullBrowserString, e.g. "Firefox Nightly"
+        if ' ' in fullBrowserString:
             splitBrowserStrings = fullBrowserString.partition(" ")
             uppercaseBrowserName = splitBrowserStrings[0]
             print("Partitioned browser_name string (splitBrowserStrings) is: ", splitBrowserStrings[0])
             lowercaseBrowserName = splitBrowserStrings[0].lower()
-            print("Lowercase browser strings: (lowercaseBrowserStrings) is: ", lowercaseBrowserStrings)
             browserName = lowercaseBrowserName
         else:
             browserName = sample["browser_name"]
