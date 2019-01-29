@@ -32,11 +32,11 @@ def main(path):
 
         result = TestResult(
             appName=sample["browser_name"],
-            channel="",
+            # channel="",
             connection=test["data"]["connectivity"],
             url=test["data"]["testUrl"],
             platform="desktop",
-            runner="",
+            # runner="",
             runId=test["data"]["id"],
             sessionState="noAuth",
             metrics=values,
