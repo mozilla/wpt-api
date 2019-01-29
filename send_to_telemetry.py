@@ -42,8 +42,12 @@ def main(path):
         print(fullBrowserName)
         fullBrowserName = fullBrowserName.partition(' ')
         print(fullBrowserName)
-        if fullChannel[2] == 'nightly'
-            channel='nightly'
+        if fullBrowserName[2]:
+            channel = fullBrowserName[2]
+        print(channel)
+        print(fullBrowserName)
+        print(fullBrowserName[0], fullBrowserName[1], fullBrowserName[2])
+
 
         # 1. partition string on space ' '
         # 2. call lower() on fullBrowserName[0]
