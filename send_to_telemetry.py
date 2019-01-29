@@ -34,7 +34,7 @@ def main(path):
             url=test["data"]["testUrl"],
             metrics=values)
         print(asdict(result))
-        # print(json.dumps(asdict(result)))
+        print(json.dumps(asdict(result)))
 
         # with open(f"wpt-telemetry-{test['data']['id']}.json", "w") as f:
             # json.dump(asdict(result), f)
