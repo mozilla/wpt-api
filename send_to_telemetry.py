@@ -37,18 +37,22 @@ def main(path):
         # "Chrome Canary"
 
         fullBrowserName = sample["browser_name"]
-        print("Full browser name: (fullBrowserName)", fullBrowserName)
-        splitBrowserName = fullBrowserName.partition(' ')
-        print("Partitioned browser_name string: (splitBrowserName)", splitBrowserName)
+        print("Full browser name (fullBrowserName) is: ", fullBrowserName)
+
         lowercaseBrowserName = fullBrowserName.lower()
-        print("Lowercase browser name", lowercaseBrowserName)
-        if lowercaseBrowserName[2]:
-            channelName = lowercaseBrowserName[2]
+        print("Lowercase browser name: (lowercaseBrowserName) is: ", lowercaseBrowserName)
+
+        splitLowerBrowserName = lowercaseBrowserName.partition(' ')
+        print("Partitioned browser_name string (splitBrowserName) is: ", splitLowerBrowserName)
+
+        if splitLowerBrowserName[2]:
+            channelName = [splitLowerBrowserName]
         else:
             channelName = 'release'
 
         print(channelName)
         print(fullBrowserName)
+        print(lowercaseBrowserName)
         print(fullBrowserName[0], fullBrowserName[1], fullBrowserName[2])
 
 
@@ -57,7 +61,7 @@ def main(path):
         # 3. set appName=fullBrowserName[0]
 
         result = TestResult(
-            appName = lowercaseBrowserName[0],
+            appName = lowercaseBrowserName,
             # appName=sample["browser_name"],
             channel=channelName,
             connection=test["data"]["connectivity"],
