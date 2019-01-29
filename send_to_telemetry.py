@@ -46,9 +46,9 @@ def main(path):
             # should be same as setting browserName from fullBrowserString
 
         # construct 'channel'
-        print("Try to set 'channel', using lowercaseBrowserStrings")
+        print("Try to set 'channel', using splitBrowserStrings")
         if " " in fullBrowserString:
-            channelName = lowercaseBrowserStrings[2]
+            channelName = splitBrowserStrings[0].lower()
         else:
             channelName = 'release'
 
