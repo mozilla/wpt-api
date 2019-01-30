@@ -52,7 +52,7 @@ def main(path):
             channelName = 'release'
 
         result = TestResult(
-            appName = browserName.lower(),
+            appName=browserName.lower(),
             # appName=sample["browser_name"],
             channel=channelName,
             connection=test["data"]["connectivity"].lower(),
