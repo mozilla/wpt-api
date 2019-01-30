@@ -1,7 +1,8 @@
 [
+  {"calendarDate": "2019-01-29", "UTCTimestamp": ".", "changelogEntry": "Bug 1522192. Added two (2) more c5.xlarge instances; now up to 8"},
   {"calendarDate": "2018-12-14", "UTCTimestamp": ".", "changelogEntry": "now auto-updating server's Docker image, w/app restart"},
   {"calendarDate": "2018-12-12", "UTCTimestamp": ".", "changelogEntry": "increased # of wptagents (Linux) from 4, to 6 c5.xlarges"},
   {"calendarDate": "2018-11-19", "UTCTimestamp": ".", "changelogEntry": "redeployed WebPageTest EC2 AMI as ami-0930bfd032ed4386d"},
-  {"calendarDate": "2018-10-25", "UTCTimestamp": ".", "changelogEntry": "added two (2) more c5.xlarge instances, up to 4 now, from 2"},
+  {"calendarDate": "2018-10-25", "UTCTimestamp": ".", "changelogEntry": "added two (2) more c5.xlarge instances, now up to 4"},
   {"calendarDate": "2018-10-25", "UTCTimestamp": ".", "changelogEntry": "more notes"}
 ]
