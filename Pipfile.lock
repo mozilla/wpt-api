@@ -93,11 +93,11 @@
         },
         "flake8": {
             "hashes": [
-                "sha256:545c8faa8425cafcd9800538b4fa324a543cdec0ac273cf698ddd6a954123401",
-                "sha256:e9ca1bb84d76511315e565a2cdd292d916b08b0d639aa3e323d8c7d895a03897"
+                "sha256:0323db2e3a72faa2c4cdd61ea87594b9cb343fc4dfa5c24d6b43059d7ba29d0e",
+                "sha256:a7951ade4814e5e5364bdce1e73862cbacf2bbb9b509a9bf8c130a0414cf0722"
             ],
             "index": "pypi",
-            "version": "==3.7.1"
+            "version": "==3.7.2"
         },
         "mccabe": {
             "hashes": [
