@@ -10,22 +10,20 @@ except ImportError:
 import json
 
 
-def get_jsonparsed_data(url):
-    """
-    Receive the content of ``url``, parse it as JSON and return the object.
+def get_webpagetest_fx_version_json(wpt_json):
+    with open("wpt.json") as f:
+        data = json.load(f)
 
-    Parameters
-    ----------
-    url : str
+    for test in data:
 
-    Returns
-    -------
-    dict
-    """
-    response = urlopen(url)
-    data = response.read().decode("utf-8")
-    return json.loads(data)
+        webpagetest_fx_version_json = test["data"]["median"]["firstView"]["browser_version"]
+        fx_version = webpagetest_fx_version_json
+
+        print(fx_version)
+
+fx_product_details_json_url = ("https://product-details.mozilla.org/1.0/firefox_versions.json")
+
+        # def get_webpagetest_fx_version():
 
 
-fx_json_url = ("https://product-details.mozilla.org/1.0/firefox_versions.json")
-print(get_jsonparsed_data(fx_json_url))
+        # def compare_fx_versions(fx_product_details_json, webpagetest_fx_version_json):
