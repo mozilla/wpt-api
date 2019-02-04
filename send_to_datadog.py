@@ -1,4 +1,5 @@
 import json
+
 # from pprint import pprint
 import os
 import sys
@@ -49,11 +50,11 @@ def main(path):
         sample = test["data"]["median"]["firstView"]
         browser_name = sample["browser_name"]
         browser_version = sample["browser_version"]
-        label = test["data"]["label"].replace('-', '_')
+        label = test["data"]["label"].replace("-", "_")
         print(f"{target_url} - {browser_name} ({browser_version})")
         requests = []
         for metric in metrics:
-            name = metric['name']
+            name = metric["name"]
             title = f"{metric['description']} ({metric['unit']})"
             query = f"avg:wpt.batch.{label}.median.firstView.{name}{{*}}"
             try:
@@ -62,13 +63,12 @@ def main(path):
                 if query not in requests:
                     requests.append({"q": query})
             except StopIteration:
-                graphs.append({
-                    "title": title,
-                    "definition": {
-                        "requests": [{"q": query}],
-                        "viz": "timeseries",
+                graphs.append(
+                    {
+                        "title": title,
+                        "definition": {"requests": [{"q": query}], "viz": "timeseries"},
                     }
-                })
+                )
             value = test["data"]["median"]["firstView"][name]
             print(f"- {name}: {value} ({metric['unit']})")
             statsd.gauge(f"wpt.batch.{label}.median.firstView.{name}", value)
@@ -86,24 +86,19 @@ def main(path):
             tb = next(tb for tb in tbs if tb["title"] == title)
             print(f"Updating {title} timeboard")
             tb = api.Timeboard.update(
-                tb["id"],
-                title=title,
-                description=description,
-                graphs=graphs,
+                tb["id"], title=title, description=description, graphs=graphs
             )
         except StopIteration:
             print(f"Creating {title} timeboard")
             tb = api.Timeboard.create(
-                title=title,
-                description=description,
-                graphs=graphs,
+                title=title, description=description, graphs=graphs
             )
 
         # pprint(tb)
         print(f"Adding {title} timeboard to {dbl_name} dashboard list")
-        api.DashboardList.add_items(dbl["id"], dashboards=[{
-            "type": "custom_timeboard",
-            "id": tb["dash"]["id"]}])
+        api.DashboardList.add_items(
+            dbl["id"], dashboards=[{"type": "custom_timeboard", "id": tb["dash"]["id"]}]
+        )
 
 
 if __name__ == "__main__":
