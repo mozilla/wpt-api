@@ -1,5 +1,6 @@
 from dataclasses import asdict, dataclass
 import json
+import os
 import sys
 
 # import requests
@@ -27,18 +28,40 @@ def main(path):
         metrics = json.load(f)
 
     for test in data:
+        build_tag = str(os.environ['BUILD_TAG'])
+        print("BUILD_TAG is: ", build_tag)
+
+        print("                                     ")
+
+        jenkins_URL = str(os.environ['JENKINS_URL'])
+        print("JENKINS_URL is: ", jenkins_URL)
+        print("                                     ")
+
+
+        standardDeviation = test["data"]["standardDeviation"]["firstView"]
+        standardDeviation.items()
+        # print(standardDeviation)
+        # print("Standard Deviation objects", standardDeviation)
+
+        medianMetric = test["data"]["median"]["firstView"]
+        medianMetric.items()
+        # print(medianMetric)
+        # print("Median metric objects", medianMetric)
+        # print(medianMetric)
+        # print("==========================")
+
+    for test in data:
         sample = test["data"]["median"]["firstView"]
         values = {m["name"]: sample[m["name"]] for m in metrics}
 
         fullBrowserString = sample["browser_name"]
-        print("fullBrowserString is: ", fullBrowserString)
-        print("(Should be one of: 'Firefox', 'Firefox Nightly', 'Chrome', or 'Chrome Canary')")
+        print("                                     ")
+        print("Browser: ", fullBrowserString)
 
         # need to only partition if we have a space in fullBrowserString, e.g. "Firefox Nightly"
         if ' ' in fullBrowserString:
             splitBrowserStrings = fullBrowserString.partition(' ')
             uppercaseBrowserName = splitBrowserStrings[0]
-            print("Partitioned browser_name string is: ", splitBrowserStrings[0])
             lowercaseBrowserName = splitBrowserStrings[0].lower()
             browserName = lowercaseBrowserName
         else:
@@ -50,14 +73,16 @@ def main(path):
         else:
             channelName = 'release'
 
+        print("Channel: ", channelName)
+
         result = TestResult(
             appName=browserName.lower(),
             channel=channelName,
             connection=test["data"]["connectivity"].lower(),
             url=test["data"]["testUrl"],
             platform="desktop",
-            runner="",
-            runId=test["data"]["id"],
+            runner=jenkins_URL,
+            runId=build_tag,
             sessionState="noAuth",
             metrics=values,
             version=sample["browser_version"])
