@@ -1,6 +1,7 @@
 sudo: required
 language: python
 python: 3.7
+dist: xenial
 services:
   - docker
 branches:
@@ -13,7 +14,6 @@ jobs:
   include:
     - stage: Linting
       script:
-        - pipenv check
         - pipenv run flake8
     - stage: Docker build
       script:
