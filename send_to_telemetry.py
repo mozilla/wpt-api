@@ -10,8 +10,8 @@ import sys
 class TestResult:
     appName: str
     channel: str
-    version: str
     connection: str
+    version: str
     url: str
     platform: str
     metrics: dict
@@ -39,12 +39,12 @@ def main(path):
 
 
         standardDeviation = test["data"]["standardDeviation"]["firstView"]
-        standardDeviation.items()
+        print ("Standard deviation: ", standardDeviation.items())
         # print(standardDeviation)
         # print("Standard Deviation objects", standardDeviation)
 
         medianMetric = test["data"]["median"]["firstView"]
-        medianMetric.items()
+        print ("Median metric: ", medianMetric.items())
         # print(medianMetric)
         # print("Median metric objects", medianMetric)
         # print(medianMetric)
@@ -79,13 +79,14 @@ def main(path):
             appName=browserName.lower(),
             channel=channelName,
             connection=test["data"]["connectivity"].lower(),
+            version=sample["browser_version"],
             url=test["data"]["testUrl"],
             platform="desktop",
+            metrics=values,
             runner=jenkins_URL,
             runId=build_tag,
             sessionState="noAuth",
-            metrics=values,
-            version=sample["browser_version"])
+            )
 
         print(json.dumps(asdict(result)))
         # with open(f"wpt-telemetry-{test['data']['id']}.json", "w") as f:
