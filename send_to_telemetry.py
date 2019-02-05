@@ -21,7 +21,7 @@ class TestResult:
 
 
 def main(path):
-    with open("wpt.json") as f:
+    with open(path) as f:
         data = json.load(f)
 
     with open("metrics.json") as f:
@@ -36,7 +36,6 @@ def main(path):
         jenkins_URL = str(os.environ['JENKINS_URL'])
         print("JENKINS_URL is: ", jenkins_URL)
         print("                                     ")
-
 
     for test in data:
         sample = test["data"]["median"]["firstView"]
@@ -61,7 +60,7 @@ def main(path):
         if ' ' in fullBrowserString:
             splitBrowserStrings = fullBrowserString.partition(' ')
             uppercaseBrowserName = splitBrowserStrings[0]
-            lowercaseBrowserName = splitBrowserStrings[0].lower()
+            lowercaseBrowserName = uppercaseBrowserName.lower()
             browserName = lowercaseBrowserName
         else:
             browserName = fullBrowserString.lower()
@@ -84,8 +83,7 @@ def main(path):
             metrics=values,
             runner=jenkins_URL,
             runId=build_tag,
-            sessionState="noAuth",
-            )
+            sessionState="noAuth")
 
         print(json.dumps(asdict(result)))
         # with open(f"wpt-telemetry-{test['data']['id']}.json", "w") as f:
