@@ -38,6 +38,10 @@ def main(path):
         print("                                     ")
 
 
+    for test in data:
+        sample = test["data"]["median"]["firstView"]
+        values = {m["name"]: sample[m["name"]] for m in metrics}
+
         standardDeviation = test["data"]["standardDeviation"]["firstView"]
         print ("Standard deviation: ", standardDeviation.items())
         # print(standardDeviation)
@@ -48,11 +52,6 @@ def main(path):
         # print(medianMetric)
         # print("Median metric objects", medianMetric)
         # print(medianMetric)
-        # print("==========================")
-
-    for test in data:
-        sample = test["data"]["median"]["firstView"]
-        values = {m["name"]: sample[m["name"]] for m in metrics}
 
         fullBrowserString = sample["browser_name"]
         print("                                     ")
