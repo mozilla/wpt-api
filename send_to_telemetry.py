@@ -28,12 +28,12 @@ def main(path):
         metrics = json.load(f)
 
     for test in data:
-        build_tag = str(os.environ['BUILD_TAG'])
+        build_tag = str(os.environ["BUILD_TAG"])
         print("BUILD_TAG is: ", build_tag)
 
         print("                                     ")
 
-        jenkins_URL = str(os.environ['JENKINS_URL'])
+        jenkins_URL = str(os.environ["JENKINS_URL"])
         print("JENKINS_URL is: ", jenkins_URL)
         print("                                     ")
 
@@ -42,12 +42,12 @@ def main(path):
         values = {m["name"]: sample[m["name"]] for m in metrics}
 
         standardDeviation = test["data"]["standardDeviation"]["firstView"]
-        print ("Standard deviation: ", standardDeviation.items())
+        print("Standard deviation: ", standardDeviation.items())
         # print(standardDeviation)
         # print("Standard Deviation objects", standardDeviation)
 
         medianMetric = test["data"]["median"]["firstView"]
-        print ("Median metric: ", medianMetric.items())
+        print("Median metric: ", medianMetric.items())
         # print(medianMetric)
         # print("Median metric objects", medianMetric)
         # print(medianMetric)
@@ -57,8 +57,8 @@ def main(path):
         print("Browser: ", fullBrowserString)
 
         # need to only partition if we have a space in fullBrowserString, e.g. "Firefox Nightly"
-        if ' ' in fullBrowserString:
-            splitBrowserStrings = fullBrowserString.partition(' ')
+        if " " in fullBrowserString:
+            splitBrowserStrings = fullBrowserString.partition(" ")
             uppercaseBrowserName = splitBrowserStrings[0]
             lowercaseBrowserName = uppercaseBrowserName.lower()
             browserName = lowercaseBrowserName
@@ -66,10 +66,10 @@ def main(path):
             browserName = fullBrowserString.lower()
 
         # construct 'channel'
-        if ' ' in fullBrowserString:
+        if " " in fullBrowserString:
             channelName = splitBrowserStrings[2].lower()
         else:
-            channelName = 'release'
+            channelName = "release"
 
         print("Channel: ", channelName)
 
@@ -83,7 +83,8 @@ def main(path):
             metrics=values,
             runner=jenkins_URL,
             runId=build_tag,
-            sessionState="noAuth")
+            sessionState="noAuth",
+        )
 
         print(json.dumps(asdict(result)))
         # with open(f"wpt-telemetry-{test['data']['id']}.json", "w") as f:
