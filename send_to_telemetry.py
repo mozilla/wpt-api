@@ -28,53 +28,39 @@ def main(path):
         metrics = json.load(f)
 
     for test in data:
-        build_tag = str(os.environ["BUILD_TAG"])
+        build_tag = str(os.getenv("BUILD_TAG", "unknown"))
         print("BUILD_TAG is: ", build_tag)
 
-        print("                                     ")
-
-        jenkins_URL = str(os.environ["JENKINS_URL"])
+        jenkins_URL = str(os.getenv("JENKINS_URL", "unknown"))
         print("JENKINS_URL is: ", jenkins_URL)
-        print("                                     ")
 
     for test in data:
         sample = test["data"]["median"]["firstView"]
-        values = {m["name"]: sample[m["name"]] for m in metrics}
+        values = {"firstView": {}}
 
-        standardDeviation = test["data"]["standardDeviation"]["firstView"]
-        print("Standard deviation: ", standardDeviation.items())
-        # print(standardDeviation)
-        # print("Standard Deviation objects", standardDeviation)
-
-        medianMetric = test["data"]["median"]["firstView"]
-        print("Median metric: ", medianMetric.items())
-        # print(medianMetric)
-        # print("Median metric objects", medianMetric)
-        # print(medianMetric)
+        for measure in ["median", "standardDeviation"]:
+            values["firstView"][measure] = {}
+            for metric in metrics:
+                name = metric["name"]
+                try:
+                    value = test["data"][measure]["firstView"][name]
+                    if value is not None:
+                        values["firstView"][measure][name] = value
+                except KeyError:
+                    pass
+                print(measure, name)
 
         fullBrowserString = sample["browser_name"]
-        print("                                     ")
+        print(values)
         print("Browser: ", fullBrowserString)
 
-        # need to only partition if we have a space in fullBrowserString, e.g. "Firefox Nightly"
-        if " " in fullBrowserString:
-            splitBrowserStrings = fullBrowserString.partition(" ")
-            uppercaseBrowserName = splitBrowserStrings[0]
-            lowercaseBrowserName = uppercaseBrowserName.lower()
-            browserName = lowercaseBrowserName
-        else:
-            browserName = fullBrowserString.lower()
-
-        # construct 'channel'
-        if " " in fullBrowserString:
-            channelName = splitBrowserStrings[2].lower()
-        else:
-            channelName = "release"
+        browserName, _, channelName = sample["browser_name"].lower().partition(" ")
+        channelName = channelName or "release"
 
         print("Channel: ", channelName)
 
         result = TestResult(
-            appName=browserName.lower(),
+            appName=browserName,
             channel=channelName,
             connection=test["data"]["connectivity"].lower(),
             version=sample["browser_version"],
