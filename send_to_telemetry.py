@@ -51,7 +51,6 @@ def main(path):
                 print(measure, name)
 
         fullBrowserString = sample["browser_name"]
-        print(values)
         print("Browser: ", fullBrowserString)
 
         browserName, _, channelName = sample["browser_name"].lower().partition(" ")
