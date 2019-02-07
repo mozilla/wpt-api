@@ -48,7 +48,6 @@ def main(path):
                         values["firstView"][measure][name] = value
                 except KeyError:
                     pass
-                print(measure, name)
 
         fullBrowserString = sample["browser_name"]
         print("Browser: ", fullBrowserString)
