@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 datadog = "*"
 black = "*"
+jsonschema = "*"
 
 [dev-packages]
 flake8 = "*"

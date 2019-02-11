@@ -1,4 +1,5 @@
 from dataclasses import asdict, dataclass
+from jsonschema import validate
 import json
 import os
 import sys
@@ -27,6 +28,8 @@ def main(path):
     with open("metrics.json") as f:
         metrics = json.load(f)
 
+    # we need to validate to https://github.com/mozilla-services/mozilla-pipeline-schemas/blob/3ed2cc456f703501865c362512aedc4841edc084/schemas/webpagetest/webpagetest-run/webpagetest-run.1.schema.json
+
     for test in data:
         build_tag = str(os.getenv("BUILD_TAG", "unknown"))
         print("BUILD_TAG is: ", build_tag)
@@ -36,18 +39,29 @@ def main(path):
 
     for test in data:
         sample = test["data"]["median"]["firstView"]
-        values = {"firstView": {}}
+        # print(sample)
 
-        for measure in ["median", "standardDeviation"]:
-            values["firstView"][measure] = {}
+        for measure in metrics:
+            name = measure["name"]
+            medianMetric = test["data"]["median"]["firstView"]
+            print("Metric name: ", name)
+            print("Median metric: ", medianMetric)
+            values = {name: {"firstView": medianMetric}}
+
+            # values[sample][name]["firstView"] = {}
+            # print(values)
+            # values["firstView"][metric] = {}
+            # print("Values dict: ", values)
             for metric in metrics:
-                name = metric["name"]
                 try:
-                    value = test["data"][measure]["firstView"][name]
+                    value = test["data"]["median"]["firstView"][name]
+                    print("Metric value: ", value)
+                    # values = {"firstView": {}}
                     if value is not None:
-                        values["firstView"][measure][name] = value
+                        values[name]["firstView"] = value
+                        print(values)
                 except KeyError:
-                    pass
+                        pass
 
         fullBrowserString = sample["browser_name"]
         print("Browser: ", fullBrowserString)
@@ -69,15 +83,106 @@ def main(path):
             runId=build_tag,
             sessionState="noAuth",
         )
-
         print(json.dumps(asdict(result)))
+        # print(json.dumps(asdict(result)))
         # with open(f"wpt-telemetry-{test['data']['id']}.json", "w") as f:
         #   json.dump(asdict(result), f)
 
         # send to telemetry
         # r = requests.post(url="", data=asdict(result), type="json")
         # r.raise_on_error()
+schema = {
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": false,
+  "description": "Web-performance metrics",
+  "properties": {
+    "appName": {
+      "type": "string"
+    },
+    "channel": {
+      "type": "string"
+    },
+    "connection": {
+      "type": "string"
+    },
+    "metrics": {
+      "additionalProperties": {
+        "properties": {
+          "firstView": {
+            "anyOf": [
+              {
+                "required": [
+                  "median"
+                ]
+              },
+              {
+                "required": [
+                  "standardDeviation"
+                ]
+              }
+            ],
+            "properties": {
+              "median": {
+                "type": "number"
+              },
+              "standardDeviation": {
+                "type": "number"
+              }
+            },
+            "type": "object"
+          }
+        },
+        "required": [
+          "firstView"
+        ],
+        "type": "object"
+      },
+      "type": "object"
+    },
+    "platform": {
+      "enum": [
+        "desktop",
+        "mobile"
+      ],
+      "type": "string"
+    },
+    "runId": {
+      "type": "string"
+    },
+    "runner": {
+      "type": "string"
+    },
+    "sessionState": {
+      "enum": [
+        "auth",
+        "noAuth"
+      ],
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "appName",
+    "channel",
+    "version",
+    "connection",
+    "url",
+    "platform",
+    "runner",
+    "runId",
+    "sessionState",
+    "metrics"
+  ],
+  "title": "webpagetest-run",
+  "type": "object"
+}
 
+validate(instance=TestResult, schema=schema)
 
 if __name__ == "__main__":
     if not len(sys.argv) == 2:
