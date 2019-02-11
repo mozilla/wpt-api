@@ -61,7 +61,7 @@ def main(path):
                         values[name]["firstView"] = value
                         print(values)
                 except KeyError:
-                        pass
+                    pass
 
         fullBrowserString = sample["browser_name"]
         print("Browser: ", fullBrowserString)
@@ -91,6 +91,7 @@ def main(path):
         # send to telemetry
         # r = requests.post(url="", data=asdict(result), type="json")
         # r.raise_on_error()
+
 schema = {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "additionalProperties": false,
