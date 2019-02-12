@@ -80,6 +80,7 @@ test ${TARGET_URL} --location us-east-1-linux:Chrome%20Canary --keepua  --noopt 
         sh 'python ./send_to_datadog.py wpt.json'
       }
     }
+  }
   post {
     failure {
       ircNotification('#perftest-alerts')
@@ -91,5 +92,4 @@ test ${TARGET_URL} --location us-east-1-linux:Chrome%20Canary --keepua  --noopt 
       to: '$DEFAULT_RECIPIENTS')
     }
   }
- }
 }
