@@ -2,10 +2,11 @@ from dataclasses import asdict, dataclass
 import json
 import os
 import sys
+import uuid
 
 from jsonschema import validate
 
-# import requests
+import requests
 
 
 @dataclass
@@ -79,8 +80,14 @@ def main(path):
             validate(asdict(result), schema)
 
         # send to telemetry
-        # r = requests.post(url="", data=asdict(result), type="json")
-        # r.raise_on_error()
+        # first, generate a UUID
+        wpt_run_uuid = uuid.uuid4().hex
+        r = requests.post(
+            url=f"https://incoming.telemetry.mozilla.org/submit/webpagetest/webpagetest-run/1/{wpt_run_uuid}",
+            data=asdict(result),
+            type="json",
+        )
+        r.raise_on_error()
 
 
 if __name__ == "__main__":
