@@ -41,7 +41,6 @@ test ${TARGET_URL} --location us-east-1-linux:Firefox%20Nightly --keepua  --noop
 test ${TARGET_URL} --location us-east-1-linux:Chrome --keepua  --noopt --noimages -r 3 --first --priority 1 --poll 5 --reporter json --label ${TARGET_NAME}.chrome.release
 test ${TARGET_URL} --location us-east-1-linux:Chrome%20Canary --keepua  --noopt --noimages -r 3 --first --priority 1 --poll 5 --reporter json --label ${TARGET_NAME}.chrome.canary"""])
         sh '/usr/src/app/bin/webpagetest batch commands.txt > "wpt.json"'
-        echo "Running ${env.BUILD_TAG} on ${env.JENKINS_URL}"
       }
       post {
         always {
