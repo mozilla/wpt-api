@@ -26,7 +26,7 @@ pipeline {
           branches: [[name: 'master']],
           extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'webpagetest-api']],
           userRemoteConfigs: [[url: 'https://github.com/marcelduran/webpagetest-api']]])
-        }
+      }
     }
     stage('Run WebPageTest (command-line API)') {
       agent {
