@@ -36,10 +36,10 @@ pipeline {
         writeFile([
           file: 'commands.txt',
           encoding: 'UTF-8',
-          text: """test ${TARGET_URL} --location us-east-1-linux:Firefox --keepua --noopt --noimages -r 3 --first --poll 5 --priority 1 --reporter json --label ${TARGET_NAME}.fx.release
-test ${TARGET_URL} --location us-east-1-linux:Firefox%20Nightly --keepua  --noopt --noimages -r 3 --first --poll 5 --priority 1 --reporter json --label ${TARGET_NAME}.fx.nightly
-test ${TARGET_URL} --location us-east-1-linux:Chrome --keepua  --noopt --noimages -r 3 --first --poll 5 --priority 1 --reporter json --label ${TARGET_NAME}.chrome.release
-test ${TARGET_URL} --location us-east-1-linux:Chrome%20Canary --keepua  --noopt --noimages -r 3 --first --poll 5 --priority 1 --reporter json --label ${TARGET_NAME}.chrome.canary"""])
+          text: """test ${TARGET_URL} --location us-east-1-linux:Firefox --keepua --noopt --noimages -r 3 --first --priority 1 --poll 5 --reporter json --label ${TARGET_NAME}.fx.release
+test ${TARGET_URL} --location us-east-1-linux:Firefox%20Nightly --keepua  --noopt --noimages -r 3 --first --priority 1 --poll 5 --reporter json --label ${TARGET_NAME}.fx.nightly
+test ${TARGET_URL} --location us-east-1-linux:Chrome --keepua  --noopt --noimages -r 3 --first --priority 1 --poll 5 --reporter json --label ${TARGET_NAME}.chrome.release
+test ${TARGET_URL} --location us-east-1-linux:Chrome%20Canary --keepua  --noopt --noimages -r 3 --first --priority 1 --poll 5 --reporter json --label ${TARGET_NAME}.chrome.canary"""])
         sh '/usr/src/app/bin/webpagetest batch commands.txt > "wpt.json"'
         echo "Running ${env.BUILD_TAG} on ${env.JENKINS_URL}"
       }
@@ -50,15 +50,6 @@ test ${TARGET_URL} --location us-east-1-linux:Chrome%20Canary --keepua  --noopt 
         success {
           stash includes: 'wpt.json', name: 'wpt.json'
         }
-        failure {
-          ircNotification('#perftest-alerts')
-          emailext(
-            attachLog: true,
-            body: '$BUILD_URL\n\n$FAILED_TESTS',
-            replyTo: '$DEFAULT_REPLYTO',
-            subject: '$DEFAULT_SUBJECT',
-            to: '$DEFAULT_RECIPIENTS')
-        }
       }
     }
     stage('Submit stats to Telemetry') {
@@ -67,21 +58,11 @@ test ${TARGET_URL} --location us-east-1-linux:Chrome%20Canary --keepua  --noopt 
       }
       steps {
         unstash 'wpt.json'
-        sh 'python --version'
         sh 'python ./send_to_telemetry.py wpt.json'
       }
       post {
         success {
-          stash includes: 'wpt.json', name: 'wpt.json'
-        }
-      failure {
-        ircNotification('#perftest-alerts')
-          emailext(
-            attachLog: true,
-            body: '$BUILD_URL\n\n$FAILED_TESTS',
-            replyTo: '$DEFAULT_REPLYTO',
-            subject: '$DEFAULT_SUBJECT',
-            to: '$DEFAULT_RECIPIENTS')
+          stash includes: 'wpt-telemetry-*.json', name: 'wpt-telemetry.json'
         }
       }
     }
@@ -97,9 +78,17 @@ test ${TARGET_URL} --location us-east-1-linux:Chrome%20Canary --keepua  --noopt 
       }
       steps {
         unstash 'wpt.json'
-        sh 'python --version'
         sh 'python ./send_to_datadog.py wpt.json'
       }
+    }
+    failure {
+      ircNotification('#perftest-alerts')
+        emailext(
+        attachLog: true,
+        body: '$BUILD_URL\n\n$FAILED_TESTS',
+        replyTo: '$DEFAULT_REPLYTO',
+        subject: '$DEFAULT_SUBJECT',
+        to: '$DEFAULT_RECIPIENTS')
     }
   }
 }

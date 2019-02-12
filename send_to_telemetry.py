@@ -40,14 +40,14 @@ def main(path):
             for measure in ["median", "standardDeviation"]:
                 sample = test["data"][measure]["firstView"].get(name)
                 # sefdefault() will return each metric value
-                # or, if missing, return "default" which defaults to None
+                # or, if missing, return and set an empty dict
                 # if we find a metric in the dict, set its value
                 # in the values{} dict
                 if sample is not None:
                     m = values.setdefault(name, {})
                     # if the metric has a "firstView" entry + value,
                     # happily write it into values{}
-                    # otherwise, do as above, and return "default" / None
+                    # or, if missing, return and set an empty dict
                     first_view = m.setdefault("firstView", {})
                     first_view[measure] = sample
 

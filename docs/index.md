@@ -146,7 +146,7 @@ $ webpagetest test www.twitch.tv -k your_API_key --location ec2-us-east-1:Firefo
 
 ### AWS EC2 Setup
 * **1** ```c5.xlarge``` __WebPageTest__ core server-instance (Linux, EC2 AMI ID: ami-024df0ababa7118ae)
-* **8** x ```c5.xlarge``` __wptagent__ server instances (Linux, EC2 AMI ID: ami-a88c20d5)
+* **6** x ```c5.xlarge``` __wptagent__ server instances (Linux, EC2 AMI ID: ami-a88c20d5)
 
 ## Dependencies
 #### Core:
