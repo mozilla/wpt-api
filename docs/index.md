@@ -71,7 +71,7 @@ PRO-TIPs: you can and *should* input ```window.performance.timing``` and/or ```p
 * mobile-device testing (Android)
   * public instance:
     ```$ webpagetest test https://faraday.basschouten.com/mozilla/executionorder/externaltimeout0.html --server http://webpagetest.org -k [redacted_API_key] --location "Dulles_MotoG4:Moto G4 - Firefox" --connectivity 3GFast --runs 3 --first```
-    
+
 You'll see something like the following JSON returned:
 
 ```
@@ -146,7 +146,7 @@ $ webpagetest test www.twitch.tv -k your_API_key --location ec2-us-east-1:Firefo
 
 ### AWS EC2 Setup
 * **1** ```c5.xlarge``` __WebPageTest__ core server-instance (Linux, EC2 AMI ID: ami-024df0ababa7118ae)
-* **6** x ```c5.xlarge``` __wptagent__ server instances (Linux, EC2 AMI ID: ami-a88c20d5)
+* **8** x ```c5.xlarge``` __wptagent__ server instances (Linux, EC2 AMI ID: ami-a88c20d5)
 
 ## Dependencies
 #### Core:

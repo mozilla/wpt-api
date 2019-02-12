@@ -4,3 +4,4 @@ DS_Store
 *.sw[op]
 *.pyc
 .tox
+wpt-telemetry*
