@@ -87,14 +87,13 @@ def main(path):
         r = session.post(
             url, data=asdict(result), headers={"Content-Type": "application/json"}
         )
+        r.raise_for_status()
     except Exception as e:
         logging.error("Error posting to telemetry " "server: %s" % str(e))
     if r.status_code != 200:
         logging.error("Error posting to telemetry: %s %s" % (r.status_code, r.text))
 
     session.close()
-
-    # r.raise_on_error()
 
 
 if __name__ == "__main__":
