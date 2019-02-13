@@ -81,15 +81,10 @@ def main(path):
     wpt_run_uuid = uuid.uuid4().hex
     url = f"https://incoming.telemetry.mozilla.org/submit/webpagetest/webpagetest-run/1/{wpt_run_uuid}"
 
-    try:
-        r = requests.post(
-            url=url, data=asdict(result), headers={"Content-Type": "application/json"}
-        )
-        r.raise_for_status()
-    except Exception as e:
-        logging.error("Error posting to telemetry " "server: %s" % str(e))
-    if r.status_code != 200:
-        logging.error("Error posting to telemetry: %s %s" % (r.status_code, r.text))
+    r = requests.post(
+        url=url, data=asdict(result), headers={"Content-Type": "application/json"}
+    )
+    r.raise_for_status()
 
 
 if __name__ == "__main__":
