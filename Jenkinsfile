@@ -85,11 +85,11 @@ test ${TARGET_URL} --location us-east-1-linux:Chrome%20Canary --keepua  --noopt 
     failure {
       ircNotification('#perftest-alerts')
       emailext(
-      attachLog: true,
-      body: '$BUILD_URL\n\n$FAILED_TESTS',
-      replyTo: '$DEFAULT_REPLYTO',
-      subject: '$DEFAULT_SUBJECT',
-      to: '$DEFAULT_RECIPIENTS')
+        attachLog: true,
+        body: '$BUILD_URL\n\n$FAILED_TESTS',
+        replyTo: '$DEFAULT_REPLYTO',
+        subject: '$DEFAULT_SUBJECT',
+        to: '$DEFAULT_RECIPIENTS')
     }
   }
 }
