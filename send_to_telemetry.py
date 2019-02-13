@@ -91,8 +91,6 @@ def main(path):
     if r.status_code != 200:
         logging.error("Error posting to telemetry: %s %s" % (r.status_code, r.text))
 
-    session.close()
-
 
 if __name__ == "__main__":
     if not len(sys.argv) == 2:
