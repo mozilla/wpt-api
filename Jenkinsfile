@@ -61,7 +61,7 @@ test ${TARGET_URL} --location us-east-1-linux:Chrome%20Canary --keepua  --noopt 
       }
       post {
         success {
-          stash includes: 'wpt-telemetry-*.json', name: 'wpt-telemetry.json'
+          archiveArtifacts 'wpt-telemetry-*.json'
         }
       }
     }
