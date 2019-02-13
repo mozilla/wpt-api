@@ -1,5 +1,6 @@
 from dataclasses import asdict, dataclass
 import json
+import logging
 import os
 import sys
 import uuid
@@ -39,15 +40,12 @@ def main(path):
             # now, grab all metrics' values
             for measure in ["median", "standardDeviation"]:
                 sample = test["data"][measure]["firstView"].get(name)
-                # sefdefault() will return each metric value
-                # or, if missing, return and set an empty dict
-                # if we find a metric in the dict, set its value
-                # in the values{} dict
+                # sefdefault()s here will return each metric name & value,
+                # or return and set an empty dict
                 if sample is not None:
                     m = values.setdefault(name, {})
-                    # if the metric has a "firstView" entry + value,
-                    # happily write it into values{}
-                    # or, if missing, return and set an empty dict
+                    # write each metric having a "firstView" entry + value,
+                    # or return and set an empty dict
                     first_view = m.setdefault("firstView", {})
                     first_view[measure] = sample
 
@@ -79,19 +77,28 @@ def main(path):
             schema = json.load(f)
             validate(asdict(result), schema)
 
-        # send to telemetry
-        # first, generate a UUID
-        wpt_run_uuid = uuid.uuid4().hex
-        r = requests.post(
-            url=f"https://incoming.telemetry.mozilla.org/submit/webpagetest/webpagetest-run/1/{wpt_run_uuid}",
-            data=asdict(result),
-            type="json",
+    # send to telemetry
+    wpt_run_uuid = uuid.uuid4().hex
+    url = f"https://incoming.telemetry.mozilla.org/submit/webpagetest/webpagetest-run/1/{wpt_run_uuid}"
+
+    session = requests.Session()
+
+    try:
+        r = session.post(
+            url, data=asdict(result), headers={"Content-Type": "application/json"}
         )
-        r.raise_on_error()
+    except Exception as e:
+        logging.error("Error posting to telemetry " "server: %s" % str(e))
+    if r.status_code != 200:
+        logging.error("Error posting to telemetry: %s %s" % (r.status_code, r.text))
+
+    session.close()
+
+    # r.raise_on_error()
 
 
 if __name__ == "__main__":
     if not len(sys.argv) == 2:
-        print("Usage: python send_to_telemetry.py path_to_wpt.json.sample")
+        print("Usage: python send_to_telemetry.py path_to_wpt.json")
         exit()
     main(*sys.argv[1:])
