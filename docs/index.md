@@ -71,7 +71,7 @@ PRO-TIPs: you can and *should* input ```window.performance.timing``` and/or ```p
 * mobile-device testing (Android)
   * public instance:
     ```$ webpagetest test https://faraday.basschouten.com/mozilla/executionorder/externaltimeout0.html --server http://webpagetest.org -k [redacted_API_key] --location "Dulles_MotoG4:Moto G4 - Firefox" --connectivity 3GFast --runs 3 --first```
-    
+
 You'll see something like the following JSON returned:
 
 ```

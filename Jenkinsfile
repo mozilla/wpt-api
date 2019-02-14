@@ -26,7 +26,7 @@ pipeline {
           branches: [[name: 'master']],
           extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'webpagetest-api']],
           userRemoteConfigs: [[url: 'https://github.com/marcelduran/webpagetest-api']]])
-        }
+      }
     }
     stage('Run WebPageTest (command-line API)') {
       agent {
@@ -49,14 +49,19 @@ test ${TARGET_URL} --location us-east-1-linux:Chrome%20Canary --keepua  --noopt 
         success {
           stash includes: 'wpt.json', name: 'wpt.json'
         }
-        failure {
-          ircNotification('#perftest-alerts')
-          emailext(
-            attachLog: true,
-            body: '$BUILD_URL\n\n$FAILED_TESTS',
-            replyTo: '$DEFAULT_REPLYTO',
-            subject: '$DEFAULT_SUBJECT',
-            to: '$DEFAULT_RECIPIENTS')
+      }
+    }
+    stage('Submit stats to Telemetry') {
+      agent {
+        dockerfile true
+      }
+      steps {
+        unstash 'wpt.json'
+        sh 'python ./send_to_telemetry.py wpt.json'
+      }
+      post {
+        always {
+          archiveArtifacts 'wpt-telemetry-*.json'
         }
       }
     }
@@ -74,6 +79,17 @@ test ${TARGET_URL} --location us-east-1-linux:Chrome%20Canary --keepua  --noopt 
         unstash 'wpt.json'
         sh 'python ./send_to_datadog.py wpt.json'
       }
+    }
+  }
+  post {
+    failure {
+      ircNotification('#perftest-alerts')
+      emailext(
+        attachLog: true,
+        body: '$BUILD_URL\n\n$FAILED_TESTS',
+        replyTo: '$DEFAULT_REPLYTO',
+        subject: '$DEFAULT_SUBJECT',
+        to: '$DEFAULT_RECIPIENTS')
     }
   }
 }

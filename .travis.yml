@@ -7,7 +7,6 @@ services:
 branches:
   only:
     - master
-    - job-dsl
 install:
   - pip install -r pipenv.txt
   - pipenv install --dev
