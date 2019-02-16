@@ -82,7 +82,9 @@ def main(path):
 
     results_json = json.dumps(result)
     r = requests.post(
-        url=url, data=asdict(results_json), headers={"Content-Type": "application/json"}
+        url=url,
+        data=asdict(results_json),
+        headers="{'Content-Type': 'application/json'}",
     )
     r.raise_for_status()
 
