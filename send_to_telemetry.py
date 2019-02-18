@@ -84,7 +84,7 @@ def main(path):
     r = requests.post(
         url=telemetry_url,
         data=results_json,
-        headers="{'Content-Type': 'application/json'}",
+        headers={"Content-Type": "application/json"},
     )
     r.raise_for_status()
 
