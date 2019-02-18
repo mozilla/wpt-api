@@ -78,12 +78,12 @@ def main(path):
 
     # send to telemetry
     wpt_run_uuid = uuid.uuid4().hex
-    url = f"https://incoming.telemetry.mozilla.org/submit/webpagetest/webpagetest-run/1/{'wpt_run_uuid'}"
-
-    results_json = json.dumps(result)
+    telemetry_url = f"https://incoming.telemetry.mozilla.org/submit/webpagetest/webpagetest-run/1/{'wpt_run_uuid'}"
+    # results_json = json.dumps(result)
+    results_json = json.dumps(asdict(result))
     r = requests.post(
-        url=url,
-        data=asdict(results_json),
+        url=telemetry_url,
+        data=results_json,
         headers="{'Content-Type': 'application/json'}",
     )
     r.raise_for_status()
