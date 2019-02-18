@@ -71,17 +71,20 @@ def main(path):
             json.dump(asdict(result), f)
 
         # validate our generated JSON output against Telemetry's Pipeline schema
-        # https://github.com/mozilla-services/mozilla-pipeline-schemas/blob/3ed2cc456f703501865c362512aedc4841edc084/schemas/webpagetest/webpagetest-run/webpagetest-run.1.schema.json
+        # https://github.com/mozilla-services/mozilla-pipeline-schemas/blob/dev/schemas/webpagetest/webpagetest-run/webpagetest-run.1.schema.json
         with open("wpt-schema.json") as f:
             schema = json.load(f)
             validate(asdict(result), schema)
 
     # send to telemetry
     wpt_run_uuid = uuid.uuid4().hex
-    url = f"https://incoming.telemetry.mozilla.org/submit/webpagetest/webpagetest-run/1/{wpt_run_uuid}"
-
+    telemetry_url = f"https://incoming.telemetry.mozilla.org/submit/webpagetest/webpagetest-run/1/{wpt_run_uuid}"
+    # results_json = json.dumps(result)
+    results_json = json.dumps(asdict(result))
     r = requests.post(
-        url=url, data=asdict(result), headers={"Content-Type": "application/json"}
+        url=telemetry_url,
+        data=results_json,
+        headers={"Content-Type": "application/json"},
     )
     r.raise_for_status()
 
