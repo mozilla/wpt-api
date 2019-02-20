@@ -76,16 +76,16 @@ def main(path):
             schema = json.load(f)
             validate(asdict(result), schema)
 
-    # send to telemetry
-    wpt_run_uuid = uuid.uuid4().hex
-    telemetry_url = f"https://incoming.telemetry.mozilla.org/submit/webpagetest/webpagetest-run/1/{wpt_run_uuid}"
-    results_json = json.dumps(asdict(result))
-    r = requests.post(
-        url=telemetry_url,
-        data=results_json,
-        headers={"Content-Type": "application/json"},
-    )
-    r.raise_for_status()
+        # send to telemetry
+        wpt_run_uuid = uuid.uuid4().hex
+        telemetry_url = f"https://incoming.telemetry.mozilla.org/submit/webpagetest/webpagetest-run/1/{wpt_run_uuid}"
+        results_json = json.dumps(asdict(result))
+        r = requests.post(
+            url=telemetry_url,
+            data=results_json,
+            headers={"Content-Type": "application/json"},
+        )
+        r.raise_for_status()
 
 
 if __name__ == "__main__":
