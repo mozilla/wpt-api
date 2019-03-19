@@ -21,6 +21,7 @@ pipeline {
     stage('Clone webpagetest-api repo') {
       agent any
       steps {
+        step([$class: 'WsCleanup'])
         checkout([
           $class: 'GitSCM',
           branches: [[name: 'master']],
