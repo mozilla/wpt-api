@@ -21,7 +21,6 @@ pipeline {
     stage('Clone webpagetest-api repo') {
       agent any
       steps {
-        wipeWorkspace()  
         checkout([
           $class: 'GitSCM',
           branches: [[name: 'master']],
@@ -83,6 +82,9 @@ test ${TARGET_URL} --location us-east-1-linux:Chrome%20Canary --keepua  --noopt 
     }
   }
   post {
+    always {
+      deleteDir() / * clean up our workspace */
+    }
     failure {
       ircNotification('#perftest-alerts')
       emailext(
