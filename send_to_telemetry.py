@@ -38,7 +38,11 @@ def main(path):
             name = metric["name"]
             # now, grab all metrics' values
             for measure in ["median", "standardDeviation"]:
-                sample = test["data"][measure]["firstView"].get(name)
+                sample = None
+                try:
+                    sample = test["data"][measure]["firstView"].get(name)
+                except AttributeError:
+                    pass
                 # sefdefault()s here will return each metric name & value,
                 # or return and set an empty dict
                 if sample is not None:
