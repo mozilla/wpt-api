@@ -92,4 +92,7 @@ test ${TARGET_URL} --location us-east-1-linux:Chrome%20Canary --keepua  --noopt 
         to: '$DEFAULT_RECIPIENTS')
     }
   }
+  cleanup {
+    deleteDir()
+  }
 }
