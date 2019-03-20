@@ -23,9 +23,9 @@ pipeline {
       steps {
         checkout([
           $class: 'GitSCM',
-          branches: [[name: 'master']],
+          branches: [[name: 'remove-entrypoint']],
           extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'webpagetest-api']],
-          userRemoteConfigs: [[url: 'https://github.com/marcelduran/webpagetest-api']]])
+          userRemoteConfigs: [[url: 'https://github.com/davehunt/webpagetest-api']]])
       }
     }
     stage('Run WebPageTest (command-line API)') {
