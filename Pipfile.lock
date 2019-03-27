@@ -39,11 +39,11 @@
         },
         "datadog": {
             "hashes": [
-                "sha256:9487480fd4b5898b665384f95eeb0cbca4ec998bb58224b7bb60fff3978191ad",
-                "sha256:d28251dd28f51f27e942bb23fe15349e5223aef75246a94ff7233fb174b74bb9"
+                "sha256:eb6f2707151be8851f7da3768e605ac92ec45464fc48d5a878d0b6e08610dd8b",
+                "sha256:f0c3260654cf1c9a4a610aee6282ee62688e734f7d59ebc830560ca0cc0ef81d"
             ],
             "index": "pypi",
-            "version": "==0.27.0"
+            "version": "==0.28.0"
         },
         "decorator": {
             "hashes": [
