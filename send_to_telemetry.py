@@ -81,7 +81,7 @@ def main(path):
             validate(asdict(result), schema)
 
         # send to telemetry
-        wpt_run_uuid = uuid.uuid4().hex
+        wpt_run_uuid = str(uuid.uuid4())
         telemetry_url = f"https://incoming.telemetry.mozilla.org/submit/webpagetest/webpagetest-run/1/{wpt_run_uuid}"
         results_json = json.dumps(asdict(result))
         r = requests.post(
