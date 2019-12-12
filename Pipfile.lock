@@ -39,11 +39,11 @@
         },
         "datadog": {
             "hashes": [
-                "sha256:2746dd41055805e7b41610de887444ccbe5ee38ed7cf118bc6ba34e23c5a2e73",
-                "sha256:d97d85a8d2b90fe01f00b637a943c8b4a2d31928d7d4248610c8aab2292e8407"
+                "sha256:22d3c935e83de02b64efed635ac5fb45db26e152ac759105ec6d5a7ed8b9f6a9",
+                "sha256:bce73f33a4496b004402baa502251150e3b48a48f610ff89d4cd110b366ee0ab"
             ],
             "index": "pypi",
-            "version": "==0.32.0"
+            "version": "==0.33.0"
         },
         "decorator": {
             "hashes": [
@@ -64,7 +64,7 @@
                 "sha256:073a852570f92da5f744a3472af1b61e28e9f78ccf0c9117658dc32b15de7b45",
                 "sha256:d95141fbfa7ef2ec65cfd945e2af7e5a6ddbd7c8d9a25e66ff3be8e3daf9f60f"
             ],
-            "index": "pypi",
+            "markers": "python_version < '3.8'",
             "version": "==1.3.0"
         },
         "jsonschema": {
